@@ -83,52 +83,97 @@ const monthlySavings = standaloneMonthly - bundle;
 
   <!-- Headline pricing cards -->
   <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10">
-    <div class="container-dossier grid md:grid-cols-2 gap-6">
-      <div class="card-paper p-8 relative">
+    <div class="container-dossier space-y-6">
+      <!-- Plan A · the bundle -->
+      <div class="card-paper p-8 md:p-10 relative">
         <div class="absolute -top-3 left-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
           Plan A · The bundle
         </div>
-        <div class="flex items-center justify-between mb-6 mt-2">
-          <span class="file-tag">A/01 · Flat price</span>
-          <span class="meta">Month-to-month</span>
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
+          <div>
+            <div class="flex items-center justify-between mb-6 mt-2">
+              <span class="file-tag">A/01 · Flat price</span>
+              <span class="meta">Month-to-month</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-[4rem] leading-none">$497</span>
+              <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, all in</span>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)]">
+              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
+              <span class="opacity-30">·</span>
+              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
+              <span class="opacity-30">·</span>
+              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
+            </div>
+            <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
+              Everything in the bundle below. No tier you have to upgrade to. The terms above mean exactly what they say.
+            </p>
+            <a href="/contact" class="mt-7 btn-primary w-full sm:w-auto justify-center">Book a demo <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="border-t lg:border-t-0 lg:border-l border-[color:var(--color-rule)] pt-6 lg:pt-2 lg:pl-10">
+            <div class="meta mb-3">In the bundle</div>
+            <ul class="space-y-2 text-[0.95rem]">
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website rebuild</li>
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back across every line</li>
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> NAP citation engine, 80+ directories</li>
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> CRM + branded mobile app</li>
+              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Quarterly customer touch</li>
+            </ul>
+          </div>
         </div>
-        <div class="flex items-baseline gap-2">
-          <span class="font-display text-[4rem] leading-none">$497</span>
-          <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, all in</span>
-        </div>
-        <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)]">
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
-        </div>
-        <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
-          Everything in the bundle below. No tier you have to upgrade to. The terms above mean exactly what they say.
-        </p>
-        <a href="/contact" class="mt-7 btn-primary w-full justify-center">Book a demo <span aria-hidden="true">→</span></a>
       </div>
 
-      <div class="card-warm p-8 relative">
-        <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
-          Plan B · Add-on
+      <!-- Add-on row: Plan B + Plan C -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card-warm p-8 relative">
+          <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
+            Plan B · Add-on
+          </div>
+          <div class="flex items-center justify-between mb-6 mt-2">
+            <span class="file-tag">B/01 · Reputation desk</span>
+            <span class="meta">Optional</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display text-[3.4rem] leading-none">$97</span>
+            <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
+          </div>
+          <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75">
+            Our team writes responses to every Google review and posts to your Google Business Profile twice a week. For shops that don't want to think about it.
+          </p>
+          <ul class="mt-6 space-y-2 text-[0.93rem]">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Personalized review responses, every review</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> 2 GBP posts per week (offers, jobs, updates)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly reputation report</li>
+          </ul>
         </div>
-        <div class="flex items-center justify-between mb-6 mt-2">
-          <span class="file-tag">B/01 · Reputation desk</span>
-          <span class="meta">Optional</span>
+
+        <div class="card-warm p-8 relative">
+          <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
+            Plan C · Add-on
+          </div>
+          <div class="absolute -top-3 right-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
+            New
+          </div>
+          <div class="flex items-center justify-between mb-6 mt-2">
+            <span class="file-tag">C/01 · AI receptionist</span>
+            <span class="meta">Optional</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display text-[3.4rem] leading-none">$197</span>
+            <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
+          </div>
+          <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75">
+            AI agent that picks up every call you can't — answers in your shop's voice, books appointments straight to your calendar, handles the common objections before you ever pick up.
+          </p>
+          <ul class="mt-6 space-y-2 text-[0.93rem]">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Answers 24/7 — nights, weekends, holidays</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Books appointments live to your calendar</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Handles price, scope, and timing objections</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Hot-transfers the calls worth taking</li>
+          </ul>
         </div>
-        <div class="flex items-baseline gap-2">
-          <span class="font-display text-[4rem] leading-none">$97</span>
-          <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
-        </div>
-        <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
-          Our team writes responses to every Google review and posts to your Google Business Profile twice a week. For shops that don't want to think about it.
-        </p>
-        <ul class="mt-6 space-y-2 text-[0.93rem]">
-          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Personalized review responses, every review</li>
-          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> 2 GBP posts per week (offers, jobs, updates)</li>
-          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly reputation report</li>
-        </ul>
       </div>
     </div>
   </section>
