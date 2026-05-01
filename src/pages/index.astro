@@ -37,8 +37,8 @@ const features: Feature[] = [
   },
   {
     num: "06",
-    title: "Quarterly customer touch",
-    description: "Every 90 days we send your past customers a seasonal maintenance reminder. Repeat work without buying it back from a lead-gen app.",
+    title: "Quarterly re-activation campaign",
+    description: "Every 90 days we text your past customers with a seasonal offer or maintenance reminder. Repeat work without buying it back from a lead-gen app.",
   },
 ];
 
@@ -52,7 +52,7 @@ interface ComparisonRow {
 const comparisonRows: ComparisonRow[] = [
   {
     label: "Cost structure",
-    jobsiterank: "$497/mo flat",
+    jobsiterank: "From $197/mo · 3 tiers",
     leadgen: "$25–$150 per lead, per call",
     agencies: "$1.5k–$5k retainers + setup",
   },
@@ -101,8 +101,8 @@ interface FaqItem {
 
 const faqs: FaqItem[] = [
   {
-    q: "Why one flat price instead of tiers?",
-    a: "Tiers exist so agencies can sell you the next one. We bundled what a trades business actually needs to own its phone — a website, citations, missed-call-text-back, reviews, CRM, and a customer touch program — into a single price so you stop choosing between line items.",
+    q: "Why three tiers and not one flat price?",
+    a: "Because not every shop needs everything. Never Miss a Lead at $197 stops the bleeding for shops that just need to stop missing calls. Lead + Review Engine at $297 adds the review automation that drives map-pack ranking. Local Authority at $497 is the full system — citations, GBP posts, review responses, customer touch. Start where you bleed; move up when you outgrow it.",
   },
   {
     q: "How is this different from HomeAdvisor or Angi?",
@@ -110,15 +110,15 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Do you work with brand new businesses?",
-    a: "Yes. We've launched plumbers from a brand-new LLC with no reviews into the Pasadena map pack inside 90 days. The bundle is designed for both established shops and fresh entrants.",
+    a: "Yes. We've launched plumbers from a brand-new LLC with no reviews into the Pasadena map pack inside 90 days. The Local Authority tier is designed for both established shops and fresh entrants.",
   },
   {
     q: "What's the onboarding timeline?",
     a: "Day 1 we lock the demo. Days 2–10 we ship the new site and missed-call-text-back. Days 10–30 we run the citation push and stand up review automation. By day 45 the system is fully live.",
   },
   {
-    q: "Is the $497 really all-in?",
-    a: "Yes. The only optional add-on is the $97/mo Reputation desk if you want our team writing your review responses and Google Business Profile posts for you. Everything else is included in the base price.",
+    q: "What does the $597 AI Receptionist add-on do?",
+    a: "It's an AI agent that picks up every call you can't — answers in your shop's voice, books appointments straight to your calendar, handles common objections before you ever pick up. Stacks on any of the three tiers. Most shops use it to replace a $4,000+/mo answering service.",
   },
   {
     q: "What trades do you actually serve?",
@@ -155,7 +155,7 @@ const faqs: FaqItem[] = [
               Book a demo
               <span aria-hidden="true">→</span>
             </a>
-            <a href="/pricing" class="btn-ghost">$497/mo · what's included</a>
+            <a href="/pricing" class="btn-ghost">From $197/mo · see tiers</a>
           </div>
 
           <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl">
@@ -369,77 +369,109 @@ const faqs: FaqItem[] = [
     </div>
   </section>
 
-  <!-- Pricing card -->
+  <!-- Pricing tiers -->
   <section class="dark-section">
     <div class="grain"></div>
-    <div class="container-dossier py-24 grid lg:grid-cols-[1fr_1.1fr] gap-14 items-center">
-      <div>
-        <span class="file-tag">Section 04</span>
-        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-5">
-          One price.<br />
-          <span class="serif-italic text-[color:var(--color-amber)]">No hidden tiers.</span>
-        </h2>
-        <p class="mt-7 text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed max-w-md">
-          The $497 covers the whole bundle. Two optional add-ons exist — a $97 reputation desk and a $197 AI receptionist — for shops that want us answering reviews or picking up the phones too.
+    <div class="container-dossier py-24">
+      <div class="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-end mb-12">
+        <div>
+          <span class="file-tag">Section 04</span>
+          <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-5">
+            Three tiers.<br />
+            <span class="serif-italic text-[color:var(--color-amber)]">Start where you bleed.</span>
+          </h2>
+        </div>
+        <p class="text-[color:var(--color-paper)]/75 text-[1.02rem] leading-relaxed max-w-xl lg:justify-self-end">
+          Start at $197 — never miss a lead. Move up to stack reviews. Top tier owns the local map for you. Every tier ships with the website, so even the entry beats most agencies' setup fee.
         </p>
-        <a href="/pricing" class="mt-8 inline-flex btn-ghost border-[color:var(--color-paper)]/40">
-          See the full breakdown
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
 
-      <div class="card-warm text-[color:var(--color-ink)] p-8 relative">
-        <div class="absolute -top-3 -right-3 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
-          Flat price
-        </div>
-        <div class="flex items-baseline justify-between mb-6">
-          <span class="file-tag">Plan A · Bundle</span>
-          <span class="meta">Month-to-month</span>
-        </div>
-        <div class="flex items-baseline gap-2">
-          <span class="font-display text-[3.6rem] leading-none">$497</span>
-          <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ month, all in</span>
-        </div>
-        <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)]">
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
-        </div>
-        <ul class="mt-6 space-y-2.5 text-[0.95rem]">
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website rebuild</li>
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back across every line</li>
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> NAP citation engine, 80+ directories</li>
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> CRM + white-labeled iOS &amp; Android app</li>
-          <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Quarterly customer touch program</li>
-        </ul>
-
-        <div class="mt-7 pt-6 border-t border-[color:var(--color-ink)]/20 space-y-4">
-          <div class="flex items-baseline justify-between gap-4">
-            <div>
-              <div class="font-display text-[1.05rem] font-semibold">+ Reputation desk</div>
-              <div class="meta">Optional · review responses + GBP posts</div>
-            </div>
-            <div class="font-display text-[1.4rem] whitespace-nowrap">$97<span class="font-mono text-[0.72rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60"> / mo</span></div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <!-- Tier A · Never Miss a Lead -->
+        <article class="card-warm text-[color:var(--color-ink)] p-6 flex flex-col relative">
+          <div class="absolute -top-3 left-5 bg-[color:var(--color-paper)] text-[color:var(--color-amber-deep)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
+            Hero offer
           </div>
-          <div class="flex items-baseline justify-between gap-4">
-            <div>
-              <div class="font-display text-[1.05rem] font-semibold">
-                + AI receptionist
-                <span class="ml-1.5 align-middle inline-block bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.55rem] tracking-[0.18em] uppercase px-1.5 py-0.5 border border-[color:var(--color-ink)]">New</span>
-              </div>
-              <div class="meta">Optional · books calls, handles objections 24/7</div>
-            </div>
-            <div class="font-display text-[1.4rem] whitespace-nowrap">$197<span class="font-mono text-[0.72rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60"> / mo</span></div>
+          <div class="flex items-center justify-between mb-4 mt-2">
+            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber-deep)]">Plan A</span>
+            <span class="meta">Month-to-month</span>
           </div>
-        </div>
+          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Never Miss a Lead</div>
+          <div class="flex items-baseline gap-1.5 mb-4">
+            <span class="font-display text-[3rem] leading-none">$197</span>
+            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ mo</span>
+          </div>
+          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> SMS inbox + mobile app</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Basic CRM</li>
+          </ul>
+          <a href="/contact" class="btn-ghost text-[color:var(--color-ink)] justify-center">Book a demo →</a>
+        </article>
 
-        <a href="/contact" class="mt-8 btn-primary w-full justify-center">
-          Book a demo
-          <span aria-hidden="true">→</span>
-        </a>
+        <!-- Tier B · Lead + Review Engine -->
+        <article class="card-warm text-[color:var(--color-ink)] p-6 flex flex-col relative border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]">
+          <div class="absolute -top-3 left-5 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
+            Most popular
+          </div>
+          <div class="flex items-center justify-between mb-4 mt-2">
+            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber-deep)]">Plan B</span>
+            <span class="meta">Month-to-month</span>
+          </div>
+          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Lead + Review Engine</div>
+          <div class="flex items-baseline gap-1.5 mb-4">
+            <span class="font-display text-[3rem] leading-none">$297</span>
+            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ mo</span>
+          </div>
+          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Everything in Plan A</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Smart cooldown per customer</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly review report</li>
+          </ul>
+          <a href="/contact" class="btn-primary justify-center">Book a demo →</a>
+        </article>
+
+        <!-- Tier C · Local Authority -->
+        <article class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] border border-[color:var(--color-amber)] p-6 flex flex-col relative">
+          <div class="absolute -top-3 left-5 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
+            Flagship
+          </div>
+          <div class="flex items-center justify-between mb-4 mt-2">
+            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)]">Plan C</span>
+            <span class="meta">Month-to-month</span>
+          </div>
+          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Local Authority</div>
+          <div class="flex items-baseline gap-1.5 mb-4">
+            <span class="font-display text-[3rem] leading-none text-[color:var(--color-amber)]">$497</span>
+            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-paper)]/60">/ mo</span>
+          </div>
+          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1 text-[color:var(--color-paper)]/90">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Everything in Plan B</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Full CRM (pipeline + history)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> NAP citations (80+)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> GBP posts (2×/wk)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Review responses</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Quarterly re-activation campaign</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Local on-page SEO</li>
+          </ul>
+          <a href="/contact" class="btn-primary justify-center">Book a demo →</a>
+        </article>
+      </div>
+
+      <!-- AI Receptionist add-on -->
+      <div class="mt-6 border border-[color:var(--color-rule-dark)] p-5 md:p-6 grid md:grid-cols-[1fr_auto] items-center gap-4">
+        <div>
+          <div class="font-mono text-[0.65rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)] mb-1.5">Add-on · Stacks on any tier</div>
+          <div class="font-display text-[1.3rem] leading-tight">
+            AI Receptionist <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-paper)]/60 ml-2">$597 / mo</span>
+          </div>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-paper)]/75 max-w-2xl">
+            AI agent that answers every call you can't — books appointments, handles objections, replaces $4k+/mo answering services.
+          </p>
+        </div>
+        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40 whitespace-nowrap">See full breakdown →</a>
       </div>
     </div>
   </section>

@@ -2,183 +2,202 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageMastHead from "../components/PageMastHead.astro";
 
-interface BreakdownLine {
-  num: string;
-  label: string;
-  detail: string;
-  marketRate: string;
-  inBundle: string;
+interface Tier {
+  letter: string;
+  name: string;
+  price: number;
+  tagline: string;
+  features: string[];
+  inheritsFrom?: string;
+  popular?: boolean;
+  flagship?: boolean;
 }
 
-const breakdown: BreakdownLine[] = [
+const tiers: Tier[] = [
   {
-    num: "01",
-    label: "Conversion-tested website rebuild",
-    detail: "Mobile-first, 6–8 page build with sticky call button, instant quote form, service area pages, and trust signals. Hosted, SSL, ongoing edits.",
-    marketRate: "$3,800 build + $120/mo host",
-    inBundle: "Included",
+    letter: "A",
+    name: "Never Miss a Lead",
+    price: 197,
+    tagline: "The hero offer. Every missed call becomes a text. Every missed text becomes a job.",
+    features: [
+      "Conversion-tested website rebuild",
+      "Missed-call-text-back system",
+      "Two-way SMS inbox",
+      "Branded mobile app for messaging",
+      "Basic CRM (call + text history)",
+    ],
   },
   {
-    num: "02",
-    label: "Missed-call-text-back system",
-    detail: "Twilio-backed two-way texting. Every missed call fires a personalized SMS in under 12 seconds. Conversations land in your CRM and the mobile app.",
-    marketRate: "$240/mo",
-    inBundle: "Included",
+    letter: "B",
+    name: "Lead + Review Engine",
+    price: 297,
+    tagline: "Catch every lead. Stack every review. Map pack starts climbing.",
+    features: [
+      "Everything in Never Miss a Lead",
+      "Review request automation (SMS after every job)",
+      "Smart cooldown so customers don't get spammed",
+      "Monthly review-volume report",
+    ],
+    inheritsFrom: "Never Miss a Lead",
+    popular: true,
   },
   {
-    num: "03",
-    label: "NAP citation engine",
-    detail: "Initial push to 80+ directories, then quarterly sync sweeps. Catches drift when your hours, address, or service list changes.",
-    marketRate: "$650 setup + $90/mo",
-    inBundle: "Included",
-  },
-  {
-    num: "04",
-    label: "Review request automation",
-    detail: "Triggered after every closed job. One-tap Google review link by SMS, with smart cooldown so the same customer never gets pinged twice.",
-    marketRate: "$180/mo",
-    inBundle: "Included",
-  },
-  {
-    num: "05",
-    label: "CRM + branded mobile app",
-    detail: "Pipeline, call history, two-way texting, and a white-labeled iOS + Android app for your techs. Unlimited users.",
-    marketRate: "$340/mo (5 seats)",
-    inBundle: "Included",
-  },
-  {
-    num: "06",
-    label: "Quarterly customer touch program",
-    detail: "Seasonal maintenance reminder sent every 90 days to your past customers. Drives repeat work without paying a lead-gen app to sell them back to you.",
-    marketRate: "$150/mo",
-    inBundle: "Included",
-  },
-  {
-    num: "07",
-    label: "Local on-page SEO",
-    detail: "Service area pages, schema markup, internal linking, ongoing optimization tied to your map pack ranking.",
-    marketRate: "$420/mo",
-    inBundle: "Included",
+    letter: "C",
+    name: "Local Authority",
+    price: 497,
+    tagline: "The full system. We own the local map for you.",
+    features: [
+      "Everything in Lead + Review Engine",
+      "Full CRM (pipeline, jobs, customer history)",
+      "NAP citation engine (80+ directories)",
+      "Google Business Profile posts (2× / week)",
+      "Review response management (our team replies)",
+      "Quarterly re-activation campaign",
+      "Local on-page SEO + service-area pages",
+    ],
+    inheritsFrom: "Lead + Review Engine",
+    flagship: true,
   },
 ];
 
-const standaloneSetup = 3800 + 650;
-const standaloneMonthly = 120 + 240 + 90 + 180 + 340 + 150 + 420;
-const bundle = 497;
-const monthlySavings = standaloneMonthly - bundle;
+const standaloneTotal = 120 + 240 + 340 + 180 + 90 + 100 + 150 + 420; // ~$1,640/mo for full Local Authority piecemeal
+const setupCost = 3800 + 650;
+const flagshipPrice = 497;
+const monthlySavings = standaloneTotal - flagshipPrice;
 ---
 
-<BaseLayout title="Pricing — JobsiteRank" description="One flat $497/mo bundle for trades businesses. See the line-by-line breakdown of what the same stack would cost piecemeal.">
+<BaseLayout
+  title="Pricing — JobsiteRank"
+  description="Three tiers. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Plus the AI Receptionist add-on."
+>
   <PageMastHead
     fileTag="File 003"
-    eyebrow="Pricing dossier · One flat price"
-    title="What it costs.<br />And what it would cost you, separately."
-    intro="Below is the same bundle, broken into the line items it would run you if you tried to assemble it yourself. The math is the point."
+    eyebrow="Pricing dossier · Three tiers"
+    title="Three tiers."
   >
     <span slot="title">
-      What it costs.<br />
-      <span class="serif-italic text-[color:var(--color-amber)]">And what it'd cost you, separately.</span>
+      Three tiers.<br />
+      <span class="serif-italic text-[color:var(--color-amber)]">No fake hierarchies.</span>
     </span>
+    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
+      Start at $197 with the hero offer — never miss a lead. Move up only when you actually need what's next. Every tier ships with the conversion-tested website, so the first $197 already beats most agencies' setup quote.
+    </p>
   </PageMastHead>
 
-  <!-- Headline pricing cards -->
+  <!-- Three tiers -->
   <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10">
-    <div class="container-dossier space-y-6">
-      <!-- Plan A · the bundle -->
-      <div class="card-paper p-8 md:p-10 relative">
-        <div class="absolute -top-3 left-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
-          Plan A · The bundle
-        </div>
-        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
-          <div>
-            <div class="flex items-center justify-between mb-6 mt-2">
-              <span class="file-tag">A/01 · Flat price</span>
-              <span class="meta">Month-to-month</span>
-            </div>
-            <div class="flex items-baseline gap-2">
-              <span class="font-display text-[4rem] leading-none">$497</span>
-              <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, all in</span>
-            </div>
-            <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)]">
-              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
-              <span class="opacity-30">·</span>
-              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
-              <span class="opacity-30">·</span>
-              <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
-            </div>
-            <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
-              Everything in the bundle below. No tier you have to upgrade to. The terms above mean exactly what they say.
-            </p>
-            <a href="/contact" class="mt-7 btn-primary w-full sm:w-auto justify-center">Book a demo <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="border-t lg:border-t-0 lg:border-l border-[color:var(--color-rule)] pt-6 lg:pt-2 lg:pl-10">
-            <div class="meta mb-3">In the bundle</div>
-            <ul class="space-y-2 text-[0.95rem]">
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website rebuild</li>
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back across every line</li>
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> NAP citation engine, 80+ directories</li>
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> CRM + branded mobile app</li>
-              <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Quarterly customer touch</li>
-            </ul>
-          </div>
-        </div>
+    <div class="container-dossier">
+      <div class="grid md:grid-cols-3 gap-5 md:gap-4">
+        {tiers.map((tier) => {
+          const isFlagship = tier.flagship === true;
+          const isPopular = tier.popular === true;
+          const cardClass = isFlagship
+            ? "card-paper p-7 md:p-8 relative flex flex-col bg-[color:var(--color-ink)] text-[color:var(--color-paper)] border-[color:var(--color-ink)]"
+            : isPopular
+              ? "card-paper p-7 md:p-8 relative flex flex-col bg-[color:var(--color-paper)] border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]"
+              : "card-paper p-7 md:p-8 relative flex flex-col";
+          const priceClass = isFlagship ? "text-[color:var(--color-amber)]" : "";
+          const tagAccent = isFlagship
+            ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"
+            : isPopular
+              ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"
+              : "bg-[color:var(--color-paper-warm)] text-[color:var(--color-amber-deep)]";
+          return (
+            <article class={cardClass}>
+              {(isFlagship || isPopular) && (
+                <div class={`absolute -top-3 left-6 font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)] ${isFlagship ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]" : "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"}`}>
+                  {isFlagship ? "Flagship" : "Most popular"}
+                </div>
+              )}
+              {tier.letter === "A" && (
+                <div class="absolute -top-3 right-6 font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-current bg-[color:var(--color-paper)] text-[color:var(--color-amber-deep)]">
+                  Hero offer
+                </div>
+              )}
+              <div class={`flex items-center justify-between mb-5 mt-2 ${isFlagship ? "" : ""}`}>
+                <span class={`font-mono text-[0.7rem] tracking-[0.18em] uppercase ${isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}`}>
+                  Plan {tier.letter}
+                </span>
+                <span class={`font-mono text-[0.7rem] tracking-[0.16em] uppercase ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-ink)]/60"}`}>
+                  Month-to-month
+                </span>
+              </div>
+
+              <div class="font-display text-[1.6rem] leading-tight tracking-tight mb-1">
+                {tier.name}
+              </div>
+
+              <p class={`text-[0.9rem] leading-snug mb-5 ${isFlagship ? "text-[color:var(--color-paper)]/75" : "text-[color:var(--color-ink)]/70"}`}>
+                {tier.tagline}
+              </p>
+
+              <div class="flex items-baseline gap-2 mb-2">
+                <span class={`font-display text-[3.6rem] leading-none ${priceClass}`}>${tier.price}</span>
+                <span class={`font-mono text-[0.72rem] tracking-[0.16em] uppercase ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-ink)]/60"}`}>
+                  / month
+                </span>
+              </div>
+
+              <div class={`flex flex-wrap gap-x-2.5 gap-y-1 font-mono text-[0.58rem] tracking-[0.16em] uppercase mb-5 ${isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}`}>
+                <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>Cancel anytime</span>
+                <span class="opacity-30">·</span>
+                <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>No setup fee</span>
+              </div>
+
+              <ul class={`space-y-2 text-[0.92rem] mb-7 flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : ""}`}>
+                {tier.features.map((f) => (
+                  <li class="flex gap-2.5">
+                    <span class={isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}>→</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/contact"
+                class={isFlagship
+                  ? "btn-primary justify-center"
+                  : isPopular
+                    ? "btn-primary justify-center"
+                    : "btn-ghost justify-center text-[color:var(--color-ink)]"}
+              >
+                Book a demo <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          );
+        })}
       </div>
 
-      <!-- Add-on row: Plan B + Plan C -->
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="card-warm p-8 relative">
-          <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
-            Plan B · Add-on
-          </div>
-          <div class="flex items-center justify-between mb-6 mt-2">
-            <span class="file-tag">B/01 · Reputation desk</span>
-            <span class="meta">Optional</span>
-          </div>
-          <div class="flex items-baseline gap-2">
-            <span class="font-display text-[3.4rem] leading-none">$97</span>
-            <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
-          </div>
-          <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75">
-            Our team writes responses to every Google review and posts to your Google Business Profile twice a week. For shops that don't want to think about it.
-          </p>
-          <ul class="mt-6 space-y-2 text-[0.93rem]">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Personalized review responses, every review</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> 2 GBP posts per week (offers, jobs, updates)</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly reputation report</li>
-          </ul>
+      <!-- AI receptionist add-on -->
+      <div class="mt-8 card-warm p-7 md:p-9 relative">
+        <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
+          Add-on · Stack on any tier
         </div>
-
-        <div class="card-warm p-8 relative">
-          <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
-            Plan C · Add-on
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-start mt-2">
+          <div>
+            <span class="file-tag">AI Receptionist</span>
+            <div class="flex items-baseline gap-2 mt-4">
+              <span class="font-display text-[3.6rem] leading-none">$597</span>
+              <span class="font-mono text-[0.72rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ month</span>
+            </div>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-[color:var(--color-ink)]/75">
+              AI agent that picks up every call you can't. Answers in your shop's voice, books appointments straight to your calendar, handles the common objections before you ever pick up. Replaces a $4,000+/mo answering service.
+            </p>
           </div>
-          <div class="absolute -top-3 right-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
-            New
-          </div>
-          <div class="flex items-center justify-between mb-6 mt-2">
-            <span class="file-tag">C/01 · AI receptionist</span>
-            <span class="meta">Optional</span>
-          </div>
-          <div class="flex items-baseline gap-2">
-            <span class="font-display text-[3.4rem] leading-none">$197</span>
-            <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
-          </div>
-          <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75">
-            AI agent that picks up every call you can't — answers in your shop's voice, books appointments straight to your calendar, handles the common objections before you ever pick up.
-          </p>
-          <ul class="mt-6 space-y-2 text-[0.93rem]">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Answers 24/7 — nights, weekends, holidays</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Books appointments live to your calendar</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Handles price, scope, and timing objections</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Hot-transfers the calls worth taking</li>
+          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[0.93rem]">
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Answers 24/7 — nights, weekends, holidays</li>
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Books appointments live to your calendar</li>
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Handles price, scope, and timing objections</li>
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Hot-transfers the calls worth taking</li>
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Filters time-wasters before they reach you</li>
+            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Trained on your shop's hours, services, and pricing</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Breakdown table -->
+  <!-- What's in each tier (matrix) -->
   <section class="bg-[color:var(--color-paper)] relative">
     <div class="grain-light"></div>
     <div class="container-dossier py-24 relative">
@@ -186,115 +205,116 @@ const monthlySavings = standaloneMonthly - bundle;
         <div>
           <span class="file-tag">Section 02</span>
           <h2 class="font-display text-[2rem] md:text-[2.7rem] leading-[1] tracking-tight mt-5 max-w-2xl">
-            Line-by-line bundle math.
+            What's in each tier.
           </h2>
         </div>
         <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
-          Market rates are pulled from typical small-business contracts in Greater LA. Your numbers may vary, but not by much.
+          Every tier includes the website. Each step up adds compounding leverage.
         </p>
       </div>
 
-      <!-- Desktop table -->
+      <!-- Desktop matrix -->
       <div class="hidden md:block overflow-x-auto border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
         <table class="w-full text-left border-collapse min-w-[760px]">
           <thead>
             <tr class="border-b border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal w-12">#</th>
               <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal">Component</th>
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal">Standalone market rate</th>
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-[color:var(--color-amber)]">In the bundle</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center">$197 Never Miss a Lead</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center">$297 Lead + Review</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center text-[color:var(--color-amber)]">$497 Local Authority</th>
             </tr>
           </thead>
           <tbody>
-            {breakdown.map((line, idx) => (
-              <tr class:list={["border-b border-[color:var(--color-rule)] align-top", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
-                <td class="px-5 py-5 font-mono text-[0.78rem] text-[color:var(--color-amber-deep)]">{line.num}</td>
-                <td class="px-5 py-5 max-w-md">
-                  <div class="font-display text-[1.05rem] font-semibold">{line.label}</div>
-                  <div class="mt-1.5 text-[0.9rem] leading-relaxed text-[color:var(--color-ink)]/70">{line.detail}</div>
-                </td>
-                <td class="px-5 py-5 text-[0.95rem] text-[color:var(--color-ink)]/70 whitespace-nowrap">{line.marketRate}</td>
-                <td class="px-5 py-5 font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">
-                  ✓ {line.inBundle}
-                </td>
+            {[
+              { label: "Conversion-tested website", in: [true, true, true] },
+              { label: "Missed-call-text-back system", in: [true, true, true] },
+              { label: "Two-way SMS inbox + branded mobile app", in: [true, true, true] },
+              { label: "Basic CRM (call + text history)", in: [true, true, true] },
+              { label: "Review request automation", in: [false, true, true] },
+              { label: "Full CRM (pipeline + customer history)", in: [false, false, true] },
+              { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
+              { label: "Google Business Profile posts (2×/wk)", in: [false, false, true] },
+              { label: "Review response management", in: [false, false, true] },
+              { label: "Quarterly re-activation campaign", in: [false, false, true] },
+              { label: "Local on-page SEO", in: [false, false, true] },
+            ].map((row, idx) => (
+              <tr class:list={["border-b border-[color:var(--color-rule)]", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
+                <td class="px-5 py-4 font-display text-[1rem] font-semibold">{row.label}</td>
+                {row.in.map((included, ci) => (
+                  <td class:list={["px-5 py-4 text-center font-mono text-[0.85rem]", ci === 2 ? "bg-[color:var(--color-ink)]/4" : ""]}>
+                    {included ? <span class="text-[color:var(--color-amber-deep)] text-[1.1rem]">●</span> : <span class="text-[color:var(--color-ink)]/20">—</span>}
+                  </td>
+                ))}
               </tr>
             ))}
             <tr class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-              <td class="px-5 py-5 font-mono text-[0.78rem] text-[color:var(--color-amber)]">∑</td>
-              <td class="px-5 py-5">
-                <div class="font-display text-[1.05rem] font-semibold">Total if assembled separately</div>
-                <div class="mt-1 text-[0.85rem] text-[color:var(--color-paper)]/65">One-time setup ${standaloneSetup.toLocaleString()}, then ${standaloneMonthly.toLocaleString()} every month.</div>
-              </td>
-              <td class="px-5 py-5 text-[0.95rem] text-[color:var(--color-paper)]/80 whitespace-nowrap">${standaloneMonthly.toLocaleString()}/mo</td>
-              <td class="px-5 py-5 font-display text-[1.6rem] text-[color:var(--color-amber)]">$497/mo</td>
+              <td class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase">Add-on · AI Receptionist</td>
+              <td class="px-5 py-4 text-center font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber)]" colspan="3">+ $597 / mo · stacks on any tier</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Mobile stacked cards -->
+      <!-- Mobile stacked tier cards -->
       <div class="md:hidden space-y-4">
-        {breakdown.map((line) => (
+        {tiers.map((tier) => (
           <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
             <header class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-3 flex items-baseline justify-between gap-3">
-              <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber)]">{line.num}</span>
-              <span class="font-display text-[1rem] font-semibold leading-snug text-right flex-1">{line.label}</span>
+              <span class="font-display text-[1rem] font-semibold">${tier.price} · {tier.name}</span>
+              <span class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)]">Plan {tier.letter}</span>
             </header>
-            <div class="px-4 py-4">
-              <p class="text-[0.92rem] leading-relaxed text-[color:var(--color-ink)]/75">{line.detail}</p>
-            </div>
-            <dl class="grid grid-cols-2 border-t border-[color:var(--color-rule)] divide-x divide-[color:var(--color-rule)]">
-              <div class="px-4 py-3.5">
-                <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/55 mb-1">Standalone</dt>
-                <dd class="text-[0.92rem] leading-snug text-[color:var(--color-ink)]/75">{line.marketRate}</dd>
-              </div>
-              <div class="px-4 py-3.5 bg-[color:var(--color-paper-warm)]/50">
-                <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)] mb-1">In bundle</dt>
-                <dd class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">✓ {line.inBundle}</dd>
-              </div>
-            </dl>
+            <ul class="px-4 py-4 space-y-2 text-[0.92rem]">
+              {tier.features.map((f) => (
+                <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> <span>{f}</span></li>
+              ))}
+            </ul>
           </article>
         ))}
-
-        <!-- Mobile totals card -->
-        <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)] relative overflow-hidden">
-          <div class="grain"></div>
-          <header class="px-4 py-3 border-b border-[color:var(--color-rule-dark)] flex items-baseline justify-between gap-3 relative">
-            <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber)]">∑</span>
-            <span class="font-display text-[1rem] font-semibold text-right flex-1">Total comparison</span>
+        <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
+          <header class="px-4 py-3 border-b border-[color:var(--color-rule-dark)]">
+            <span class="font-display text-[1rem] font-semibold">$597 · AI Receptionist</span>
+            <div class="meta mt-0.5">Add-on · stacks on any tier</div>
           </header>
-          <div class="px-4 py-4 relative">
-            <p class="text-[0.88rem] text-[color:var(--color-paper)]/70 leading-relaxed">
-              One-time setup ${standaloneSetup.toLocaleString()}, then ${standaloneMonthly.toLocaleString()} every month.
-            </p>
-          </div>
-          <dl class="grid grid-cols-2 border-t border-[color:var(--color-rule-dark)] divide-x divide-[color:var(--color-rule-dark)] relative">
-            <div class="px-4 py-3.5">
-              <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-paper)]/55 mb-1">Separately</dt>
-              <dd class="font-display text-[1.2rem] leading-none">${standaloneMonthly.toLocaleString()}<span class="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-paper)]/60">/mo</span></dd>
-            </div>
-            <div class="px-4 py-3.5">
-              <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)] mb-1">Bundle</dt>
-              <dd class="font-display text-[1.4rem] leading-none text-[color:var(--color-amber)]">$497<span class="text-[0.7rem] font-mono tracking-[0.12em] uppercase">/mo</span></dd>
-            </div>
-          </dl>
+          <ul class="px-4 py-4 space-y-2 text-[0.92rem]">
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> 24/7 AI answers every call</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Books appointments live</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Handles objections</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Replaces $4k+/mo answering services</li>
+          </ul>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-3 gap-5 mt-10">
-        <div class="card-warm p-6">
-          <div class="meta mb-2">If you bought separately</div>
-          <div class="font-display text-[2rem] leading-none">${standaloneMonthly.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
-          <div class="meta mt-2">Plus ${standaloneSetup.toLocaleString()} in one-time setup</div>
+  <!-- Vs market rate (for the flagship tier) -->
+  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
+    <div class="container-dossier py-20">
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-8">
+        <div>
+          <span class="file-tag">Section 03</span>
+          <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1] tracking-tight mt-5 max-w-2xl">
+            Local Authority vs assembling it yourself.
+          </h2>
         </div>
-        <div class="card-warm p-6">
-          <div class="meta mb-2">JobsiteRank bundle</div>
-          <div class="font-display text-[2rem] leading-none text-[color:var(--color-amber-deep)]">$497<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
+          The flagship tier compared to what each component costs piecemeal at typical small-business rates.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card-paper p-6">
+          <div class="meta mb-2">If you bought separately</div>
+          <div class="font-display text-[2.2rem] leading-none">${standaloneTotal.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+          <div class="meta mt-2">Plus ${setupCost.toLocaleString()} in one-time setup</div>
+        </div>
+        <div class="card-paper p-6 border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]">
+          <div class="meta mb-2">Local Authority tier</div>
+          <div class="font-display text-[2.2rem] leading-none text-[color:var(--color-amber-deep)]">${flagshipPrice}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
           <div class="meta mt-2">$0 setup · month-to-month</div>
         </div>
         <div class="card-paper p-6">
           <div class="meta mb-2">Monthly delta</div>
-          <div class="font-display text-[2rem] leading-none">−${monthlySavings.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+          <div class="font-display text-[2.2rem] leading-none">−${monthlySavings.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
           <div class="meta mt-2">≈ ${(monthlySavings * 12).toLocaleString()} per year</div>
         </div>
       </div>
@@ -302,15 +322,15 @@ const monthlySavings = standaloneMonthly - bundle;
   </section>
 
   <!-- What's NOT in the bundle -->
-  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
+  <section class="bg-[color:var(--color-paper)] border-b border-[color:var(--color-rule)]">
     <div class="container-dossier py-20 grid lg:grid-cols-[1fr_1.6fr] gap-10">
       <div>
-        <span class="file-tag">Section 03</span>
+        <span class="file-tag">Section 04</span>
         <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1] tracking-tight mt-5">
           What we deliberately don't sell.
         </h2>
         <p class="mt-5 text-[0.95rem] text-[color:var(--color-ink)]/70">
-          Transparency about what isn't in the bundle matters as much as what is.
+          Transparency about what isn't in any tier matters as much as what is.
         </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
@@ -320,11 +340,11 @@ const monthlySavings = standaloneMonthly - bundle;
         </div>
         <div class="card-paper p-6">
           <div class="font-display text-[1.1rem] font-semibold">Logo + brand identity work</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">If you need a full rebrand we'll point you to a designer. The bundle assumes a usable logo.</p>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">If you need a full rebrand we'll point you to a designer. The website assumes a usable logo.</p>
         </div>
         <div class="card-paper p-6">
           <div class="font-display text-[1.1rem] font-semibold">Social content production</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">We post to Google Business Profile (with the add-on). We don't run your Instagram.</p>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">We post to Google Business Profile in the Local Authority tier. We don't run your Instagram.</p>
         </div>
         <div class="card-paper p-6">
           <div class="font-display text-[1.1rem] font-semibold">Trades outside our wheelhouse</div>
@@ -344,7 +364,7 @@ const monthlySavings = standaloneMonthly - bundle;
           Twenty minutes will tell you everything.
         </h2>
         <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
-          Bring your current numbers. We'll tell you straight whether the bundle is the right move — or whether something else fits better.
+          Bring your current numbers. We'll tell you straight which tier fits, or whether something else is the right move.
         </p>
       </div>
       <div class="flex flex-col gap-4 lg:items-end">
@@ -353,7 +373,7 @@ const monthlySavings = standaloneMonthly - bundle;
           <span aria-hidden="true">→</span>
         </a>
         <a href="/case-studies" class="btn-ghost border-[color:var(--color-paper)]/40">
-          Read the Plumbing Geeks file first
+          Read the case files first
         </a>
       </div>
     </div>

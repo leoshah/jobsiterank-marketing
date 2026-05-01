@@ -87,7 +87,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · res & commercial" },
       { label: "Service area", value: "Pasadena + 12 SGV cities" },
-      { label: "Engagement", value: "Bundle + Reputation desk" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "6 months & counting" },
     ],
     beforeAfter: [
@@ -133,7 +133,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · res & emergency" },
       { label: "Service area", value: "Denver metro + foothills" },
-      { label: "Engagement", value: "Bundle only" },
+      { label: "Engagement", value: "Never Miss a Lead tier" },
       { label: "Length", value: "5 months" },
     ],
     beforeAfter: [
@@ -180,7 +180,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · res & emergency" },
       { label: "Service area", value: "Hillsborough + Pinellas counties" },
-      { label: "Engagement", value: "Bundle only" },
+      { label: "Engagement", value: "Never Miss a Lead tier" },
       { label: "Length", value: "4 months · pre-season launch" },
     ],
     beforeAfter: [
@@ -227,7 +227,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Austin + Round Rock + Cedar Park" },
-      { label: "Engagement", value: "Bundle + AI receptionist" },
+      { label: "Engagement", value: "Never Miss a Lead tier + AI Receptionist" },
       { label: "Length", value: "7 months" },
     ],
     beforeAfter: [
@@ -276,7 +276,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Phoenix + Scottsdale + Tempe" },
-      { label: "Engagement", value: "Bundle + Reputation desk" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "3 months" },
     ],
     beforeAfter: [
@@ -323,7 +323,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Charlotte + Concord + Gastonia" },
-      { label: "Engagement", value: "Bundle only" },
+      { label: "Engagement", value: "Lead + Review Engine tier" },
       { label: "Length", value: "4 months" },
     ],
     beforeAfter: [
@@ -370,7 +370,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing + tankless · residential" },
       { label: "Service area", value: "Salt Lake + Davis + Utah counties" },
-      { label: "Engagement", value: "Bundle + AI receptionist" },
+      { label: "Engagement", value: "Lead + Review Engine tier + AI Receptionist" },
       { label: "Length", value: "6 months" },
     ],
     beforeAfter: [
@@ -419,7 +419,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Portland + Beaverton + Vancouver WA" },
-      { label: "Engagement", value: "Bundle + Reputation desk" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "5 months" },
     ],
     beforeAfter: [
@@ -468,11 +468,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · res & light commercial" },
       { label: "Service area", value: "Nashville + Franklin + Brentwood" },
-      { label: "Engagement", value: "Bundle + AI receptionist" },
+      { label: "Engagement", value: "Never Miss a Lead tier + AI Receptionist" },
       { label: "Length", value: "4 months" },
     ],
     beforeAfter: [
-      { label: "Answering service cost", delta: "−$4,200/mo", detail: "Replaced with $197 AI receptionist" },
+      { label: "Answering service cost", delta: "−$4,200/mo", detail: "Replaced with $597 AI Receptionist add-on" },
       { label: "Booking accuracy", delta: "+34pp", detail: "62% (human service) → 96% (AI)" },
       { label: "Calls handled / month", delta: "+19%", detail: "AI doesn't take lunch or sick days" },
     ],
@@ -515,7 +515,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · drain & sewer specialty" },
       { label: "Service area", value: "Las Vegas + Henderson + N Las Vegas" },
-      { label: "Engagement", value: "Bundle + AI receptionist" },
+      { label: "Engagement", value: "Never Miss a Lead tier + AI Receptionist" },
       { label: "Length", value: "5 months" },
     ],
     beforeAfter: [
@@ -562,7 +562,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · res & emergency" },
       { label: "Service area", value: "Twin Cities + suburbs" },
-      { label: "Engagement", value: "Bundle + AI receptionist" },
+      { label: "Engagement", value: "Never Miss a Lead tier + AI Receptionist" },
       { label: "Length", value: "3 months · Q1 cold-snap window" },
     ],
     beforeAfter: [
@@ -607,11 +607,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     cardMetricLabel: "New Google reviews, 8 months",
     titleStart: "Peach State Plumbing",
     titleAccent: "stacks 374 reviews. Buys the map pack.",
-    intro: "Atlanta plumber with 38 lifetime Google reviews competing against shops with 600+. Knew reviews drove map-pack ranking but never had time to ask. We turned the asking on, and the Reputation desk handled every reply. 374 new reviews in 8 months.",
+    intro: "Atlanta plumber with 38 lifetime Google reviews competing against shops with 600+. Knew reviews drove map-pack ranking but never had time to ask. We turned the asking on, and our team handled every reply. 374 new reviews in 8 months.",
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "ATL metro + 4 surrounding counties" },
-      { label: "Engagement", value: "Bundle + Reputation desk" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "8 months" },
     ],
     beforeAfter: [
@@ -630,7 +630,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     timeline: [
       { week: "Week 0", label: "Review request audit", detail: "Found they were asking ~5% of customers for reviews, with no follow-up. Mostly via email no one read." },
       { week: "Week 1", label: "Auto-text live", detail: "Every closed job triggers an SMS within 4 hours: \"how'd we do? one tap to leave a Google review.\" First week: 23 new reviews." },
-      { week: "Month 2", label: "Reputation desk on", detail: "Our team began replying to every review within 24 hours. Negative reviews escalated to owner with a draft response." },
+      { week: "Month 2", label: "Review responses on", detail: "Our team began replying to every review within 24 hours. Negative reviews escalated to owner with a draft response." },
       { week: "Month 5", label: "Map pack lift", detail: "Crossed into #1 for primary keyword in their core zip. Two more zips followed by month 7." },
       { week: "Month 8", label: "Compounding", detail: "Reviews now generating 2× the lead volume of paid ads they ran prior. Cancelled the Angi subscription." },
     ],
@@ -649,16 +649,16 @@ export const CASE_STUDIES: CaseStudy[] = [
     city: "Long Island",
     state: "NY",
     engagement: "6 months",
-    cardHook: "Reputation desk caught and resolved 12 negative reviews before they killed conversion.",
+    cardHook: "Caught and resolved 12 negative reviews before they killed conversion.",
     cardMetricValue: "12",
     cardMetricLabel: "Negative reviews caught & resolved",
     titleStart: "Tideway Plumbing",
     titleAccent: "turns angry customers into 5-star repairs.",
-    intro: "Long Island plumber with a 4.2 star rating dragged down by a handful of unresolved 1-star reviews. Reputation desk triaged each one within 24 hours, fixed the underlying issue, and got 9 of 12 to update their reviews to 5 stars.",
+    intro: "Long Island plumber with a 4.2 star rating dragged down by a handful of unresolved 1-star reviews. Our team triaged each one within 24 hours, fixed the underlying issue, and got 9 of 12 to update their reviews to 5 stars.",
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Nassau + Suffolk counties" },
-      { label: "Engagement", value: "Bundle + Reputation desk" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "6 months" },
     ],
     beforeAfter: [
@@ -676,12 +676,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     timeline: [
       { week: "Week 0", label: "Reputation audit", detail: "Pulled 18 months of reviews. Identified 12 unresolved 1- and 2-star complaints, mostly about scheduling miscommunications." },
-      { week: "Week 1", label: "Triage protocol", detail: "Reputation desk started responding to every review within 4 hours. Owner approved each negative response before it went live." },
+      { week: "Week 1", label: "Triage protocol", detail: "Our team started responding to every review within 4 hours. Owner approved each negative response before it went live." },
       { week: "Month 2", label: "Outreach to 1-star customers", detail: "Personally followed up with each 1-star reviewer. Offered free service call to re-do or refund." },
       { week: "Month 4", label: "Updates rolling in", detail: "9 of the 12 customers updated their reviews to 5 stars after resolution. 2 deleted their reviews. 1 didn't respond." },
       { week: "Month 6", label: "Sustained", detail: "Star rating now 4.8. Inbound clicks from map pack up 22% — directly attributable to the rating improvement." },
     ],
-    quote: "Those old 1-star reviews were a tax on every new customer who searched for us. The Reputation desk turned the bad ones into our best testimonials. Don't know why I waited so long.",
+    quote: "Those old 1-star reviews were a tax on every new customer who searched for us. The Local Authority tier turned the bad ones into our best testimonials. Don't know why I waited so long.",
     quoteAuthor: "Vinny C.",
     quoteAttribution: "Owner · Tideway Plumbing · Long Island",
     quoteInitials: "VC",
@@ -707,7 +707,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Houston + Sugar Land + Pearland" },
-      { label: "Engagement", value: "Bundle only" },
+      { label: "Engagement", value: "Local Authority tier" },
       { label: "Length", value: "5 months" },
     ],
     beforeAfter: [
