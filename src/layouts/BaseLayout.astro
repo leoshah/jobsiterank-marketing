@@ -37,6 +37,14 @@ const showFloatingCta = path !== "/contact";
     <title>{title}</title>
   </head>
   <body class="bg-[color:var(--color-paper)] text-[color:var(--color-ink)]">
+    <a
+      href="tel:+16265550199"
+      class="md:hidden flex items-center justify-center gap-2 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] border-b border-[color:var(--color-ink)] py-3 px-4 font-mono text-[0.78rem] tracking-[0.14em] uppercase active:bg-[color:var(--color-amber-deep)] active:text-[color:var(--color-paper)] transition-colors"
+      aria-label="Tap to call (626) 555-0199"
+    >
+      <span aria-hidden="true" class="text-[1rem] leading-none">✆</span>
+      <span class="font-semibold">Tap to call · (626) 555-0199</span>
+    </a>
     <Marquee />
     <Header variant={headerVariant} />
     <main>
@@ -50,10 +58,10 @@ const showFloatingCta = path !== "/contact";
         id="floating-cta"
         class="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.75rem] tracking-[0.14em] uppercase px-4 py-3 border border-[color:var(--color-ink)] shadow-[4px_4px_0_0_var(--color-ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[0_0_0_0_var(--color-ink)] transition-transform"
         style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));"
-        aria-label="Book a strategy call"
+        aria-label="Book a demo"
       >
         <span aria-hidden="true" class="text-[0.95rem] leading-none">✆</span>
-        <span>Book a call</span>
+        <span>Book a demo</span>
         <span aria-hidden="true" class="opacity-70">→</span>
       </a>
 

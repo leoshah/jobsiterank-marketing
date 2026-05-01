@@ -114,7 +114,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "What's the onboarding timeline?",
-    a: "Day 1 we lock the strategy call. Days 2–10 we ship the new site and missed-call-text-back. Days 10–30 we run the citation push and stand up review automation. By day 45 the system is fully live.",
+    a: "Day 1 we lock the demo. Days 2–10 we ship the new site and missed-call-text-back. Days 10–30 we run the citation push and stand up review automation. By day 45 the system is fully live.",
   },
   {
     q: "Is the $497 really all-in?",
@@ -127,7 +127,7 @@ const faqs: FaqItem[] = [
 ];
 ---
 
-<BaseLayout title="JobsiteRank — stop renting leads. Own your phone." headerVariant="light">
+<BaseLayout title="JobsiteRank — missed the call? we just texted them back in 12 seconds." headerVariant="light">
   <!-- Hero -->
   <section class="dark-section">
     <div class="grain"></div>
@@ -137,52 +137,95 @@ const faqs: FaqItem[] = [
         <span class="meta">Marketing dossier · Edition 01</span>
       </div>
 
-      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-14 items-end">
+      <div class="grid lg:grid-cols-[1.35fr_1fr] gap-14 items-end">
         <div>
-          <h1 class="font-display text-[2.7rem] md:text-[4.6rem] lg:text-[5.6rem] leading-[0.96] tracking-tight">
-            Stop renting<br />leads.
-            <span class="text-[color:var(--color-amber)]">Own your phone.</span>
+          <span class="inline-flex items-center gap-2 mb-7 font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)] border border-[color:var(--color-amber)]/40 px-2.5 py-1">
+            <span aria-hidden="true">●</span> Hero offer · Missed-call-text-back
+          </span>
+          <h1 class="font-display text-[2.6rem] md:text-[4.4rem] lg:text-[5.4rem] leading-[0.96] tracking-tight">
+            You missed the call.<br />
+            <span class="text-[color:var(--color-amber)]">We just texted them back.</span>
           </h1>
           <p class="mt-9 max-w-xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.18rem] leading-relaxed">
-            Gives plumbers, HVAC techs, roofers, and electricians a website, citation engine, and missed-call-text-back system that turns Google into your top salesperson — for one flat monthly price.
+            Every missed call to your shop fires an automatic text in under 12 seconds — <span class="serif-italic">"sorry I missed you, what's the address?"</span> — before that customer dials the next plumber on the search results.
           </p>
 
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <a href="/contact" class="btn-primary">
-              Book the strategy call
+              Book a demo
               <span aria-hidden="true">→</span>
             </a>
-            <a href="/pricing" class="btn-ghost">See what's in the bundle</a>
+            <a href="/pricing" class="btn-ghost">$497/mo · what's included</a>
           </div>
 
           <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl">
             <div>
-              <div class="font-display text-3xl text-[color:var(--color-amber)]">$497</div>
-              <div class="meta mt-1">Flat monthly</div>
-            </div>
-            <div>
               <div class="font-display text-3xl text-[color:var(--color-amber)]">12s</div>
-              <div class="meta mt-1">Missed-call response</div>
+              <div class="meta mt-1">Auto-text response</div>
             </div>
             <div>
-              <div class="font-display text-3xl text-[color:var(--color-amber)]">90d</div>
-              <div class="meta mt-1">Map-pack lift</div>
+              <div class="font-display text-3xl text-[color:var(--color-amber)]">40%</div>
+              <div class="meta mt-1">After-hours rescue rate</div>
+            </div>
+            <div>
+              <div class="font-display text-3xl text-[color:var(--color-amber)]">$497</div>
+              <div class="meta mt-1">Flat, one price</div>
             </div>
           </div>
         </div>
 
-        <aside class="card-warm text-[color:var(--color-ink)] p-7 relative">
-          <div class="flex items-center justify-between mb-5">
-            <span class="file-tag">Field note</span>
+        <!-- Live text-thread demo -->
+        <aside class="card-warm text-[color:var(--color-ink)] p-5 sm:p-6 relative">
+          <div class="flex items-center justify-between mb-4">
+            <span class="file-tag">Live demo · 4:23 PM</span>
             <span class="meta">Pasadena, CA</span>
           </div>
-          <p class="serif-italic text-[1.4rem] leading-snug">
-            "Three weeks in we stopped paying for HomeAdvisor leads. Phone hasn't quit ringing since."
-          </p>
-          <div class="mt-6 pt-5 border-t rule-line flex items-center justify-between">
+
+          <div class="border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] p-4 space-y-3">
+            <!-- Missed call -->
+            <div class="flex items-center gap-3 pb-3 border-b border-[color:var(--color-ink)]/10">
+              <span class="grid place-items-center w-8 h-8 bg-[color:var(--color-ink)]/8 rounded-full text-[0.85rem]" aria-hidden="true">✆</span>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-[0.72rem] tracking-[0.14em] uppercase text-[color:var(--color-ink)]/60 leading-tight">Missed call · (818) ▓▓▓-0142</div>
+                <div class="meta mt-0.5">4:23 PM · No voicemail left</div>
+              </div>
+            </div>
+
+            <!-- Auto-text out (right) -->
+            <div class="flex justify-end">
+              <div class="max-w-[85%]">
+                <div class="bg-[color:var(--color-amber)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
+                  Hey, this is Marco at Plumbing Geeks — sorry I missed your call. What's the address &amp; what's going on?
+                </div>
+                <div class="meta text-right mt-1">JR auto-text · 4:23 PM</div>
+              </div>
+            </div>
+
+            <!-- Customer reply (left) -->
+            <div class="flex justify-start">
+              <div class="max-w-[85%]">
+                <div class="bg-[color:var(--color-paper-warm)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
+                  1432 Linda Vista. Water heater leaking everywhere. Can you come now??
+                </div>
+                <div class="meta mt-1">Customer · 4:25 PM</div>
+              </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="flex justify-end">
+              <div class="max-w-[85%]">
+                <div class="bg-[color:var(--color-amber)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
+                  On the way. ETA 35 min. Shut off the water at the wall valve if you can.
+                </div>
+                <div class="meta text-right mt-1">Marco · 4:26 PM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t rule-line flex items-center justify-between">
             <div>
-              <div class="font-display text-[1rem] font-semibold">Marco D.</div>
-              <div class="meta">Owner · Plumbing Geeks</div>
+              <div class="font-display text-[0.95rem] font-semibold">Missed call → booked job</div>
+              <div class="meta">3 minutes, zero touches from you</div>
             </div>
             <div class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber-deep)]">
               CASE 002
@@ -357,7 +400,14 @@ const faqs: FaqItem[] = [
           <span class="font-display text-[3.6rem] leading-none">$497</span>
           <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ month, all in</span>
         </div>
-        <ul class="mt-7 space-y-2.5 text-[0.95rem]">
+        <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)]">
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
+          <span class="opacity-30">·</span>
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
+          <span class="opacity-30">·</span>
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
+        </div>
+        <ul class="mt-6 space-y-2.5 text-[0.95rem]">
           <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website rebuild</li>
           <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back across every line</li>
           <li class="flex gap-3"><span class="text-[color:var(--color-amber-deep)]">→</span> NAP citation engine, 80+ directories</li>
@@ -377,7 +427,7 @@ const faqs: FaqItem[] = [
         </div>
 
         <a href="/contact" class="mt-8 btn-primary w-full justify-center">
-          Book the strategy call
+          Book a demo
           <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -443,7 +493,7 @@ const faqs: FaqItem[] = [
             Things shop<br />owners ask first.
           </h2>
           <p class="mt-5 text-[0.95rem] text-[color:var(--color-ink)]/70 max-w-sm">
-            If your question isn't here, the strategy call is the right place — we'll answer it on the spot.
+            If your question isn't here, the demo is the right place — we'll answer it on the spot.
           </p>
         </div>
 
@@ -479,10 +529,17 @@ const faqs: FaqItem[] = [
         <p class="mt-6 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
           Twenty-minute call. No deck. We'll look at your current Google Business Profile, your missed-call rate, and tell you straight whether the bundle would move the needle.
         </p>
+        <div class="mt-6 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)]">
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
+          <span class="opacity-30">·</span>
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
+          <span class="opacity-30">·</span>
+          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
+        </div>
       </div>
       <div class="flex flex-col gap-4 lg:items-end">
         <a href="/contact" class="btn-primary">
-          Book the strategy call
+          Book a demo
           <span aria-hidden="true">→</span>
         </a>
         <a href="tel:+16265550199" class="btn-ghost border-[color:var(--color-paper)]/40">

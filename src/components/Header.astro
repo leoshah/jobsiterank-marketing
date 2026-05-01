@@ -52,10 +52,22 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
       })}
     </nav>
 
-    <a href="/contact" class="hidden md:inline-flex btn-primary">
-      Book a call
-      <span aria-hidden="true">→</span>
-    </a>
+    <div class="hidden md:flex items-center gap-5">
+      <a
+        href="tel:+16265550199"
+        class="flex flex-col items-end leading-tight group"
+        aria-label="Call (626) 555-0199"
+      >
+        <span class="meta group-hover:text-[color:var(--color-amber-deep)]">Talk to us · Mon–Fri</span>
+        <span class="font-display text-[1.1rem] font-semibold tracking-tight group-hover:text-[color:var(--color-amber-deep)]">
+          <span aria-hidden="true" class="text-[0.85em] mr-1">✆</span>(626) 555-0199
+        </span>
+      </a>
+      <a href="/contact" class="btn-primary">
+        Book a demo
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
 
     <button
       type="button"
@@ -94,7 +106,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
         );
       })}
       <a href="/contact" class="btn-primary mt-6 w-full justify-center">
-        Book a call
+        Book a demo
         <span aria-hidden="true">→</span>
       </a>
       <a href="tel:+16265550199" class="meta mt-5 text-center">Or call (626) 555-0199</a>
