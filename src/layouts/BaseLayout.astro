@@ -37,6 +37,14 @@ const showFloatingCta = path !== "/contact";
     <title>{title}</title>
   </head>
   <body class="bg-[color:var(--color-paper)] text-[color:var(--color-ink)]">
+    <a
+      href="tel:+16265550199"
+      class="md:hidden flex items-center justify-center gap-2 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] border-b border-[color:var(--color-ink)] py-3 px-4 font-mono text-[0.78rem] tracking-[0.14em] uppercase active:bg-[color:var(--color-amber-deep)] active:text-[color:var(--color-paper)] transition-colors"
+      aria-label="Tap to call (626) 555-0199"
+    >
+      <span aria-hidden="true" class="text-[1rem] leading-none">✆</span>
+      <span class="font-semibold">Tap to call · (626) 555-0199</span>
+    </a>
     <Marquee />
     <Header variant={headerVariant} />
     <main>

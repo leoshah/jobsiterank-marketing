@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageMastHead from "../components/PageMastHead.astro";
 
 const trades: string[] = ["Plumbing", "HVAC", "Roofing", "Electrical", "Other / not sure"];
-const timelines: string[] = ["Ready to start now", "Within 30 days", "60–90 days", "Just gathering info"];
 ---
 
 <BaseLayout title="Contact — JobsiteRank" description="Book a 20-minute strategy call with the JobsiteRank team. Pasadena, San Gabriel Valley, Greater Los Angeles.">
@@ -28,33 +27,20 @@ const timelines: string[] = ["Ready to start now", "Within 30 days", "60–90 da
       <div class="card-paper p-8 md:p-10">
         <div class="flex items-center justify-between mb-8">
           <span class="file-tag">Intake / 01</span>
-          <span class="meta">All fields, please</span>
+          <span class="meta">Takes 30 seconds</span>
         </div>
 
         <form class="grid gap-6" name="strategy-call" method="POST" action="#" autocomplete="on">
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label class="input-label" for="name">Owner's name</label>
-              <input class="input-dossier" type="text" id="name" name="name" required placeholder="Marco Diaz" />
-            </div>
-            <div>
-              <label class="input-label" for="business">Business name</label>
-              <input class="input-dossier" type="text" id="business" name="business" required placeholder="Plumbing Geeks LLC" />
-            </div>
+          <div>
+            <label class="input-label" for="name">Your name</label>
+            <input class="input-dossier" type="text" id="name" name="name" required placeholder="Marco Diaz" />
           </div>
 
           <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label class="input-label" for="email">Email</label>
-              <input class="input-dossier" type="email" id="email" name="email" required placeholder="marco@yourshop.com" />
-            </div>
             <div>
               <label class="input-label" for="phone">Best phone</label>
               <input class="input-dossier" type="tel" id="phone" name="phone" required placeholder="(626) 555-0142" />
             </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-6">
             <div>
               <label class="input-label" for="trade">Trade</label>
               <select class="input-dossier" id="trade" name="trade" required>
@@ -62,33 +48,33 @@ const timelines: string[] = ["Ready to start now", "Within 30 days", "60–90 da
                 {trades.map((t) => <option value={t}>{t}</option>)}
               </select>
             </div>
-            <div>
-              <label class="input-label" for="timeline">Timeline</label>
-              <select class="input-dossier" id="timeline" name="timeline" required>
-                <option value="" disabled selected>Pick one</option>
-                {timelines.map((t) => <option value={t}>{t}</option>)}
-              </select>
-            </div>
           </div>
 
           <div>
-            <label class="input-label" for="city">Service city</label>
-            <input class="input-dossier" type="text" id="city" name="city" required placeholder="Pasadena, Arcadia, Glendora..." />
+            <label class="input-label" for="email">Email <span class="text-[color:var(--color-ink)]/50 normal-case tracking-normal text-[0.65rem] ml-1">(for the calendar link)</span></label>
+            <input class="input-dossier" type="email" id="email" name="email" required placeholder="marco@yourshop.com" />
           </div>
 
           <div>
-            <label class="input-label" for="notes">What's going on? (optional)</label>
-            <textarea class="input-dossier" id="notes" name="notes" rows="5" placeholder="Currently spending on HomeAdvisor, want to stop. Map pack ranking is page 2. After-hours calls bouncing."></textarea>
+            <label class="input-label" for="notes">What's going on? <span class="text-[color:var(--color-ink)]/50 normal-case tracking-normal text-[0.65rem] ml-1">(optional, helps us prep)</span></label>
+            <textarea class="input-dossier" id="notes" name="notes" rows="4" placeholder="Spending on HomeAdvisor, want to stop. Map pack ranking is page 2. After-hours calls bouncing."></textarea>
           </div>
 
           <div class="pt-4 border-t border-[color:var(--color-rule)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-            <div class="meta">By submitting, you'll get a calendar link within one business hour.</div>
+            <div class="meta">We text the calendar link within 1 business hour. No spam, no sales drip.</div>
             <button type="submit" class="btn-primary">
               Open the file
               <span aria-hidden="true">→</span>
             </button>
           </div>
         </form>
+
+        <div class="mt-6 pt-6 border-t border-[color:var(--color-rule)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="meta">Prefer to skip the form?</div>
+          <a href="tel:+16265550199" class="font-display text-[1.15rem] font-semibold hover:text-[color:var(--color-amber-deep)]">
+            <span aria-hidden="true" class="text-[0.85em] mr-1">✆</span>Call (626) 555-0199
+          </a>
+        </div>
       </div>
 
       <!-- Sidebar -->
