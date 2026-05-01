@@ -1,0 +1,41 @@
+---
+const items = [
+  "Trades marketing built in LA",
+  "Missed calls turned into texts",
+  "One flat price",
+  "No tiers",
+];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>
+      {items.map((item) => (
+        <>
+          <span>{item}</span>
+          <span class="marquee-dot"></span>
+        </>
+      ))}
+      {items.map((item) => (
+        <>
+          <span>{item}</span>
+          <span class="marquee-dot"></span>
+        </>
+      ))}
+    </span>
+    <span>
+      {items.map((item) => (
+        <>
+          <span>{item}</span>
+          <span class="marquee-dot"></span>
+        </>
+      ))}
+      {items.map((item) => (
+        <>
+          <span>{item}</span>
+          <span class="marquee-dot"></span>
+        </>
+      ))}
+    </span>
+  </div>
+</div>

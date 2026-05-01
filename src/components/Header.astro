@@ -1,0 +1,154 @@
+---
+interface Props {
+  variant?: "light" | "dark";
+}
+
+const { variant = "light" }: Props = Astro.props;
+const isDark = variant === "dark";
+
+const navLinks: Array<{ href: string; label: string }> = [
+  { href: "/", label: "Home" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/case-studies", label: "Case studies" },
+  { href: "/contact", label: "Contact" },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header
+  class:list={[
+    "border-b sticky top-0 z-40 backdrop-blur-sm",
+    isDark
+      ? "border-[color:var(--color-rule-dark)] bg-[color:var(--color-ink)]/95 text-[color:var(--color-paper)]"
+      : "border-[color:var(--color-rule)] bg-[color:var(--color-paper)]/95",
+  ]}
+>
+  <div class="container-dossier flex items-center justify-between py-5">
+    <a href="/" class="flex items-center gap-3 group">
+      <span class="grid place-items-center w-9 h-9 border border-current font-mono text-[0.7rem] tracking-[0.2em]">JR</span>
+      <span class="flex flex-col leading-tight">
+        <span class="font-display text-[1.05rem] font-semibold tracking-tight">JobsiteRank</span>
+        <span class="meta hidden sm:block">Trades marketing · LA &amp; SGV</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => {
+        const linkPath = link.href.replace(/\/$/, "") || "/";
+        const active = path === linkPath;
+        return (
+          <a
+            href={link.href}
+            class:list={[
+              "font-mono text-[0.78rem] tracking-[0.14em] uppercase relative py-2",
+              active ? "text-[color:var(--color-amber)]" : "hover:text-[color:var(--color-amber-deep)]",
+            ]}
+          >
+            {link.label}
+            {active && <span class="absolute left-0 right-0 -bottom-px h-px bg-[color:var(--color-amber)]"></span>}
+          </a>
+        );
+      })}
+    </nav>
+
+    <a href="/contact" class="hidden md:inline-flex btn-primary">
+      Book a call
+      <span aria-hidden="true">→</span>
+    </a>
+
+    <button
+      type="button"
+      id="mobile-nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav-panel"
+      class="md:hidden grid place-items-center w-11 h-11 border border-current"
+    >
+      <span class="sr-only">Menu</span>
+      <span id="mobile-nav-icon" class="block w-5 h-[1.5px] bg-current relative before:content-[''] before:absolute before:left-0 before:right-0 before:-top-[6px] before:h-[1.5px] before:bg-current before:transition-transform after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-[6px] after:h-[1.5px] after:bg-current after:transition-transform transition-colors"></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div
+    id="mobile-nav-panel"
+    class="md:hidden hidden border-t border-[color:var(--color-rule)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)] relative"
+  >
+    <div class="grain"></div>
+    <nav class="container-dossier py-6 flex flex-col gap-1 relative">
+      {navLinks.map((link) => {
+        const linkPath = link.href.replace(/\/$/, "") || "/";
+        const active = path === linkPath;
+        return (
+          <a
+            href={link.href}
+            class:list={[
+              "flex items-center justify-between border-b border-[color:var(--color-rule-dark)] py-4 font-display text-[1.4rem] tracking-tight",
+              active ? "text-[color:var(--color-amber)]" : "",
+            ]}
+          >
+            <span>{link.label}</span>
+            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase opacity-60">→</span>
+          </a>
+        );
+      })}
+      <a href="/contact" class="btn-primary mt-6 w-full justify-center">
+        Book a call
+        <span aria-hidden="true">→</span>
+      </a>
+      <a href="tel:+16265550199" class="meta mt-5 text-center">Or call (626) 555-0199</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    const btn = document.getElementById("mobile-nav-toggle");
+    const panel = document.getElementById("mobile-nav-panel");
+    const icon = document.getElementById("mobile-nav-icon");
+    if (!btn || !panel || !icon) return;
+
+    function close() {
+      panel.classList.add("hidden");
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Open menu");
+      icon.style.backgroundColor = "currentColor";
+      icon.style.transform = "";
+      icon.classList.remove("nav-open");
+      document.body.style.overflow = "";
+    }
+    function open() {
+      panel.classList.remove("hidden");
+      btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "Close menu");
+      icon.classList.add("nav-open");
+    }
+
+    btn.addEventListener("click", function () {
+      if (panel.classList.contains("hidden")) open();
+      else close();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") close();
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 768) close();
+    });
+  })();
+</script>
+
+<style>
+  /* Hamburger → X transform when nav is open */
+  #mobile-nav-icon.nav-open {
+    background-color: transparent;
+  }
+  #mobile-nav-icon.nav-open::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #mobile-nav-icon.nav-open::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+</style>

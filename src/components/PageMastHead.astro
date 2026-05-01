@@ -1,0 +1,29 @@
+---
+interface Props {
+  fileTag: string;
+  eyebrow: string;
+  title: string;
+  intro?: string;
+}
+
+const { fileTag, eyebrow, title, intro }: Props = Astro.props;
+---
+
+<section class="dark-section">
+  <div class="grain"></div>
+  <div class="container-dossier pt-14 pb-20">
+    <div class="flex items-center gap-4 mb-10">
+      <span class="file-tag">{fileTag}</span>
+      <span class="meta">{eyebrow}</span>
+    </div>
+    <h1 class="font-display text-[2.6rem] md:text-[4rem] lg:text-[5rem] leading-[0.98] tracking-tight max-w-[18ch]">
+      <slot name="title">{title}</slot>
+    </h1>
+    {intro && (
+      <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
+        {intro}
+      </p>
+    )}
+    <slot />
+  </div>
+</section>

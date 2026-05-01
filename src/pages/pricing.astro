@@ -1,0 +1,309 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageMastHead from "../components/PageMastHead.astro";
+
+interface BreakdownLine {
+  num: string;
+  label: string;
+  detail: string;
+  marketRate: string;
+  inBundle: string;
+}
+
+const breakdown: BreakdownLine[] = [
+  {
+    num: "01",
+    label: "Conversion-tested website rebuild",
+    detail: "Mobile-first, 6–8 page build with sticky call button, instant quote form, service area pages, and trust signals. Hosted, SSL, ongoing edits.",
+    marketRate: "$3,800 build + $120/mo host",
+    inBundle: "Included",
+  },
+  {
+    num: "02",
+    label: "Missed-call-text-back system",
+    detail: "Twilio-backed two-way texting. Every missed call fires a personalized SMS in under 12 seconds. Conversations land in your CRM and the mobile app.",
+    marketRate: "$240/mo",
+    inBundle: "Included",
+  },
+  {
+    num: "03",
+    label: "NAP citation engine",
+    detail: "Initial push to 80+ directories, then quarterly sync sweeps. Catches drift when your hours, address, or service list changes.",
+    marketRate: "$650 setup + $90/mo",
+    inBundle: "Included",
+  },
+  {
+    num: "04",
+    label: "Review request automation",
+    detail: "Triggered after every closed job. One-tap Google review link by SMS, with smart cooldown so the same customer never gets pinged twice.",
+    marketRate: "$180/mo",
+    inBundle: "Included",
+  },
+  {
+    num: "05",
+    label: "CRM + branded mobile app",
+    detail: "Pipeline, call history, two-way texting, and a white-labeled iOS + Android app for your techs. Unlimited users.",
+    marketRate: "$340/mo (5 seats)",
+    inBundle: "Included",
+  },
+  {
+    num: "06",
+    label: "Quarterly customer touch program",
+    detail: "Seasonal maintenance reminder sent every 90 days to your past customers. Drives repeat work without paying a lead-gen app to sell them back to you.",
+    marketRate: "$150/mo",
+    inBundle: "Included",
+  },
+  {
+    num: "07",
+    label: "Local on-page SEO",
+    detail: "Service area pages, schema markup, internal linking, ongoing optimization tied to your map pack ranking.",
+    marketRate: "$420/mo",
+    inBundle: "Included",
+  },
+];
+
+const standaloneSetup = 3800 + 650;
+const standaloneMonthly = 120 + 240 + 90 + 180 + 340 + 150 + 420;
+const bundle = 497;
+const monthlySavings = standaloneMonthly - bundle;
+---
+
+<BaseLayout title="Pricing — JobsiteRank" description="One flat $497/mo bundle for trades businesses. See the line-by-line breakdown of what the same stack would cost piecemeal.">
+  <PageMastHead
+    fileTag="File 003"
+    eyebrow="Pricing dossier · One flat price"
+    title="What it costs.<br />And what it would cost you, separately."
+    intro="Below is the same bundle, broken into the line items it would run you if you tried to assemble it yourself. The math is the point."
+  >
+    <span slot="title">
+      What it costs.<br />
+      <span class="serif-italic text-[color:var(--color-amber)]">And what it'd cost you, separately.</span>
+    </span>
+  </PageMastHead>
+
+  <!-- Headline pricing cards -->
+  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10">
+    <div class="container-dossier grid md:grid-cols-2 gap-6">
+      <div class="card-paper p-8 relative">
+        <div class="absolute -top-3 left-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
+          Plan A · The bundle
+        </div>
+        <div class="flex items-center justify-between mb-6 mt-2">
+          <span class="file-tag">A/01 · Flat price</span>
+          <span class="meta">Month-to-month</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display text-[4rem] leading-none">$497</span>
+          <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, all in</span>
+        </div>
+        <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
+          Everything in the bundle below. No setup fee. No tier you have to upgrade to. Cancel any month.
+        </p>
+        <a href="/contact" class="mt-7 btn-primary w-full justify-center">Book the strategy call <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="card-warm p-8 relative">
+        <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
+          Plan B · Add-on
+        </div>
+        <div class="flex items-center justify-between mb-6 mt-2">
+          <span class="file-tag">B/01 · Reputation desk</span>
+          <span class="meta">Optional</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display text-[4rem] leading-none">$97</span>
+          <span class="font-mono text-[0.78rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/65">/ mo, on top</span>
+        </div>
+        <p class="mt-5 text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
+          Our team writes responses to every Google review and posts to your Google Business Profile twice a week. For shops that don't want to think about it.
+        </p>
+        <ul class="mt-6 space-y-2 text-[0.93rem]">
+          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Personalized review responses, every review</li>
+          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> 2 GBP posts per week (offers, jobs, updates)</li>
+          <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly reputation report</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breakdown table -->
+  <section class="bg-[color:var(--color-paper)] relative">
+    <div class="grain-light"></div>
+    <div class="container-dossier py-24 relative">
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
+        <div>
+          <span class="file-tag">Section 02</span>
+          <h2 class="font-display text-[2rem] md:text-[2.7rem] leading-[1] tracking-tight mt-5 max-w-2xl">
+            Line-by-line bundle math.
+          </h2>
+        </div>
+        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
+          Market rates are pulled from typical small-business contracts in Greater LA. Your numbers may vary, but not by much.
+        </p>
+      </div>
+
+      <!-- Desktop table -->
+      <div class="hidden md:block overflow-x-auto border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
+        <table class="w-full text-left border-collapse min-w-[760px]">
+          <thead>
+            <tr class="border-b border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal w-12">#</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal">Component</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal">Standalone market rate</th>
+              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-[color:var(--color-amber)]">In the bundle</th>
+            </tr>
+          </thead>
+          <tbody>
+            {breakdown.map((line, idx) => (
+              <tr class:list={["border-b border-[color:var(--color-rule)] align-top", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
+                <td class="px-5 py-5 font-mono text-[0.78rem] text-[color:var(--color-amber-deep)]">{line.num}</td>
+                <td class="px-5 py-5 max-w-md">
+                  <div class="font-display text-[1.05rem] font-semibold">{line.label}</div>
+                  <div class="mt-1.5 text-[0.9rem] leading-relaxed text-[color:var(--color-ink)]/70">{line.detail}</div>
+                </td>
+                <td class="px-5 py-5 text-[0.95rem] text-[color:var(--color-ink)]/70 whitespace-nowrap">{line.marketRate}</td>
+                <td class="px-5 py-5 font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">
+                  ✓ {line.inBundle}
+                </td>
+              </tr>
+            ))}
+            <tr class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
+              <td class="px-5 py-5 font-mono text-[0.78rem] text-[color:var(--color-amber)]">∑</td>
+              <td class="px-5 py-5">
+                <div class="font-display text-[1.05rem] font-semibold">Total if assembled separately</div>
+                <div class="mt-1 text-[0.85rem] text-[color:var(--color-paper)]/65">One-time setup ${standaloneSetup.toLocaleString()}, then ${standaloneMonthly.toLocaleString()} every month.</div>
+              </td>
+              <td class="px-5 py-5 text-[0.95rem] text-[color:var(--color-paper)]/80 whitespace-nowrap">${standaloneMonthly.toLocaleString()}/mo</td>
+              <td class="px-5 py-5 font-display text-[1.6rem] text-[color:var(--color-amber)]">$497/mo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile stacked cards -->
+      <div class="md:hidden space-y-4">
+        {breakdown.map((line) => (
+          <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
+            <header class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-3 flex items-baseline justify-between gap-3">
+              <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber)]">{line.num}</span>
+              <span class="font-display text-[1rem] font-semibold leading-snug text-right flex-1">{line.label}</span>
+            </header>
+            <div class="px-4 py-4">
+              <p class="text-[0.92rem] leading-relaxed text-[color:var(--color-ink)]/75">{line.detail}</p>
+            </div>
+            <dl class="grid grid-cols-2 border-t border-[color:var(--color-rule)] divide-x divide-[color:var(--color-rule)]">
+              <div class="px-4 py-3.5">
+                <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/55 mb-1">Standalone</dt>
+                <dd class="text-[0.92rem] leading-snug text-[color:var(--color-ink)]/75">{line.marketRate}</dd>
+              </div>
+              <div class="px-4 py-3.5 bg-[color:var(--color-paper-warm)]/50">
+                <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)] mb-1">In bundle</dt>
+                <dd class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">✓ {line.inBundle}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+
+        <!-- Mobile totals card -->
+        <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)] relative overflow-hidden">
+          <div class="grain"></div>
+          <header class="px-4 py-3 border-b border-[color:var(--color-rule-dark)] flex items-baseline justify-between gap-3 relative">
+            <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber)]">∑</span>
+            <span class="font-display text-[1rem] font-semibold text-right flex-1">Total comparison</span>
+          </header>
+          <div class="px-4 py-4 relative">
+            <p class="text-[0.88rem] text-[color:var(--color-paper)]/70 leading-relaxed">
+              One-time setup ${standaloneSetup.toLocaleString()}, then ${standaloneMonthly.toLocaleString()} every month.
+            </p>
+          </div>
+          <dl class="grid grid-cols-2 border-t border-[color:var(--color-rule-dark)] divide-x divide-[color:var(--color-rule-dark)] relative">
+            <div class="px-4 py-3.5">
+              <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-paper)]/55 mb-1">Separately</dt>
+              <dd class="font-display text-[1.2rem] leading-none">${standaloneMonthly.toLocaleString()}<span class="text-[0.7rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-paper)]/60">/mo</span></dd>
+            </div>
+            <div class="px-4 py-3.5">
+              <dt class="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)] mb-1">Bundle</dt>
+              <dd class="font-display text-[1.4rem] leading-none text-[color:var(--color-amber)]">$497<span class="text-[0.7rem] font-mono tracking-[0.12em] uppercase">/mo</span></dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 mt-10">
+        <div class="card-warm p-6">
+          <div class="meta mb-2">If you bought separately</div>
+          <div class="font-display text-[2rem] leading-none">${standaloneMonthly.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+          <div class="meta mt-2">Plus ${standaloneSetup.toLocaleString()} in one-time setup</div>
+        </div>
+        <div class="card-warm p-6">
+          <div class="meta mb-2">JobsiteRank bundle</div>
+          <div class="font-display text-[2rem] leading-none text-[color:var(--color-amber-deep)]">$497<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+          <div class="meta mt-2">$0 setup · month-to-month</div>
+        </div>
+        <div class="card-paper p-6">
+          <div class="meta mb-2">Monthly delta</div>
+          <div class="font-display text-[2rem] leading-none">−${monthlySavings.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
+          <div class="meta mt-2">≈ ${(monthlySavings * 12).toLocaleString()} per year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's NOT in the bundle -->
+  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
+    <div class="container-dossier py-20 grid lg:grid-cols-[1fr_1.6fr] gap-10">
+      <div>
+        <span class="file-tag">Section 03</span>
+        <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1] tracking-tight mt-5">
+          What we deliberately don't sell.
+        </h2>
+        <p class="mt-5 text-[0.95rem] text-[color:var(--color-ink)]/70">
+          Transparency about what isn't in the bundle matters as much as what is.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="card-paper p-6">
+          <div class="font-display text-[1.1rem] font-semibold">Paid Google Ads management</div>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">Ad spend pulls from a different budget. We'll refer you to two PPC partners we trust.</p>
+        </div>
+        <div class="card-paper p-6">
+          <div class="font-display text-[1.1rem] font-semibold">Logo + brand identity work</div>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">If you need a full rebrand we'll point you to a designer. The bundle assumes a usable logo.</p>
+        </div>
+        <div class="card-paper p-6">
+          <div class="font-display text-[1.1rem] font-semibold">Social content production</div>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">We post to Google Business Profile (with the add-on). We don't run your Instagram.</p>
+        </div>
+        <div class="card-paper p-6">
+          <div class="font-display text-[1.1rem] font-semibold">Trades outside our wheelhouse</div>
+          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">Plumbing, HVAC, roofing, electrical only. We turn down landscapers, painters, and general contractors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark-section">
+    <div class="grain"></div>
+    <div class="container-dossier py-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
+      <div>
+        <span class="file-tag">End of file 003</span>
+        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-6">
+          Twenty minutes will tell you everything.
+        </h2>
+        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
+          Bring your current numbers. We'll tell you straight whether the bundle is the right move — or whether something else fits better.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 lg:items-end">
+        <a href="/contact" class="btn-primary">
+          Book the strategy call
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="/case-studies" class="btn-ghost border-[color:var(--color-paper)]/40">
+          Read the Plumbing Geeks file first
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

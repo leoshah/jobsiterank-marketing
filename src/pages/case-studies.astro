@@ -1,0 +1,269 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageMastHead from "../components/PageMastHead.astro";
+
+interface TimelineEntry {
+  week: string;
+  label: string;
+  detail: string;
+}
+
+const timeline: TimelineEntry[] = [
+  {
+    week: "Week 0",
+    label: "Audit + intake",
+    detail: "Pulled current GBP, audited NAP across 80+ directories, mapped existing call flow. Found 31% of inbound calls were going unanswered after 5pm.",
+  },
+  {
+    week: "Week 1–2",
+    label: "Site rebuild + missed-call-text-back",
+    detail: "Shipped a mobile-first site with a sticky call button and instant quote form. Wired Twilio to the main line — every missed call now triggers a 12-second SMS.",
+  },
+  {
+    week: "Week 3–4",
+    label: "Citation push + reviews",
+    detail: "Synced NAP to 84 directories. Stood up review automation tied to job completion. First week generated 18 new Google reviews.",
+  },
+  {
+    week: "Week 6–8",
+    label: "Map pack lift",
+    detail: "Crossed into the local 3-pack for \"plumber pasadena\" and \"emergency plumber pasadena.\" Inbound calls 2.1× baseline.",
+  },
+  {
+    week: "Week 12–24",
+    label: "Compounding",
+    detail: "Map pack #1 for both terms. Marco cut HomeAdvisor entirely. Quarterly customer touch program kicked off — first quarter drove 22 repeat-customer jobs.",
+  },
+];
+
+interface Metric {
+  value: string;
+  label: string;
+}
+
+const metrics: Metric[] = [
+  { value: "3.4×", label: "Inbound calls / month" },
+  { value: "#1", label: "Map pack, \"plumber pasadena\"" },
+  { value: "84", label: "Directories synced" },
+  { value: "$0", label: "Spent on lead-gen apps" },
+  { value: "112", label: "New Google reviews, 6 mo" },
+  { value: "22", label: "Repeat-customer jobs / quarter" },
+];
+
+interface PlaceholderCase {
+  num: string;
+  trade: string;
+  market: string;
+  status: string;
+  teaser: string;
+}
+
+const placeholders: PlaceholderCase[] = [
+  {
+    num: "003",
+    trade: "HVAC",
+    market: "San Gabriel Valley",
+    status: "In progress · publishing soon",
+    teaser: "Family HVAC operation cutting paid lead spend in half while compounding map-pack ranking through summer peak.",
+  },
+  {
+    num: "004",
+    trade: "Roofing",
+    market: "Greater Los Angeles",
+    status: "In progress · publishing soon",
+    teaser: "Roofing shop using missed-call-text-back to recover 40% of after-hours leads that previously bounced to a competitor.",
+  },
+];
+---
+
+<BaseLayout title="Case studies — JobsiteRank" description="Plumbing Geeks anchor case file plus upcoming HVAC and roofing engagements across LA and the San Gabriel Valley.">
+  <PageMastHead
+    fileTag="File 002"
+    eyebrow="Case study dossier · Field results"
+    title="Case files."
+  >
+    <span slot="title">
+      Case files,<br />
+      <span class="serif-italic text-[color:var(--color-amber)]">straight from the field.</span>
+    </span>
+    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
+      Real engagements, real numbers. We publish full files for every shop that lets us — partial cases stay in placeholder form until they sign off.
+    </p>
+  </PageMastHead>
+
+  <!-- Anchor case: Plumbing Geeks -->
+  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10 pb-24">
+    <div class="container-dossier">
+      <div class="card-paper p-8 md:p-12 relative">
+        <div class="absolute -top-3 left-8 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
+          Case file 002 · Anchor
+        </div>
+
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start mt-3">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="file-tag">Subject · Plumbing Geeks</span>
+              <span class="meta">Pasadena, CA</span>
+            </div>
+            <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight">
+              Plumbing Geeks<br />
+              <span class="serif-italic text-[color:var(--color-amber-deep)]">cuts the apps. Owns the phone.</span>
+            </h2>
+            <p class="mt-6 text-[1.02rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-xl">
+              Residential and commercial plumbing in Pasadena. Six-person crew, two trucks, fighting for visibility against four older shops with 10× the review count and a deeper presence in the map pack.
+            </p>
+
+            <div class="mt-8 grid grid-cols-2 gap-x-8 gap-y-3 max-w-md">
+              <div class="meta">Trade</div><div class="text-[0.95rem]">Plumbing · res &amp; commercial</div>
+              <div class="meta">Service area</div><div class="text-[0.95rem]">Pasadena + 12 SGV cities</div>
+              <div class="meta">Engagement</div><div class="text-[0.95rem]">Bundle + Reputation desk</div>
+              <div class="meta">Length</div><div class="text-[0.95rem]">6 months &amp; counting</div>
+            </div>
+          </div>
+
+          <aside class="card-warm p-7">
+            <div class="meta mb-3">The before / after</div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex items-baseline justify-between">
+                  <span class="font-display text-[1.05rem] font-semibold">Lead-gen spend</span>
+                  <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">−100%</span>
+                </div>
+                <div class="mt-1.5 text-[0.9rem] text-[color:var(--color-ink)]/65">
+                  $2,400 / mo on HomeAdvisor → $0
+                </div>
+              </div>
+              <div class="border-t border-[color:var(--color-ink)]/15 pt-4">
+                <div class="flex items-baseline justify-between">
+                  <span class="font-display text-[1.05rem] font-semibold">Inbound calls</span>
+                  <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">+240%</span>
+                </div>
+                <div class="mt-1.5 text-[0.9rem] text-[color:var(--color-ink)]/65">
+                  Baseline 47 / mo → 160 / mo by month 6
+                </div>
+              </div>
+              <div class="border-t border-[color:var(--color-ink)]/15 pt-4">
+                <div class="flex items-baseline justify-between">
+                  <span class="font-display text-[1.05rem] font-semibold">Map pack ranking</span>
+                  <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)]">→ #1</span>
+                </div>
+                <div class="mt-1.5 text-[0.9rem] text-[color:var(--color-ink)]/65">
+                  Off-map → top 3 → #1 for "plumber pasadena"
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Metrics -->
+        <div class="mt-12 pt-10 border-t border-[color:var(--color-ink)]/15">
+          <div class="meta mb-5">Section A · Metrics</div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10">
+            {metrics.map((m) => (
+              <div class="border-t border-[color:var(--color-ink)] pt-3">
+                <div class="font-display text-[2.4rem] leading-none text-[color:var(--color-amber-deep)]">{m.value}</div>
+                <div class="meta mt-2">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="mt-14 pt-10 border-t border-[color:var(--color-ink)]/15">
+          <div class="meta mb-5">Section B · Engagement timeline</div>
+          <ol class="space-y-6">
+            {timeline.map((entry, idx) => (
+              <li class="grid md:grid-cols-[140px_1fr] gap-4 md:gap-8 border-b border-[color:var(--color-rule)] pb-6 last:border-b-0 last:pb-0">
+                <div>
+                  <div class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber-deep)]">T/{String(idx + 1).padStart(2, "0")}</div>
+                  <div class="font-display text-[1rem] font-semibold mt-1">{entry.week}</div>
+                </div>
+                <div>
+                  <div class="font-display text-[1.15rem] font-semibold">{entry.label}</div>
+                  <p class="mt-2 text-[0.95rem] leading-relaxed text-[color:var(--color-ink)]/75">{entry.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-14 pt-10 border-t border-[color:var(--color-ink)]/15">
+          <div class="meta mb-5">Section C · In their words</div>
+          <blockquote class="serif-italic text-[1.5rem] md:text-[1.8rem] leading-snug border-l-2 border-[color:var(--color-amber)] pl-6 max-w-3xl">
+            "The first week the missed-call texts went live we booked four after-hours emergency jobs. That paid for the bundle for the next six months. Everything since then has been profit."
+          </blockquote>
+          <div class="mt-5 flex items-center gap-4">
+            <div class="w-12 h-12 grid place-items-center bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-display text-[1.05rem]">MD</div>
+            <div>
+              <div class="font-display text-[1.05rem] font-semibold">Marco D.</div>
+              <div class="meta">Owner · Plumbing Geeks · Pasadena</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Placeholder cases -->
+  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
+    <div class="container-dossier py-20">
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
+        <div>
+          <span class="file-tag">Section 02 · Pending publication</span>
+          <h2 class="font-display text-[2rem] md:text-[2.6rem] leading-[1] tracking-tight mt-5 max-w-2xl">
+            Two more files in production.
+          </h2>
+        </div>
+        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
+          We don't publish a case until the shop owner signs off on every number. These are next.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {placeholders.map((p) => (
+          <article class="card-paper p-8 relative">
+            <div class="absolute top-6 right-6 font-mono text-[0.65rem] tracking-[0.18em] uppercase text-[color:var(--color-amber-deep)] border border-current px-2 py-1">
+              Pending
+            </div>
+            <span class="file-tag">Case file {p.num}</span>
+            <h3 class="font-display text-[1.7rem] leading-tight mt-5">{p.trade} engagement</h3>
+            <div class="meta mt-2">{p.market}</div>
+            <p class="mt-5 text-[0.95rem] leading-relaxed text-[color:var(--color-ink)]/75">
+              {p.teaser}
+            </p>
+            <div class="mt-7 pt-5 border-t border-[color:var(--color-rule)] flex items-center justify-between">
+              <span class="meta">{p.status}</span>
+              <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/40">— — — —</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark-section">
+    <div class="grain"></div>
+    <div class="container-dossier py-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
+      <div>
+        <span class="file-tag">End of file 002</span>
+        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-6">
+          Want your shop in the next file?
+        </h2>
+        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
+          We pick three new engagements per quarter so the work stays good. The strategy call is where it starts.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 lg:items-end">
+        <a href="/contact" class="btn-primary">
+          Book the strategy call
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40">
+          Look at the pricing first
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
