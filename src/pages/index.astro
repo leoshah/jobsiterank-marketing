@@ -117,8 +117,8 @@ const faqs: FaqItem[] = [
     a: "Day 1 we lock the demo. Days 2–10 we ship the new site and missed-call-text-back. Days 10–30 we run the citation push and stand up review automation. By day 45 the system is fully live.",
   },
   {
-    q: "What does the $597 AI Receptionist add-on do?",
-    a: "It's an AI agent that picks up every call you can't — answers in your shop's voice, books appointments straight to your calendar, handles common objections before you ever pick up. Stacks on any of the three tiers. Most shops use it to replace a $4,000+/mo answering service.",
+    q: "Is the website really free with every tier?",
+    a: "Yes. Every tier — including $197 Never Miss a Lead — ships with a free conversion-focused mobile-first website. No setup fee. The site is built for click-to-call and works as the trust signal that turns Google traffic into phone calls.",
   },
   {
     q: "What trades do you actually serve?",
@@ -402,10 +402,11 @@ const faqs: FaqItem[] = [
             <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ mo</span>
           </div>
           <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Conversion-tested website</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call-text-back</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> SMS inbox + mobile app</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Basic CRM</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Free conversion-focused website</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call text-back (under 30s)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Dedicated business number</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Two-way SMS inbox on your phone</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Weekly missed-call recovery report</li>
           </ul>
           <a href="/contact" class="btn-ghost text-[color:var(--color-ink)] justify-center">Book a demo →</a>
         </article>
@@ -427,6 +428,7 @@ const faqs: FaqItem[] = [
           <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
             <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Everything in Plan A</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Smart routing (happy → Google)</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Smart cooldown per customer</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly review report</li>
           </ul>
@@ -449,7 +451,8 @@ const faqs: FaqItem[] = [
           </div>
           <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1 text-[color:var(--color-paper)]/90">
             <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Everything in Plan B</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Full CRM (pipeline + history)</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Full CRM with lead pipeline</li>
+            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Branded mobile app</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> NAP citations (80+)</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> GBP posts (2×/wk)</li>
             <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Review responses</li>
@@ -460,18 +463,8 @@ const faqs: FaqItem[] = [
         </article>
       </div>
 
-      <!-- AI Receptionist add-on -->
-      <div class="mt-6 border border-[color:var(--color-rule-dark)] p-5 md:p-6 grid md:grid-cols-[1fr_auto] items-center gap-4">
-        <div>
-          <div class="font-mono text-[0.65rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)] mb-1.5">Add-on · Stacks on any tier</div>
-          <div class="font-display text-[1.3rem] leading-tight">
-            AI Receptionist <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-paper)]/60 ml-2">$597 / mo</span>
-          </div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-paper)]/75 max-w-2xl">
-            AI agent that answers every call you can't — books appointments, handles objections, replaces $4k+/mo answering services.
-          </p>
-        </div>
-        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40 whitespace-nowrap">See full breakdown →</a>
+      <div class="mt-8 flex justify-center">
+        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40">See full breakdown →</a>
       </div>
     </div>
   </section>

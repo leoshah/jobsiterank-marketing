@@ -7,6 +7,7 @@ interface Tier {
   name: string;
   price: number;
   tagline: string;
+  subline: string[];
   features: string[];
   inheritsFrom?: string;
   popular?: boolean;
@@ -18,24 +19,27 @@ const tiers: Tier[] = [
     letter: "A",
     name: "Never Miss a Lead",
     price: 197,
-    tagline: "The hero offer. Every missed call becomes a text. Every missed text becomes a job.",
+    tagline: "Stop losing jobs to voicemail. Every missed call becomes a text — and you get a free website on top.",
+    subline: ["Cancel anytime", "No setup fee", "Free website included"],
     features: [
-      "Conversion-tested website rebuild",
-      "Missed-call-text-back system",
-      "Two-way SMS inbox",
-      "Branded mobile app for messaging",
-      "Basic CRM (call + text history)",
+      "Free conversion-focused website (mobile-first, click-to-call)",
+      "Missed-call text-back — every missed call becomes an automatic text within 30 seconds",
+      "Dedicated business number (port your existing number or get a new one)",
+      "Two-way SMS inbox on your phone — works like regular texting, nothing new to learn",
+      "Weekly missed-call recovery report",
     ],
   },
   {
     letter: "B",
     name: "Lead + Review Engine",
     price: 297,
-    tagline: "Catch every lead. Stack every review. Map pack starts climbing.",
+    tagline: "Catch every lead. Stack every review. Outrank the plumber down the street.",
+    subline: ["Cancel anytime", "No setup fee", "Free website included"],
     features: [
       "Everything in Never Miss a Lead",
-      "Review request automation (SMS after every job)",
-      "Smart cooldown so customers don't get spammed",
+      "Review request automation (SMS sent automatically after every job)",
+      "Smart routing — happy customers go to Google, unhappy customers go to a private feedback form",
+      "Smart cooldown so repeat customers don't get spammed",
       "Monthly review-volume report",
     ],
     inheritsFrom: "Never Miss a Lead",
@@ -46,14 +50,16 @@ const tiers: Tier[] = [
     name: "Local Authority",
     price: 497,
     tagline: "The full system. We own the local map for you.",
+    subline: ["No setup fee", "90-day minimum", "Free website included"],
     features: [
       "Everything in Lead + Review Engine",
-      "Full CRM (pipeline, jobs, customer history)",
+      "Google Business Profile posts (2× per week)",
       "NAP citation engine (80+ directories)",
-      "Google Business Profile posts (2× / week)",
-      "Review response management (our team replies)",
-      "Quarterly re-activation campaign",
+      "Review response management — our team replies to every review",
+      "Full CRM with lead pipeline (every call, text, and job in one place)",
+      "Branded mobile app",
       "Local on-page SEO + service-area pages",
+      "Quarterly re-activation campaign",
     ],
     inheritsFrom: "Lead + Review Engine",
     flagship: true,
@@ -68,7 +74,7 @@ const monthlySavings = standaloneTotal - flagshipPrice;
 
 <BaseLayout
   title="Pricing — JobsiteRank"
-  description="Three tiers. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Plus the AI Receptionist add-on."
+  description="Three tiers. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Free conversion-focused website included with every tier."
 >
   <PageMastHead
     fileTag="File 003"
@@ -139,9 +145,12 @@ const monthlySavings = standaloneTotal - flagshipPrice;
               </div>
 
               <div class={`flex flex-wrap gap-x-2.5 gap-y-1 font-mono text-[0.58rem] tracking-[0.16em] uppercase mb-5 ${isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}`}>
-                <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>Cancel anytime</span>
-                <span class="opacity-30">·</span>
-                <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>No setup fee</span>
+                {tier.subline.map((item, i) => (
+                  <>
+                    {i > 0 && <span class="opacity-30">·</span>}
+                    <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>{item}</span>
+                  </>
+                ))}
               </div>
 
               <ul class={`space-y-2 text-[0.92rem] mb-7 flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : ""}`}>
@@ -168,32 +177,6 @@ const monthlySavings = standaloneTotal - flagshipPrice;
         })}
       </div>
 
-      <!-- AI receptionist add-on -->
-      <div class="mt-8 card-warm p-7 md:p-9 relative">
-        <div class="absolute -top-3 left-6 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1">
-          Add-on · Stack on any tier
-        </div>
-        <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-start mt-2">
-          <div>
-            <span class="file-tag">AI Receptionist</span>
-            <div class="flex items-baseline gap-2 mt-4">
-              <span class="font-display text-[3.6rem] leading-none">$597</span>
-              <span class="font-mono text-[0.72rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ month</span>
-            </div>
-            <p class="mt-4 text-[0.95rem] leading-relaxed text-[color:var(--color-ink)]/75">
-              AI agent that picks up every call you can't. Answers in your shop's voice, books appointments straight to your calendar, handles the common objections before you ever pick up. Replaces a $4,000+/mo answering service.
-            </p>
-          </div>
-          <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[0.93rem]">
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Answers 24/7 — nights, weekends, holidays</li>
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Books appointments live to your calendar</li>
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Handles price, scope, and timing objections</li>
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Hot-transfers the calls worth taking</li>
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Filters time-wasters before they reach you</li>
-            <li class="flex gap-2.5"><span class="text-[color:var(--color-amber-deep)]">→</span> Trained on your shop's hours, services, and pricing</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -226,17 +209,22 @@ const monthlySavings = standaloneTotal - flagshipPrice;
           </thead>
           <tbody>
             {[
-              { label: "Conversion-tested website", in: [true, true, true] },
-              { label: "Missed-call-text-back system", in: [true, true, true] },
-              { label: "Two-way SMS inbox + branded mobile app", in: [true, true, true] },
-              { label: "Basic CRM (call + text history)", in: [true, true, true] },
+              { label: "Free conversion-focused website", in: [true, true, true] },
+              { label: "Missed-call text-back (under 30 sec)", in: [true, true, true] },
+              { label: "Dedicated business number", in: [true, true, true] },
+              { label: "Two-way SMS inbox on your phone", in: [true, true, true] },
+              { label: "Weekly missed-call recovery report", in: [true, true, true] },
               { label: "Review request automation", in: [false, true, true] },
-              { label: "Full CRM (pipeline + customer history)", in: [false, false, true] },
-              { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
+              { label: "Smart routing (happy → Google, unhappy → private form)", in: [false, true, true] },
+              { label: "Smart cooldown per customer", in: [false, true, true] },
+              { label: "Monthly review-volume report", in: [false, true, true] },
               { label: "Google Business Profile posts (2×/wk)", in: [false, false, true] },
+              { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
               { label: "Review response management", in: [false, false, true] },
+              { label: "Full CRM with lead pipeline", in: [false, false, true] },
+              { label: "Branded mobile app", in: [false, false, true] },
+              { label: "Local on-page SEO + service-area pages", in: [false, false, true] },
               { label: "Quarterly re-activation campaign", in: [false, false, true] },
-              { label: "Local on-page SEO", in: [false, false, true] },
             ].map((row, idx) => (
               <tr class:list={["border-b border-[color:var(--color-rule)]", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
                 <td class="px-5 py-4 font-display text-[1rem] font-semibold">{row.label}</td>
@@ -247,10 +235,6 @@ const monthlySavings = standaloneTotal - flagshipPrice;
                 ))}
               </tr>
             ))}
-            <tr class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-              <td class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase">Add-on · AI Receptionist</td>
-              <td class="px-5 py-4 text-center font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber)]" colspan="3">+ $597 / mo · stacks on any tier</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -270,18 +254,6 @@ const monthlySavings = standaloneTotal - flagshipPrice;
             </ul>
           </article>
         ))}
-        <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-          <header class="px-4 py-3 border-b border-[color:var(--color-rule-dark)]">
-            <span class="font-display text-[1rem] font-semibold">$597 · AI Receptionist</span>
-            <div class="meta mt-0.5">Add-on · stacks on any tier</div>
-          </header>
-          <ul class="px-4 py-4 space-y-2 text-[0.92rem]">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> 24/7 AI answers every call</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Books appointments live</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Handles objections</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Replaces $4k+/mo answering services</li>
-          </ul>
-        </article>
       </div>
     </div>
   </section>
