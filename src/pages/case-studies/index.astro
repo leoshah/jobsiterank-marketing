@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageMastHead from "../../components/PageMastHead.astro";
+import { CASE_STUDIES, CATEGORIES, type CaseCategory } from "../../data/caseStudies";
+
+const counts: Record<CaseCategory | "all", number> = {
+  all: CASE_STUDIES.length,
+  "text-back": 0,
+  "re-activation": 0,
+  "ai-receptionist": 0,
+  reviews: 0,
+  leads: 0,
+};
+for (const cs of CASE_STUDIES) counts[cs.category]++;
+
+const categoryShort: Record<CaseCategory, string> = Object.fromEntries(
+  CATEGORIES.map((c) => [c.key, c.short])
+) as Record<CaseCategory, string>;
+---
+
+<BaseLayout
+  title="Case studies — JobsiteRank"
+  description="14 case files from trades shops across the US: missed-call-text-back, re-activation campaigns, AI receptionist cost-cutting, reviews & replies."
+>
+  <PageMastHead fileTag="File 002" eyebrow="Case study dossier · 14 files" title="Case files.">
+    <span slot="title">
+      Case files,<br />
+      <span class="serif-italic text-[color:var(--color-amber)]">14 of them.</span>
+    </span>
+    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
+      Real outcomes from trades shops across the country — missed-call-text-back wins, re-activation campaigns, AI receptionist cost cuts, and review-engine results. Click any file to read the full engagement.
+    </p>
+  </PageMastHead>
+
+  <!-- Filter -->
+  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10 pb-6">
+    <div class="container-dossier">
+      <div
+        id="cs-filter"
+        class="flex flex-wrap gap-2 border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] p-2"
+        role="tablist"
+        aria-label="Filter case studies"
+      >
+        <button
+          type="button"
+          class="cs-filter-btn font-mono text-[0.7rem] tracking-[0.16em] uppercase px-3 py-2 border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          All <span class="opacity-60">· {counts.all}</span>
+        </button>
+        {CATEGORIES.map((cat) => (
+          <button
+            type="button"
+            class="cs-filter-btn font-mono text-[0.7rem] tracking-[0.16em] uppercase px-3 py-2 border border-[color:var(--color-ink)] hover:bg-[color:var(--color-paper-warm)]"
+            data-filter={cat.key}
+            aria-pressed="false"
+          >
+            {cat.short} <span class="opacity-60">· {counts[cat.key]}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="bg-[color:var(--color-paper)] pb-24 relative">
+    <div class="grain-light"></div>
+    <div class="container-dossier relative">
+      <div id="cs-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {CASE_STUDIES.map((cs) => (
+          <a
+            href={`/case-studies/${cs.slug}`}
+            class="cs-card card-paper p-6 flex flex-col h-full group transition-transform hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[8px_8px_0_0_var(--color-ink)]"
+            data-category={cs.category}
+          >
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber-deep)]">F/{cs.fileNum}</span>
+              <span class="meta">{cs.city}, {cs.state}</span>
+            </div>
+
+            <span class="self-start font-mono text-[0.62rem] tracking-[0.16em] uppercase px-2 py-1 border border-[color:var(--color-ink)] bg-[color:var(--color-paper-warm)] text-[color:var(--color-amber-deep)] mb-4">
+              {categoryShort[cs.category]}
+            </span>
+
+            <h3 class="font-display text-[1.35rem] leading-tight">{cs.business}</h3>
+            <div class="meta mt-1.5">{cs.trade}</div>
+
+            <p class="mt-4 text-[0.9rem] leading-relaxed text-[color:var(--color-ink)]/75">
+              {cs.cardHook}
+            </p>
+
+            <div class="mt-auto pt-5 border-t border-[color:var(--color-rule)] flex items-baseline justify-between">
+              <div>
+                <div class="font-display text-[1.55rem] leading-none text-[color:var(--color-amber-deep)]">{cs.cardMetricValue}</div>
+                <div class="meta mt-1">{cs.cardMetricLabel}</div>
+              </div>
+              <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)] group-hover:text-[color:var(--color-amber-deep)]">
+                Read file →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p
+        id="cs-empty"
+        class="hidden text-center font-mono text-[0.85rem] uppercase tracking-[0.14em] text-[color:var(--color-ink)]/60 py-16"
+      >
+        No case files in this category yet.
+      </p>
+
+      <p class="mt-10 text-center meta">
+        Cases tagged "representative" are illustrative engagements composed for this dossier. Real published cases will replace them as engagements close.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark-section">
+    <div class="grain"></div>
+    <div class="container-dossier py-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
+      <div>
+        <span class="file-tag">End of file 002</span>
+        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-6">
+          Want your shop in the next file?
+        </h2>
+        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
+          We pick three new engagements per quarter so the work stays good. The demo is where it starts.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 lg:items-end">
+        <a href="/contact" class="btn-primary">
+          Book a demo
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40">
+          Look at the pricing first
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const filterEl = document.getElementById("cs-filter");
+    const gridEl = document.getElementById("cs-grid");
+    const emptyEl = document.getElementById("cs-empty");
+    if (!filterEl || !gridEl || !emptyEl) return;
+
+    const buttons = Array.from(filterEl.querySelectorAll(".cs-filter-btn"));
+    const cards = Array.from(gridEl.querySelectorAll(".cs-card"));
+
+    function setActive(filter) {
+      buttons.forEach(function (b) {
+        const isActive = b.getAttribute("data-filter") === filter;
+        b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        if (isActive) {
+          b.classList.add("bg-[color:var(--color-ink)]", "text-[color:var(--color-paper)]");
+          b.classList.remove("hover:bg-[color:var(--color-paper-warm)]");
+        } else {
+          b.classList.remove("bg-[color:var(--color-ink)]", "text-[color:var(--color-paper)]");
+          b.classList.add("hover:bg-[color:var(--color-paper-warm)]");
+        }
+      });
+
+      let visible = 0;
+      cards.forEach(function (c) {
+        const cat = c.getAttribute("data-category");
+        const show = filter === "all" || cat === filter;
+        c.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+
+      emptyEl.classList.toggle("hidden", visible !== 0);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        const filter = b.getAttribute("data-filter") || "all";
+        setActive(filter);
+      });
+    });
+  })();
+</script>
