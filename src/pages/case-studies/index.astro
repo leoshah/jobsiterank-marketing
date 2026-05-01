@@ -7,7 +7,6 @@ const counts: Record<CaseCategory | "all", number> = {
   all: CASE_STUDIES.length,
   "text-back": 0,
   "re-activation": 0,
-  "ai-receptionist": 0,
   reviews: 0,
   leads: 0,
 };
@@ -20,12 +19,12 @@ const categoryShort: Record<CaseCategory, string> = Object.fromEntries(
 
 <BaseLayout
   title="Case studies — JobsiteRank"
-  description="14 case files from trades shops across the US: missed-call-text-back, re-activation campaigns, AI receptionist cost-cutting, reviews & replies."
+  description="11 case files from plumbing shops across the US: missed-call-text-back, re-activation campaigns, reviews & replies, lead generation."
 >
-  <PageMastHead fileTag="File 002" eyebrow="Case study dossier · 14 files" title="Case files.">
+  <PageMastHead fileTag="File 002" eyebrow="Case study dossier · 11 files" title="Case files.">
     <span slot="title">
       Case files,<br />
-      <span class="serif-italic text-[color:var(--color-amber)]">14 of them.</span>
+      <span class="serif-italic text-[color:var(--color-amber)]">11 of them.</span>
     </span>
     <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
       Real outcomes from trades shops across the country — missed-call-text-back wins, re-activation campaigns, AI receptionist cost cuts, and review-engine results. Click any file to read the full engagement.
