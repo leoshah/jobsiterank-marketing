@@ -1,127 +1,102 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageMastHead from "../components/PageMastHead.astro";
 
-const trades: string[] = ["Plumbing", "HVAC", "Roofing", "Electrical", "Other / not sure"];
+const CALENDLY_URL = "https://calendly.com/gmbstrategysession/30min";
+const CALENDLY_EMBED_URL = `${CALENDLY_URL}?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=10b981&text_color=0e1b22`;
 ---
 
-<BaseLayout title="Contact — JobsiteRank" description="Book a 20-minute demo with the JobsiteRank team. Pasadena, San Gabriel Valley, Greater Los Angeles.">
-  <PageMastHead
-    fileTag="File 004"
-    eyebrow="Intake form · Demo booking"
-    title="Open the file."
-  >
-    <span slot="title">
-      Open the file.<br />
-      <span class="serif-italic text-[color:var(--color-amber)]">We'll do the rest.</span>
-    </span>
-    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
-      Twenty minutes. No pitch deck. We pull up your Google Business Profile live on the call and tell you straight what we'd change first.
-    </p>
-  </PageMastHead>
-
-  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10 pb-24">
-    <div class="container-dossier grid lg:grid-cols-[1.5fr_1fr] gap-8">
-
-      <!-- Form -->
-      <div class="card-paper p-8 md:p-10">
-        <div class="flex items-center justify-between mb-8">
-          <span class="file-tag">Intake / 01</span>
-          <span class="meta">Takes 30 seconds</span>
-        </div>
-
-        <form class="grid gap-6" name="strategy-call" method="POST" action="#" autocomplete="on">
-          <div>
-            <label class="input-label" for="name">Your name</label>
-            <input class="input-dossier" type="text" id="name" name="name" required placeholder="Marco Diaz" />
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label class="input-label" for="phone">Best phone</label>
-              <input class="input-dossier" type="tel" id="phone" name="phone" required placeholder="(626) 555-0142" />
-            </div>
-            <div>
-              <label class="input-label" for="trade">Trade</label>
-              <select class="input-dossier" id="trade" name="trade" required>
-                <option value="" disabled selected>Pick one</option>
-                {trades.map((t) => <option value={t}>{t}</option>)}
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label class="input-label" for="email">Email <span class="text-[color:var(--color-ink)]/50 normal-case tracking-normal text-[0.65rem] ml-1">(for the calendar link)</span></label>
-            <input class="input-dossier" type="email" id="email" name="email" required placeholder="marco@yourshop.com" />
-          </div>
-
-          <div>
-            <label class="input-label" for="notes">What's going on? <span class="text-[color:var(--color-ink)]/50 normal-case tracking-normal text-[0.65rem] ml-1">(optional, helps us prep)</span></label>
-            <textarea class="input-dossier" id="notes" name="notes" rows="4" placeholder="Spending on HomeAdvisor, want to stop. Map pack ranking is page 2. After-hours calls bouncing."></textarea>
-          </div>
-
-          <div class="pt-4 border-t border-[color:var(--color-rule)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-            <div class="meta">We text the calendar link within 1 business hour. No spam, no sales drip.</div>
-            <button type="submit" class="btn-primary">
-              Open the file
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
-        </form>
-
-        <div class="mt-6 pt-6 border-t border-[color:var(--color-rule)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="meta">Prefer to skip the form?</div>
-          <a href="tel:+16265550199" class="font-display text-[1.15rem] font-semibold hover:text-[color:var(--color-amber-deep)]">
-            <span aria-hidden="true" class="text-[0.85em] mr-1">✆</span>Call (626) 555-0199
-          </a>
-        </div>
+<BaseLayout
+  title="Book a demo — JobsiteRank"
+  description="Book a 20-minute demo with the JobsiteRank team. Pick a time that works for you — we'll pull up your Google Business Profile live and tell you straight which plan fits."
+>
+  <!-- ─── Header ─── -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-12">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Pick a time. We'll show you how it works.
+        </h1>
+        <p class="mt-6 text-[1.1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          Twenty minutes. No pitch deck. We pull up your Google Business Profile live, audit your missed-call rate, and tell you straight whether JobsiteRank fits.
+        </p>
       </div>
-
-      <!-- Sidebar -->
-      <aside class="flex flex-col gap-6">
-        <div class="card-warm p-7">
-          <span class="file-tag">Direct line</span>
-          <div class="mt-5 space-y-5">
-            <div>
-              <div class="meta mb-1">By phone</div>
-              <a href="tel:+16265550199" class="font-display text-[1.5rem] hover:text-[color:var(--color-amber-deep)]">(626) 555-0199</a>
-              <div class="meta mt-1">Mon–Fri · 8a–6p PT</div>
-            </div>
-            <div class="border-t border-[color:var(--color-ink)]/15 pt-5">
-              <div class="meta mb-1">By email</div>
-              <a href="mailto:hello@jobsiterank.com" class="font-display text-[1.15rem] break-all hover:text-[color:var(--color-amber-deep)]">hello@jobsiterank.com</a>
-              <div class="meta mt-1">Replies within one business hour</div>
-            </div>
-            <div class="border-t border-[color:var(--color-ink)]/15 pt-5">
-              <div class="meta mb-1">By text</div>
-              <a href="sms:+16265550199" class="font-display text-[1.15rem] hover:text-[color:var(--color-amber-deep)]">Text "DOSSIER" to (626) 555-0199</a>
-              <div class="meta mt-1">Auto-replies with the booking link</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-paper p-7">
-          <span class="file-tag">Service area</span>
-          <ul class="mt-5 space-y-2 text-[0.95rem]">
-            <li class="flex items-baseline gap-3"><span class="text-[color:var(--color-amber-deep)]">●</span> Pasadena (HQ)</li>
-            <li class="flex items-baseline gap-3"><span class="text-[color:var(--color-amber-deep)]">●</span> San Gabriel Valley</li>
-            <li class="flex items-baseline gap-3"><span class="text-[color:var(--color-amber-deep)]">●</span> Greater Los Angeles</li>
-          </ul>
-          <div class="mt-5 pt-5 border-t border-[color:var(--color-rule)] meta">
-            Outside this radius? Email us — we may be opening adjacent metros in the next quarter.
-          </div>
-        </div>
-
-        <div class="dark-section p-7 relative overflow-hidden">
-          <div class="grain"></div>
-          <span class="file-tag">What to expect</span>
-          <ol class="mt-5 space-y-4 text-[0.95rem]">
-            <li class="flex gap-3"><span class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber)] mt-0.5">01</span><span>You submit. We confirm within one business hour with a calendar link.</span></li>
-            <li class="flex gap-3"><span class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber)] mt-0.5">02</span><span>20-minute call. We pull up your GBP and audit live.</span></li>
-            <li class="flex gap-3"><span class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber)] mt-0.5">03</span><span>Yes or no. If it's a fit, onboarding kicks off the next business day.</span></li>
-          </ol>
-        </div>
-      </aside>
     </div>
   </section>
+
+  <!-- ─── Calendly + What to expect (stacked) ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding-tight md:!pt-12 md:!pb-24">
+      <div class="max-w-3xl mx-auto space-y-8">
+
+        <!-- Calendly inline embed (height grows with content, page scrolls through it) -->
+        <div
+          id="calendly-wrap"
+          class="rounded-2xl border border-[color:var(--color-slate-200)] bg-[color:var(--color-paper)] overflow-hidden"
+        >
+          <div
+            id="calendly-inline"
+            class="calendly-inline-widget"
+            data-url={CALENDLY_EMBED_URL}
+            style="min-width:320px; min-height:1100px; height:1100px;"
+          ></div>
+        </div>
+
+        <script is:inline>
+          // Listen for Calendly's postMessage size events and resize the iframe
+          // so the widget never has its own internal scrollbar — the page scrolls through it.
+          (function () {
+            const wrap = document.getElementById("calendly-inline");
+            if (!wrap) return;
+
+            function isCalendlyMsg(e) {
+              return (
+                e.origin === "https://calendly.com" &&
+                e.data &&
+                typeof e.data.event === "string" &&
+                e.data.event.indexOf("calendly.") === 0
+              );
+            }
+
+            window.addEventListener("message", function (e) {
+              if (!isCalendlyMsg(e)) return;
+              const payload = e.data.payload || {};
+              const h = payload.height || (payload.iframe && payload.iframe.height);
+              if (typeof h === "number" && h > 600) {
+                wrap.style.height = h + 40 + "px";
+              }
+            });
+          })();
+        </script>
+
+        <!-- What to expect (below the calendar) -->
+        <div class="card-dark">
+          <div class="text-[color:var(--color-accent)] text-[0.78rem] font-semibold uppercase tracking-wide mb-5">What to expect</div>
+          <ol class="grid sm:grid-cols-3 gap-5 text-[0.95rem]">
+            <li class="flex flex-col gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)] text-[0.95rem] font-bold flex-shrink-0">1</span>
+              <span class="text-[color:var(--color-paper)]/90 leading-relaxed">Pick a 20-minute slot. We send the calendar invite + Zoom link instantly.</span>
+            </li>
+            <li class="flex flex-col gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)] text-[0.95rem] font-bold flex-shrink-0">2</span>
+              <span class="text-[color:var(--color-paper)]/90 leading-relaxed">On the call — we pull up your Google Business Profile and audit live.</span>
+            </li>
+            <li class="flex flex-col gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)] text-[0.95rem] font-bold flex-shrink-0">3</span>
+              <span class="text-[color:var(--color-paper)]/90 leading-relaxed">Yes or no. If it's a fit, onboarding kicks off the next day.</span>
+            </li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendly widget script (loaded once on this page) -->
+  <script
+    is:inline
+    type="text/javascript"
+    src="https://assets.calendly.com/assets/external/widget.js"
+    async
+  ></script>
 </BaseLayout>
