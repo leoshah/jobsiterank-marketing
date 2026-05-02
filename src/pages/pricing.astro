@@ -1,22 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageMastHead from "../components/PageMastHead.astro";
 
 interface Tier {
-  letter: string;
   name: string;
   price: number;
   tagline: string;
   subline: string[];
   features: string[];
-  inheritsFrom?: string;
-  popular?: boolean;
-  flagship?: boolean;
+  badge: string | null;
 }
 
 const tiers: Tier[] = [
   {
-    letter: "A",
     name: "Never Miss a Lead",
     price: 197,
     tagline: "Stop losing jobs to voicemail. Every missed call becomes a text — and you get a free website on top.",
@@ -24,13 +19,14 @@ const tiers: Tier[] = [
     features: [
       "Free conversion-focused website (mobile-first, click-to-call)",
       "Missed-call text-back — every missed call becomes an automatic text within 30 seconds",
-      "Dedicated business number (port your existing number or get a new one)",
-      "Two-way SMS inbox on your phone — works like regular texting, nothing new to learn",
+      "Dedicated business number (port your existing or get a new one)",
+      "Two-way SMS inbox on your phone — works like regular texting",
+      "Mobile messaging app",
       "Weekly missed-call recovery report",
     ],
+    badge: "Hero offer",
   },
   {
-    letter: "B",
     name: "Lead + Review Engine",
     price: 297,
     tagline: "Catch every lead. Stack every review. Outrank the plumber down the street.",
@@ -38,15 +34,13 @@ const tiers: Tier[] = [
     features: [
       "Everything in Never Miss a Lead",
       "Review request automation (SMS sent automatically after every job)",
-      "Smart routing — happy customers go to Google, unhappy customers go to a private feedback form",
+      "Smart routing — happy customers go to Google, unhappy go to a private form",
       "Smart cooldown so repeat customers don't get spammed",
       "Monthly review-volume report",
     ],
-    inheritsFrom: "Never Miss a Lead",
-    popular: true,
+    badge: "Most popular",
   },
   {
-    letter: "C",
     name: "Local Authority",
     price: 497,
     tagline: "The full system. We own the local map for you.",
@@ -57,106 +51,108 @@ const tiers: Tier[] = [
       "NAP citation engine (80+ directories)",
       "Review response management — our team replies to every review",
       "Full CRM with lead pipeline (every call, text, and job in one place)",
-      "Mobile app",
+      "Full branded mobile CRM",
       "Local on-page SEO + service-area pages",
-      "Quarterly re-activation campaign",
+      "Quarterly re-activation campaigns",
     ],
-    inheritsFrom: "Lead + Review Engine",
-    flagship: true,
+    badge: "Flagship",
   },
 ];
 
-const standaloneTotal = 120 + 240 + 340 + 180 + 90 + 100 + 150 + 420; // ~$1,640/mo for full Local Authority piecemeal
-const setupCost = 3800 + 650;
-const flagshipPrice = 497;
-const monthlySavings = standaloneTotal - flagshipPrice;
+interface MatrixRow {
+  label: string;
+  in: [boolean, boolean, boolean];
+}
+
+const matrixRows: MatrixRow[] = [
+  { label: "Free conversion-focused website", in: [true, true, true] },
+  { label: "Missed-call text-back (under 30 sec)", in: [true, true, true] },
+  { label: "Dedicated business number", in: [true, true, true] },
+  { label: "Two-way SMS inbox on your phone", in: [true, true, true] },
+  { label: "Mobile messaging app", in: [true, true, true] },
+  { label: "Weekly missed-call recovery report", in: [true, true, true] },
+  { label: "Review request automation", in: [false, true, true] },
+  { label: "Smart routing (happy → Google, unhappy → private)", in: [false, true, true] },
+  { label: "Smart cooldown per customer", in: [false, true, true] },
+  { label: "Monthly review-volume report", in: [false, true, true] },
+  { label: "Google Business Profile posts (2×/wk)", in: [false, false, true] },
+  { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
+  { label: "Review response management", in: [false, false, true] },
+  { label: "Full CRM with lead pipeline", in: [false, false, true] },
+  { label: "Full branded mobile CRM", in: [false, false, true] },
+  { label: "Local on-page SEO + service-area pages", in: [false, false, true] },
+  { label: "Quarterly re-activation campaigns", in: [false, false, true] },
+];
 ---
 
 <BaseLayout
   title="Pricing — JobsiteRank"
-  description="Three tiers. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Free conversion-focused website included with every tier."
+  description="Three plans. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Free website with every plan."
 >
-  <PageMastHead
-    fileTag="File 003"
-    eyebrow="Pricing dossier · Three tiers"
-    title="Three tiers."
-  >
-    <span slot="title">
-      Three tiers.<br />
-      <span class="serif-italic text-[color:var(--color-amber)]">No fake hierarchies.</span>
-    </span>
-    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
-      Start at $197 with the hero offer — never miss a lead. Move up only when you actually need what's next. Every tier ships with the conversion-tested website, so the first $197 already beats most agencies' setup quote.
-    </p>
-  </PageMastHead>
+  <!-- ─── Header ─── -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow-mint">Pricing · Three plans</span>
+        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight mt-6 text-[color:var(--color-ink)]">
+          Pick the plan that fits where you bleed.
+        </h1>
+        <p class="mt-6 text-[1.1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          Every plan includes a free conversion-focused website. Move up only when you outgrow what you're on.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Three tiers -->
-  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10">
-    <div class="container-dossier">
-      <div class="grid md:grid-cols-3 gap-5 md:gap-4">
+  <!-- ─── Tier cards ─── -->
+  <section class="bg-[color:var(--color-paper)] -mt-8 relative z-10">
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {tiers.map((tier) => {
-          const isFlagship = tier.flagship === true;
-          const isPopular = tier.popular === true;
-          const cardClass = isFlagship
-            ? "card-paper p-7 md:p-8 relative flex flex-col bg-[color:var(--color-ink)] text-[color:var(--color-paper)] border-[color:var(--color-ink)]"
-            : isPopular
-              ? "card-paper p-7 md:p-8 relative flex flex-col bg-[color:var(--color-paper)] border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]"
-              : "card-paper p-7 md:p-8 relative flex flex-col";
-          const priceClass = isFlagship ? "text-[color:var(--color-amber)]" : "";
-          const tagAccent = isFlagship
-            ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"
-            : isPopular
-              ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"
-              : "bg-[color:var(--color-paper-warm)] text-[color:var(--color-amber-deep)]";
+          const isPopular = tier.badge === "Most popular";
+          const isFlagship = tier.badge === "Flagship";
+          const isHero = tier.badge === "Hero offer";
           return (
-            <article class={cardClass}>
-              {(isFlagship || isPopular) && (
-                <div class={`absolute -top-3 left-6 font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)] ${isFlagship ? "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]" : "bg-[color:var(--color-amber)] text-[color:var(--color-ink)]"}`}>
-                  {isFlagship ? "Flagship" : "Most popular"}
+            <article class:list={[
+              "rounded-2xl p-7 md:p-8 flex flex-col relative",
+              isFlagship
+                ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
+                : "bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]",
+              isPopular && "ring-2 ring-[color:var(--color-accent)] shadow-[0_20px_40px_-20px_rgb(16_185_129_/_0.35)]",
+            ]}>
+              {tier.badge && (
+                <div class:list={[
+                  "absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide whitespace-nowrap",
+                  isHero ? "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] border border-[color:var(--color-accent)]/30" :
+                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)]" :
+                  "bg-[color:var(--color-accent)] text-[color:var(--color-paper)]",
+                ]}>
+                  {tier.badge}
                 </div>
               )}
-              {tier.letter === "A" && (
-                <div class="absolute -top-3 right-6 font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-current bg-[color:var(--color-paper)] text-[color:var(--color-amber-deep)]">
-                  Hero offer
-                </div>
-              )}
-              <div class={`flex items-center justify-between mb-5 mt-2 ${isFlagship ? "" : ""}`}>
-                <span class={`font-mono text-[0.7rem] tracking-[0.18em] uppercase ${isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}`}>
-                  Plan {tier.letter}
-                </span>
-                <span class={`font-mono text-[0.7rem] tracking-[0.16em] uppercase ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-ink)]/60"}`}>
-                  Month-to-month
-                </span>
+
+              <h3 class={`font-display text-[1.4rem] font-semibold ${isFlagship ? "text-[color:var(--color-paper)]" : "text-[color:var(--color-ink)]"}`}>{tier.name}</h3>
+              <p class={`mt-2 text-[0.95rem] leading-snug ${isFlagship ? "text-[color:var(--color-paper)]/75" : "text-[color:var(--color-slate-600)]"}`}>{tier.tagline}</p>
+
+              <div class="mt-7 flex items-baseline gap-1.5">
+                <span class={`font-display text-[3.4rem] leading-none ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-ink)]"}`}>${tier.price}</span>
+                <span class={`text-[0.95rem] ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-slate-500)]"}`}>/ month</span>
               </div>
 
-              <div class="font-display text-[1.6rem] leading-tight tracking-tight mb-1">
-                {tier.name}
-              </div>
-
-              <p class={`text-[0.9rem] leading-snug mb-5 ${isFlagship ? "text-[color:var(--color-paper)]/75" : "text-[color:var(--color-ink)]/70"}`}>
-                {tier.tagline}
-              </p>
-
-              <div class="flex items-baseline gap-2 mb-2">
-                <span class={`font-display text-[3.6rem] leading-none ${priceClass}`}>${tier.price}</span>
-                <span class={`font-mono text-[0.72rem] tracking-[0.16em] uppercase ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-ink)]/60"}`}>
-                  / month
-                </span>
-              </div>
-
-              <div class={`flex flex-wrap gap-x-2.5 gap-y-1 font-mono text-[0.58rem] tracking-[0.16em] uppercase mb-5 ${isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}`}>
+              <div class={`mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.78rem] font-medium ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-accent-dark)]"}`}>
                 {tier.subline.map((item, i) => (
                   <>
-                    {i > 0 && <span class="opacity-30">·</span>}
-                    <span class="inline-flex items-center gap-1"><span aria-hidden="true">✓</span>{item}</span>
+                    {i > 0 && <span class={isFlagship ? "text-[color:var(--color-paper)]/30" : "text-[color:var(--color-slate-300)]"}>·</span>}
+                    <span>✓ {item}</span>
                   </>
                 ))}
               </div>
 
-              <ul class={`space-y-2 text-[0.92rem] mb-7 flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : ""}`}>
+              <ul class={`mt-7 space-y-3 text-[0.93rem] flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : "text-[color:var(--color-slate-700)]"}`}>
                 {tier.features.map((f) => (
-                  <li class="flex gap-2.5">
-                    <span class={isFlagship ? "text-[color:var(--color-amber)]" : "text-[color:var(--color-amber-deep)]"}>→</span>
+                  <li class="flex items-start gap-2.5">
+                    <span class={`mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold ${isFlagship ? "bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)]" : "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]"}`}>✓</span>
                     <span>{f}</span>
                   </li>
                 ))}
@@ -164,74 +160,57 @@ const monthlySavings = standaloneTotal - flagshipPrice;
 
               <a
                 href="/contact"
-                class={isFlagship
-                  ? "btn-primary justify-center"
-                  : isPopular
-                    ? "btn-primary justify-center"
-                    : "btn-ghost justify-center text-[color:var(--color-ink)]"}
+                class:list={[
+                  "mt-8 inline-flex items-center justify-center gap-2 font-semibold text-[0.95rem] py-3.5 px-6 rounded-full transition-all",
+                  isPopular ? "bg-[color:var(--color-accent)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-accent-dark)]" :
+                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-accent-dark)] hover:text-[color:var(--color-paper)]" :
+                  "bg-[color:var(--color-ink)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-ink-soft)]",
+                ]}
               >
-                Book a demo <span aria-hidden="true">→</span>
+                Book a demo →
               </a>
             </article>
           );
         })}
       </div>
-
     </div>
   </section>
 
-  <!-- What's in each tier (matrix) -->
-  <section class="bg-[color:var(--color-paper)] relative">
-    <div class="grain-light"></div>
-    <div class="container-dossier py-24 relative">
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
-        <div>
-          <span class="file-tag">Section 02</span>
-          <h2 class="font-display text-[2rem] md:text-[2.7rem] leading-[1] tracking-tight mt-5 max-w-2xl">
-            What's in each tier.
-          </h2>
-        </div>
-        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
-          Every tier includes the website. Each step up adds compounding leverage.
+  <!-- ─── Comparison matrix ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="eyebrow">Compare plans</span>
+        <h2 class="font-display text-[2rem] md:text-[2.6rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+          What's in each plan.
+        </h2>
+        <p class="mt-5 text-[1rem] leading-relaxed text-[color:var(--color-slate-600)]">
+          Every plan includes the website. Each step up adds compounding leverage.
         </p>
       </div>
 
       <!-- Desktop matrix -->
-      <div class="hidden md:block overflow-x-auto border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
-        <table class="w-full text-left border-collapse min-w-[760px]">
+      <div class="hidden md:block max-w-5xl mx-auto rounded-2xl border border-[color:var(--color-slate-200)] overflow-hidden bg-[color:var(--color-paper)]">
+        <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="border-b border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal">Component</th>
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center">$197 Never Miss a Lead</th>
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center">$297 Lead + Review</th>
-              <th class="px-5 py-4 font-mono text-[0.7rem] tracking-[0.16em] uppercase font-normal text-center text-[color:var(--color-amber)]">$497 Local Authority</th>
+            <tr class="bg-[color:var(--color-cream)] border-b border-[color:var(--color-slate-200)]">
+              <th class="px-6 py-4 text-[0.85rem] font-semibold text-[color:var(--color-slate-600)]">Feature</th>
+              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-ink)]">$197<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Never Miss a Lead</span></th>
+              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-ink)]">$297<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Lead + Review Engine</span></th>
+              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-accent-dark)] bg-[color:var(--color-mint)]/40">$497<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Local Authority</span></th>
             </tr>
           </thead>
           <tbody>
-            {[
-              { label: "Free conversion-focused website", in: [true, true, true] },
-              { label: "Missed-call text-back (under 30 sec)", in: [true, true, true] },
-              { label: "Dedicated business number", in: [true, true, true] },
-              { label: "Two-way SMS inbox on your phone", in: [true, true, true] },
-              { label: "Mobile messaging app", in: [true, true, true] },
-              { label: "Weekly missed-call recovery report", in: [true, true, true] },
-              { label: "Review request automation", in: [false, true, true] },
-              { label: "Smart routing (happy → Google, unhappy → private form)", in: [false, true, true] },
-              { label: "Smart cooldown per customer", in: [false, true, true] },
-              { label: "Monthly review-volume report", in: [false, true, true] },
-              { label: "Google Business Profile posts (2×/wk)", in: [false, false, true] },
-              { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
-              { label: "Review response management", in: [false, false, true] },
-              { label: "Full CRM with lead pipeline", in: [false, false, true] },
-              { label: "Full branded mobile CRM", in: [false, false, true] },
-              { label: "Local on-page SEO + service-area pages", in: [false, false, true] },
-              { label: "Quarterly re-activation campaign", in: [false, false, true] },
-            ].map((row, idx) => (
-              <tr class:list={["border-b border-[color:var(--color-rule)]", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
-                <td class="px-5 py-4 font-display text-[1rem] font-semibold">{row.label}</td>
+            {matrixRows.map((row, idx) => (
+              <tr class={idx === matrixRows.length - 1 ? "" : "border-b border-[color:var(--color-slate-100)]"}>
+                <td class="px-6 py-4 text-[0.93rem] font-medium text-[color:var(--color-ink)]">{row.label}</td>
                 {row.in.map((included, ci) => (
-                  <td class:list={["px-5 py-4 text-center font-mono text-[0.85rem]", ci === 2 ? "bg-[color:var(--color-ink)]/4" : ""]}>
-                    {included ? <span class="text-[color:var(--color-amber-deep)] text-[1.1rem]">●</span> : <span class="text-[color:var(--color-ink)]/20">—</span>}
+                  <td class:list={["px-6 py-4 text-center", ci === 2 ? "bg-[color:var(--color-mint)]/30" : ""]}>
+                    {included ? (
+                      <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.72rem] font-bold">✓</span>
+                    ) : (
+                      <span class="text-[color:var(--color-slate-300)] text-[1rem]">—</span>
+                    )}
                   </td>
                 ))}
               </tr>
@@ -240,17 +219,17 @@ const monthlySavings = standaloneTotal - flagshipPrice;
         </table>
       </div>
 
-      <!-- Mobile stacked tier cards -->
-      <div class="md:hidden space-y-4">
+      <!-- Mobile stacked -->
+      <div class="md:hidden space-y-5">
         {tiers.map((tier) => (
-          <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
-            <header class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-3 flex items-baseline justify-between gap-3">
-              <span class="font-display text-[1rem] font-semibold">${tier.price} · {tier.name}</span>
-              <span class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)]">Plan {tier.letter}</span>
-            </header>
-            <ul class="px-4 py-4 space-y-2 text-[0.92rem]">
+          <article class="card-flat">
+            <div class="flex items-baseline justify-between mb-1">
+              <h3 class="font-display text-[1.15rem] font-semibold text-[color:var(--color-ink)]">{tier.name}</h3>
+              <div class="font-display text-[1.4rem] font-semibold text-[color:var(--color-ink)]">${tier.price}<span class="text-[0.78rem] font-normal text-[color:var(--color-slate-500)]">/mo</span></div>
+            </div>
+            <ul class="mt-4 space-y-2 text-[0.92rem] text-[color:var(--color-slate-700)]">
               {tier.features.map((f) => (
-                <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> <span>{f}</span></li>
+                <li class="check-bullet"><span>{f}</span></li>
               ))}
             </ul>
           </article>
@@ -259,95 +238,58 @@ const monthlySavings = standaloneTotal - flagshipPrice;
     </div>
   </section>
 
-  <!-- Vs market rate (for the flagship tier) -->
-  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
-    <div class="container-dossier py-20">
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-8">
+  <!-- ─── What's not included ─── -->
+  <section class="bg-[color:var(--color-cream)]">
+    <div class="container-page section-padding">
+      <div class="grid lg:grid-cols-[1fr_1.5fr] gap-12 max-w-6xl mx-auto">
         <div>
-          <span class="file-tag">Section 03</span>
-          <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1] tracking-tight mt-5 max-w-2xl">
-            Local Authority vs assembling it yourself.
+          <span class="eyebrow">Honest scope</span>
+          <h2 class="font-display text-[2rem] md:text-[2.4rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+            What we deliberately don't sell.
           </h2>
+          <p class="mt-5 text-[1rem] leading-relaxed text-[color:var(--color-slate-600)]">
+            Transparency about what isn't in any plan matters as much as what is.
+          </p>
         </div>
-        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
-          The flagship tier compared to what each component costs piecemeal at typical small-business rates.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="card-paper p-6">
-          <div class="meta mb-2">If you bought separately</div>
-          <div class="font-display text-[2.2rem] leading-none">${standaloneTotal.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
-          <div class="meta mt-2">Plus ${setupCost.toLocaleString()} in one-time setup</div>
-        </div>
-        <div class="card-paper p-6 border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]">
-          <div class="meta mb-2">Local Authority tier</div>
-          <div class="font-display text-[2.2rem] leading-none text-[color:var(--color-amber-deep)]">${flagshipPrice}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
-          <div class="meta mt-2">$0 setup · month-to-month</div>
-        </div>
-        <div class="card-paper p-6">
-          <div class="meta mb-2">Monthly delta</div>
-          <div class="font-display text-[2.2rem] leading-none">−${monthlySavings.toLocaleString()}<span class="text-[0.95rem] font-mono tracking-[0.12em] uppercase text-[color:var(--color-ink)]/60"> /mo</span></div>
-          <div class="meta mt-2">≈ ${(monthlySavings * 12).toLocaleString()} per year</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What's NOT in the bundle -->
-  <section class="bg-[color:var(--color-paper)] border-b border-[color:var(--color-rule)]">
-    <div class="container-dossier py-20 grid lg:grid-cols-[1fr_1.6fr] gap-10">
-      <div>
-        <span class="file-tag">Section 04</span>
-        <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1] tracking-tight mt-5">
-          What we deliberately don't sell.
-        </h2>
-        <p class="mt-5 text-[0.95rem] text-[color:var(--color-ink)]/70">
-          Transparency about what isn't in any tier matters as much as what is.
-        </p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="card-paper p-6">
-          <div class="font-display text-[1.1rem] font-semibold">Paid Google Ads management</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">Ad spend pulls from a different budget. We'll refer you to two PPC partners we trust.</p>
-        </div>
-        <div class="card-paper p-6">
-          <div class="font-display text-[1.1rem] font-semibold">Logo + brand identity work</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">If you need a full rebrand we'll point you to a designer. The website assumes a usable logo.</p>
-        </div>
-        <div class="card-paper p-6">
-          <div class="font-display text-[1.1rem] font-semibold">Social content production</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">We post to Google Business Profile in the Local Authority tier. We don't run your Instagram.</p>
-        </div>
-        <div class="card-paper p-6">
-          <div class="font-display text-[1.1rem] font-semibold">Trades outside our wheelhouse</div>
-          <p class="mt-2 text-[0.92rem] text-[color:var(--color-ink)]/70">Plumbing, HVAC, roofing, electrical only. We turn down landscapers, painters, and general contractors.</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="card-flat">
+            <div class="font-display text-[1.05rem] font-semibold text-[color:var(--color-ink)]">Paid Google Ads</div>
+            <p class="mt-2 text-[0.92rem] leading-relaxed text-[color:var(--color-slate-600)]">Ad spend is a separate budget. We refer you to two PPC partners we trust.</p>
+          </div>
+          <div class="card-flat">
+            <div class="font-display text-[1.05rem] font-semibold text-[color:var(--color-ink)]">Logo + brand identity</div>
+            <p class="mt-2 text-[0.92rem] leading-relaxed text-[color:var(--color-slate-600)]">For a full rebrand we'll point you to a designer. The website assumes a usable logo.</p>
+          </div>
+          <div class="card-flat">
+            <div class="font-display text-[1.05rem] font-semibold text-[color:var(--color-ink)]">Social content production</div>
+            <p class="mt-2 text-[0.92rem] leading-relaxed text-[color:var(--color-slate-600)]">We post to Google Business Profile in Local Authority. We don't run your Instagram.</p>
+          </div>
+          <div class="card-flat">
+            <div class="font-display text-[1.05rem] font-semibold text-[color:var(--color-ink)]">Trades outside our wheelhouse</div>
+            <p class="mt-2 text-[0.92rem] leading-relaxed text-[color:var(--color-slate-600)]">Plumbing only. We turn down HVAC, roofing, electrical, and general contracting.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier py-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
-      <div>
-        <span class="file-tag">End of file 003</span>
-        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-6">
+  <!-- ─── Bottom CTA ─── -->
+  <section class="bg-[color:var(--color-ink)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-accent)]/15 via-transparent to-[color:var(--color-accent)]/5 pointer-events-none"></div>
+    <div class="container-page section-padding relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight text-[color:var(--color-paper)]">
           Twenty minutes will tell you everything.
         </h2>
-        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
-          Bring your current numbers. We'll tell you straight which tier fits, or whether something else is the right move.
+        <p class="mt-5 text-[1.1rem] leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl mx-auto">
+          Bring your numbers. We tell you straight which plan fits — or whether something else is the right move.
         </p>
-      </div>
-      <div class="flex flex-col gap-4 lg:items-end">
-        <a href="/contact" class="btn-primary">
-          Book a demo
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="/case-studies" class="btn-ghost border-[color:var(--color-paper)]/40">
-          Read the case files first
-        </a>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">Book a demo →</a>
+          <a href="/case-studies" class="inline-flex items-center gap-2 text-[color:var(--color-paper)] text-[1rem] font-medium px-6 py-4 hover:text-[color:var(--color-accent)] transition-colors">
+            Read the case files →
+          </a>
+        </div>
       </div>
     </div>
   </section>

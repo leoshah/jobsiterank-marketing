@@ -19,76 +19,73 @@ const categoryLabel = categoryMeta ? categoryMeta.label : cs.category;
 ---
 
 <BaseLayout
-  title={`${cs.business} — case file ${cs.fileNum} · JobsiteRank`}
+  title={`${cs.business} — case study · JobsiteRank`}
   description={`${cs.business} (${cs.city}, ${cs.state}) — ${cs.cardHook}`}
 >
-  <!-- Masthead -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier pt-12 pb-20">
-      <div class="flex items-center gap-3 mb-8 flex-wrap">
-        <a
-          href="/case-studies"
-          class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)] hover:underline"
-        >
-          ← All case files
-        </a>
-        <span class="meta">·</span>
-        <span class="file-tag">Case file {cs.fileNum}</span>
-        <span class="meta">·</span>
-        <span class="meta">{categoryLabel}</span>
-        {cs.representative && (
-          <>
-            <span class="meta">·</span>
-            <span class="meta">Representative engagement</span>
-          </>
-        )}
+  <!-- ─── Header ─── -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-16 md:!pb-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 flex-wrap">
+          <a href="/case-studies" class="text-[0.9rem] font-medium text-[color:var(--color-slate-600)] hover:text-[color:var(--color-accent-dark)] transition-colors">
+            ← All case studies
+          </a>
+          <span class="text-[color:var(--color-slate-300)]">·</span>
+          <span class="tag-pill tag-pill-accent">{categoryLabel}</span>
+          {cs.representative && (
+            <>
+              <span class="text-[color:var(--color-slate-300)]">·</span>
+              <span class="text-[0.78rem] text-[color:var(--color-slate-500)] font-medium">Representative engagement</span>
+            </>
+          )}
+        </div>
+
+        <div class="mt-6 flex items-baseline gap-4 flex-wrap">
+          <span class="font-display text-[1.05rem] text-[color:var(--color-accent-dark)] font-semibold">{cs.business}</span>
+          <span class="text-[0.9rem] text-[color:var(--color-slate-500)]">{cs.city}, {cs.state}</span>
+        </div>
+
+        <h1 class="font-display text-[2.4rem] sm:text-[3rem] md:text-[3.6rem] leading-[1.05] tracking-tight mt-3 text-[color:var(--color-ink)]">
+          {cs.titleStart}
+          <span class="block mt-1 text-[color:var(--color-accent-dark)]">{cs.titleAccent}</span>
+        </h1>
+
+        <p class="mt-6 text-[1.05rem] md:text-[1.12rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-3xl">
+          {cs.intro}
+        </p>
       </div>
-
-      <div class="flex flex-wrap items-baseline gap-x-5 gap-y-2 mb-3">
-        <span class="font-display text-[1.05rem] text-[color:var(--color-amber)]">{cs.business}</span>
-        <span class="meta">{cs.city}, {cs.state}</span>
-      </div>
-
-      <h1 class="font-display text-[2.4rem] md:text-[3.6rem] lg:text-[4.4rem] leading-[0.98] tracking-tight max-w-[18ch]">
-        {cs.titleStart}<br />
-        <span class="serif-italic text-[color:var(--color-amber)]">{cs.titleAccent}</span>
-      </h1>
-
-      <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.02rem] md:text-[1.1rem] leading-relaxed">
-        {cs.intro}
-      </p>
     </div>
   </section>
 
-  <!-- Body -->
-  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10 pb-20">
-    <div class="container-dossier">
-      <div class="card-paper p-8 md:p-12">
+  <!-- ─── Body ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding-tight md:!py-16">
+      <div class="max-w-5xl mx-auto">
         <!-- Intake + before/after -->
-        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
-          <div>
-            <div class="meta mb-5">Section A · Intake</div>
-            <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3">
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 mb-16">
+          <div class="card-flat">
+            <div class="eyebrow mb-5">Intake</div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-8 gap-y-4">
               {cs.intakeFacts.map((f) => (
                 <>
-                  <dt class="meta whitespace-nowrap">{f.label}</dt>
-                  <dd class="text-[0.95rem]">{f.value}</dd>
+                  <dt class="text-[0.85rem] font-semibold text-[color:var(--color-slate-500)] whitespace-nowrap uppercase tracking-wide">{f.label}</dt>
+                  <dd class="text-[0.95rem] text-[color:var(--color-ink)]">{f.value}</dd>
                 </>
               ))}
             </dl>
           </div>
 
-          <aside class="card-warm p-7">
-            <div class="meta mb-3">The before / after</div>
+          <aside class="card-mint">
+            <div class="eyebrow mb-5">Before / after</div>
             <div class="space-y-5">
               {cs.beforeAfter.map((row, idx) => (
-                <div class={idx > 0 ? "border-t border-[color:var(--color-ink)]/15 pt-4" : ""}>
+                <div class={idx > 0 ? "border-t border-[color:var(--color-accent-soft)] pt-4" : ""}>
                   <div class="flex items-baseline justify-between gap-3">
-                    <span class="font-display text-[1.05rem] font-semibold">{row.label}</span>
-                    <span class="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[color:var(--color-amber-deep)] whitespace-nowrap">{row.delta}</span>
+                    <span class="font-display font-semibold text-[1rem] text-[color:var(--color-ink)]">{row.label}</span>
+                    <span class="font-display text-[1.1rem] font-bold text-[color:var(--color-accent-dark)] whitespace-nowrap">{row.delta}</span>
                   </div>
-                  <div class="mt-1.5 text-[0.9rem] text-[color:var(--color-ink)]/65">{row.detail}</div>
+                  <div class="mt-1.5 text-[0.88rem] text-[color:var(--color-slate-600)]">{row.detail}</div>
                 </div>
               ))}
             </div>
@@ -96,31 +93,33 @@ const categoryLabel = categoryMeta ? categoryMeta.label : cs.category;
         </div>
 
         <!-- Metrics -->
-        <div class="mt-12 pt-10 border-t border-[color:var(--color-ink)]/15">
-          <div class="meta mb-5">Section B · Metrics</div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10">
+        <div class="mb-16">
+          <div class="eyebrow mb-5">Metrics</div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {cs.metrics.map((m) => (
-              <div class="border-t border-[color:var(--color-ink)] pt-3">
-                <div class="font-display text-[2.2rem] leading-none text-[color:var(--color-amber-deep)]">{m.value}</div>
-                <div class="meta mt-2">{m.label}</div>
+              <div class="card-flat">
+                <div class="font-display text-[2.4rem] leading-none text-[color:var(--color-accent-dark)] font-semibold">{m.value}</div>
+                <div class="text-[0.88rem] text-[color:var(--color-slate-600)] mt-3">{m.label}</div>
               </div>
             ))}
           </div>
         </div>
 
         <!-- Timeline -->
-        <div class="mt-14 pt-10 border-t border-[color:var(--color-ink)]/15">
-          <div class="meta mb-5">Section C · Engagement timeline</div>
-          <ol class="space-y-6">
+        <div class="mb-16">
+          <div class="eyebrow mb-5">Engagement timeline</div>
+          <ol class="space-y-3">
             {cs.timeline.map((entry, idx) => (
-              <li class="grid md:grid-cols-[140px_1fr] gap-4 md:gap-8 border-b border-[color:var(--color-rule)] pb-6 last:border-b-0 last:pb-0">
-                <div>
-                  <div class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber-deep)]">T/{String(idx + 1).padStart(2, "0")}</div>
-                  <div class="font-display text-[1rem] font-semibold mt-1">{entry.week}</div>
-                </div>
-                <div>
-                  <div class="font-display text-[1.1rem] font-semibold">{entry.label}</div>
-                  <p class="mt-2 text-[0.94rem] leading-relaxed text-[color:var(--color-ink)]/75">{entry.detail}</p>
+              <li class="card-flat">
+                <div class="grid md:grid-cols-[160px_1fr] gap-4 md:gap-8">
+                  <div>
+                    <div class="text-[0.78rem] font-semibold uppercase tracking-wide text-[color:var(--color-accent-dark)]">Step {idx + 1}</div>
+                    <div class="font-display text-[1rem] font-semibold text-[color:var(--color-ink)] mt-1.5">{entry.week}</div>
+                  </div>
+                  <div>
+                    <div class="font-display text-[1.1rem] font-semibold text-[color:var(--color-ink)]">{entry.label}</div>
+                    <p class="mt-2 text-[0.95rem] leading-relaxed text-[color:var(--color-slate-600)]">{entry.detail}</p>
+                  </div>
                 </div>
               </li>
             ))}
@@ -128,53 +127,45 @@ const categoryLabel = categoryMeta ? categoryMeta.label : cs.category;
         </div>
 
         <!-- Quote -->
-        <div class="mt-14 pt-10 border-t border-[color:var(--color-ink)]/15">
-          <div class="meta mb-5">Section D · In their words</div>
-          <blockquote class="serif-italic text-[1.4rem] md:text-[1.7rem] leading-snug border-l-2 border-[color:var(--color-amber)] pl-6 max-w-3xl">
+        <div class="card-dark">
+          <div class="text-[color:var(--color-warning)] text-[1.05rem] mb-4">★ ★ ★ ★ ★</div>
+          <blockquote class="font-display text-[1.4rem] md:text-[1.7rem] leading-snug text-[color:var(--color-paper)]">
             "{cs.quote}"
           </blockquote>
-          <div class="mt-5 flex items-center gap-4">
-            <div class="w-12 h-12 grid place-items-center bg-[color:var(--color-ink)] text-[color:var(--color-paper)] font-display text-[1.05rem]">{cs.quoteInitials}</div>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="grid place-items-center w-11 h-11 rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-ink)] font-display font-bold text-[0.95rem]">
+              {cs.quoteInitials}
+            </div>
             <div>
-              <div class="font-display text-[1.05rem] font-semibold">{cs.quoteAuthor}</div>
-              <div class="meta">{cs.quoteAttribution}</div>
+              <div class="font-semibold text-[color:var(--color-paper)] text-[0.95rem]">{cs.quoteAuthor}</div>
+              <div class="text-[0.85rem] text-[color:var(--color-paper)]/65">{cs.quoteAttribution}</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Back to all -->
-      <div class="mt-8 flex flex-wrap justify-between items-center gap-4">
-        <a href="/case-studies" class="btn-ghost text-[color:var(--color-ink)]">
-          ← Back to all case files
-        </a>
-        <a href="/contact" class="btn-primary">
-          Book a demo <span aria-hidden="true">→</span>
-        </a>
+        <!-- Back nav -->
+        <div class="mt-10 flex flex-wrap items-center justify-between gap-4">
+          <a href="/case-studies" class="btn-outline">← All case studies</a>
+          <a href="/contact" class="btn-accent">Book a demo →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier py-16 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
-      <div>
-        <span class="file-tag">End of file {cs.fileNum}</span>
-        <h2 class="font-display text-[2rem] md:text-[2.8rem] leading-[1] tracking-tight mt-5">
+  <!-- ─── Bottom CTA ─── -->
+  <section class="bg-[color:var(--color-cream)]">
+    <div class="container-page section-padding-tight md:!py-16">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-display text-[1.8rem] md:text-[2.4rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
           See if your shop fits the next file.
         </h2>
-        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.02rem] leading-relaxed">
-          Twenty-minute demo. We'll show you the system live on a fake call to your business and tell you straight whether the bundle would move the needle.
+        <p class="mt-4 text-[1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-xl mx-auto">
+          Twenty-minute demo. We pull up your Google Business Profile live and tell you straight whether the system would move the needle.
         </p>
-      </div>
-      <div class="flex flex-col gap-3 lg:items-end">
-        <a href="/contact" class="btn-primary">
-          Book a demo <span aria-hidden="true">→</span>
-        </a>
-        <a href="/case-studies" class="btn-ghost border-[color:var(--color-paper)]/40">
-          Read more case files
-        </a>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn-accent">Book a demo →</a>
+          <a href="/case-studies" class="btn-outline">Read more cases</a>
+        </div>
       </div>
     </div>
   </section>

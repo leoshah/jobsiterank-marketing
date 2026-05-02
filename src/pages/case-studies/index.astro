@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageMastHead from "../../components/PageMastHead.astro";
 import { CASE_STUDIES, CATEGORIES, type CaseCategory } from "../../data/caseStudies";
 
 const counts: Record<CaseCategory | "all", number> = {
@@ -21,81 +20,82 @@ const categoryShort: Record<CaseCategory, string> = Object.fromEntries(
   title="Case studies — JobsiteRank"
   description="11 case files from plumbing shops across the US: missed-call-text-back, re-activation campaigns, reviews & replies, lead generation."
 >
-  <PageMastHead fileTag="File 002" eyebrow="Case study dossier · 11 files" title="Case files.">
-    <span slot="title">
-      Case files,<br />
-      <span class="serif-italic text-[color:var(--color-amber)]">11 of them.</span>
-    </span>
-    <p class="mt-8 max-w-2xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.15rem] leading-relaxed">
-      Real outcomes from trades shops across the country — missed-call-text-back wins, re-activation campaigns, AI receptionist cost cuts, and review-engine results. Click any file to read the full engagement.
-    </p>
-  </PageMastHead>
+  <!-- ─── Header ─── -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow-mint">Case studies · 11 plumbing shops</span>
+        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight mt-6 text-[color:var(--color-ink)]">
+          Real shops. Real numbers.
+        </h1>
+        <p class="mt-6 text-[1.1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          Outcomes from plumbing shops across the country — text-back wins, re-activation campaigns, review-engine results, lead-gen lifts. Click any file to read the engagement.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Filter -->
-  <section class="bg-[color:var(--color-paper)] -mt-12 relative z-10 pb-6">
-    <div class="container-dossier">
+  <!-- ─── Filter ─── -->
+  <section class="bg-[color:var(--color-paper)] -mt-8 relative z-10">
+    <div class="container-page">
       <div
         id="cs-filter"
-        class="flex flex-wrap gap-2 border border-[color:var(--color-ink)] bg-[color:var(--color-paper)] p-2"
+        class="flex flex-wrap gap-2 justify-center bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)] rounded-full p-1.5 max-w-3xl mx-auto shadow-sm"
         role="tablist"
         aria-label="Filter case studies"
       >
         <button
           type="button"
-          class="cs-filter-btn font-mono text-[0.7rem] tracking-[0.16em] uppercase px-3 py-2 border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
+          class="cs-filter-btn px-4 py-2 rounded-full text-[0.85rem] font-semibold transition-colors bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
           data-filter="all"
           aria-pressed="true"
         >
-          All <span class="opacity-60">· {counts.all}</span>
+          All <span class="opacity-60 ml-1">{counts.all}</span>
         </button>
         {CATEGORIES.map((cat) => (
           <button
             type="button"
-            class="cs-filter-btn font-mono text-[0.7rem] tracking-[0.16em] uppercase px-3 py-2 border border-[color:var(--color-ink)] hover:bg-[color:var(--color-paper-warm)]"
+            class="cs-filter-btn px-4 py-2 rounded-full text-[0.85rem] font-semibold transition-colors text-[color:var(--color-slate-600)] hover:bg-[color:var(--color-slate-50)]"
             data-filter={cat.key}
             aria-pressed="false"
           >
-            {cat.short} <span class="opacity-60">· {counts[cat.key]}</span>
+            {cat.short} <span class="opacity-60 ml-1">{counts[cat.key]}</span>
           </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Grid -->
-  <section class="bg-[color:var(--color-paper)] pb-24 relative">
-    <div class="grain-light"></div>
-    <div class="container-dossier relative">
+  <!-- ─── Grid ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
       <div id="cs-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {CASE_STUDIES.map((cs) => (
           <a
             href={`/case-studies/${cs.slug}`}
-            class="cs-card card-paper p-6 flex flex-col h-full group transition-transform hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[8px_8px_0_0_var(--color-ink)]"
+            class="cs-card card-soft group"
             data-category={cs.category}
           >
             <div class="flex items-baseline justify-between mb-4">
-              <span class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber-deep)]">F/{cs.fileNum}</span>
-              <span class="meta">{cs.city}, {cs.state}</span>
+              <span class="tag-pill tag-pill-accent">{categoryShort[cs.category]}</span>
+              <span class="text-[0.78rem] font-medium text-[color:var(--color-slate-500)]">{cs.city}, {cs.state}</span>
             </div>
 
-            <span class="self-start font-mono text-[0.62rem] tracking-[0.16em] uppercase px-2 py-1 border border-[color:var(--color-ink)] bg-[color:var(--color-paper-warm)] text-[color:var(--color-amber-deep)] mb-4">
-              {categoryShort[cs.category]}
-            </span>
+            <h3 class="font-display text-[1.3rem] font-semibold leading-tight text-[color:var(--color-ink)]">{cs.business}</h3>
+            <div class="text-[0.85rem] text-[color:var(--color-slate-500)] mt-1">{cs.trade}</div>
 
-            <h3 class="font-display text-[1.35rem] leading-tight">{cs.business}</h3>
-            <div class="meta mt-1.5">{cs.trade}</div>
-
-            <p class="mt-4 text-[0.9rem] leading-relaxed text-[color:var(--color-ink)]/75">
+            <p class="mt-4 text-[0.93rem] leading-relaxed text-[color:var(--color-slate-600)]">
               {cs.cardHook}
             </p>
 
-            <div class="mt-auto pt-5 border-t border-[color:var(--color-rule)] flex items-baseline justify-between">
+            <div class="mt-5 pt-5 border-t border-[color:var(--color-slate-200)] flex items-baseline justify-between">
               <div>
-                <div class="font-display text-[1.55rem] leading-none text-[color:var(--color-amber-deep)]">{cs.cardMetricValue}</div>
-                <div class="meta mt-1">{cs.cardMetricLabel}</div>
+                <div class="font-display text-[1.6rem] leading-none text-[color:var(--color-accent-dark)] font-semibold">{cs.cardMetricValue}</div>
+                <div class="text-[0.78rem] text-[color:var(--color-slate-500)] mt-1.5">{cs.cardMetricLabel}</div>
               </div>
-              <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)] group-hover:text-[color:var(--color-amber-deep)]">
-                Read file →
+              <span class="text-[0.85rem] font-semibold text-[color:var(--color-ink)] group-hover:text-[color:var(--color-accent-dark)]">
+                Read →
               </span>
             </div>
           </a>
@@ -104,38 +104,34 @@ const categoryShort: Record<CaseCategory, string> = Object.fromEntries(
 
       <p
         id="cs-empty"
-        class="hidden text-center font-mono text-[0.85rem] uppercase tracking-[0.14em] text-[color:var(--color-ink)]/60 py-16"
+        class="hidden text-center text-[0.9rem] text-[color:var(--color-slate-500)] py-16"
       >
         No case files in this category yet.
       </p>
 
-      <p class="mt-10 text-center meta">
+      <p class="mt-12 text-center text-[0.85rem] text-[color:var(--color-slate-500)] max-w-2xl mx-auto">
         Cases tagged "representative" are illustrative engagements composed for this dossier. Real published cases will replace them as engagements close.
       </p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier py-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
-      <div>
-        <span class="file-tag">End of file 002</span>
-        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-6">
+  <!-- ─── Bottom CTA ─── -->
+  <section class="bg-[color:var(--color-ink)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-accent)]/15 via-transparent to-[color:var(--color-accent)]/5 pointer-events-none"></div>
+    <div class="container-page section-padding relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight text-[color:var(--color-paper)]">
           Want your shop in the next file?
         </h2>
-        <p class="mt-5 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
+        <p class="mt-5 text-[1.1rem] leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl mx-auto">
           We pick three new engagements per quarter so the work stays good. The demo is where it starts.
         </p>
-      </div>
-      <div class="flex flex-col gap-4 lg:items-end">
-        <a href="/contact" class="btn-primary">
-          Book a demo
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40">
-          Look at the pricing first
-        </a>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">Book a demo →</a>
+          <a href="/pricing" class="inline-flex items-center gap-2 text-[color:var(--color-paper)] text-[1rem] font-medium px-6 py-4 hover:text-[color:var(--color-accent)] transition-colors">
+            See pricing →
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -157,10 +153,10 @@ const categoryShort: Record<CaseCategory, string> = Object.fromEntries(
         b.setAttribute("aria-pressed", isActive ? "true" : "false");
         if (isActive) {
           b.classList.add("bg-[color:var(--color-ink)]", "text-[color:var(--color-paper)]");
-          b.classList.remove("hover:bg-[color:var(--color-paper-warm)]");
+          b.classList.remove("text-[color:var(--color-slate-600)]", "hover:bg-[color:var(--color-slate-50)]");
         } else {
           b.classList.remove("bg-[color:var(--color-ink)]", "text-[color:var(--color-paper)]");
-          b.classList.add("hover:bg-[color:var(--color-paper-warm)]");
+          b.classList.add("text-[color:var(--color-slate-600)]", "hover:bg-[color:var(--color-slate-50)]");
         }
       });
 

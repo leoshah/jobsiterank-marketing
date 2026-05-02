@@ -1,96 +1,64 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-interface Feature {
-  num: string;
+interface ProductCategory {
+  eyebrow: string;
   title: string;
   description: string;
-  badge?: string;
+  products: Array<{ name: string; description: string }>;
+  visual?: "phone" | "list" | "stars" | "dashboard";
 }
 
-const features: Feature[] = [
+const productCategories: ProductCategory[] = [
   {
-    num: "01",
-    title: "Missed-call-text-back",
-    description: "Every missed call fires an automatic text in under 12 seconds — \"Sorry we missed you, what's the address?\" — so the lead never bounces to your competitor.",
-    badge: "Hero offer",
+    eyebrow: "Get found online",
+    title: "If people can't find you on Google, they won't call you.",
+    description: "We fix that with a website built to rank, get clicks, and turn them into customers.",
+    products: [
+      { name: "Free conversion website", description: "Mobile-first, click-to-call. Built so Google can read it and customers want to dial." },
+      { name: "On-site SEO", description: "Pages structured so Google understands what you do and where you serve." },
+      { name: "Service area pages", description: "Show up in 'near me' searches across every zip code you cover." },
+      { name: "Google Business Profile posts", description: "Two posts a week to keep your profile fresh and ranking." },
+      { name: "Directory listings", description: "Get listed in 80+ trusted directories — consistent name, address, phone." },
+    ],
+    visual: "list",
   },
   {
-    num: "02",
-    title: "Conversion-tested website",
-    description: "Mobile-first site rebuilt from scratch with a sticky call button, instant quote form, and the trust signals homeowners look for before they dial.",
+    eyebrow: "Capture more leads",
+    title: "Turn missed calls into new jobs.",
+    description: "Automatically follow up with every missed call so you never lose a lead.",
+    products: [
+      { name: "Missed-call text-back", description: "A text is sent within 30 seconds when you can't answer." },
+      { name: "Two-way SMS inbox", description: "Send and receive texts from your business number — works like regular texting." },
+      { name: "Dedicated business number", description: "Port your existing number or get a new one. Yours forever." },
+      { name: "Mobile messaging app", description: "All texts saved and organized in one place. Reply faster, win more jobs." },
+    ],
+    visual: "phone",
   },
   {
-    num: "03",
-    title: "NAP citation engine",
-    description: "Your name, address, and phone synced across 80+ directories so Google trusts you faster and your map pack ranking actually compounds.",
+    eyebrow: "Get more reviews",
+    title: "Get more 5-star reviews — without the risk.",
+    description: "We route happy customers to Google and send unhappy ones to a private form.",
+    products: [
+      { name: "Review request automation", description: "Every completed job gets a follow-up text asking for a review." },
+      { name: "Smart routing", description: "Happy customers go to Google. Unhappy ones go to a private form for you." },
+      { name: "Smart cooldown", description: "Repeat customers don't get spammed. We pace requests intelligently." },
+      { name: "Review replies", description: "Our team writes a thoughtful response to every review within 24 hours." },
+    ],
+    visual: "stars",
   },
   {
-    num: "04",
-    title: "Review request automation",
-    description: "After every closed job, the system texts a one-tap Google review link. The 5-stars stack up without you nagging the homeowner.",
-  },
-  {
-    num: "05",
-    title: "CRM + branded mobile app",
-    description: "Pipeline, call history, and texting in one place — plus a white-labeled iOS and Android app so your techs respond from the truck.",
-  },
-  {
-    num: "06",
-    title: "Quarterly re-activation campaign",
-    description: "Every 90 days we text your past customers with a seasonal offer or maintenance reminder. Repeat work without buying it back from a lead-gen app.",
-  },
-];
-
-interface ComparisonRow {
-  label: string;
-  jobsiterank: string;
-  leadgen: string;
-  agencies: string;
-}
-
-const comparisonRows: ComparisonRow[] = [
-  {
-    label: "Cost structure",
-    jobsiterank: "From $197/mo · 3 tiers",
-    leadgen: "$25–$150 per lead, per call",
-    agencies: "$1.5k–$5k retainers + setup",
-  },
-  {
-    label: "Who owns the leads",
-    jobsiterank: "You — phone, texts, reviews",
-    leadgen: "The platform — they rent them",
-    agencies: "You, but locked behind logins",
-  },
-  {
-    label: "Website included",
-    jobsiterank: "Conversion-tested rebuild",
-    leadgen: "None — you stay on theirs",
-    agencies: "Add-on, $3k–$8k extra",
-  },
-  {
-    label: "Missed-call-text-back",
-    jobsiterank: "Built in, fires in seconds",
-    leadgen: "Not offered",
-    agencies: "Not offered or extra",
-  },
-  {
-    label: "Review automation",
-    jobsiterank: "Auto-text after every job",
-    leadgen: "Inside the app, not Google",
-    agencies: "Manual or upcharged",
-  },
-  {
-    label: "Branded mobile app",
-    jobsiterank: "White-labeled iOS + Android",
-    leadgen: "Their brand, not yours",
-    agencies: "Rare",
-  },
-  {
-    label: "Contract length",
-    jobsiterank: "Month-to-month",
-    leadgen: "Pay-per-lead, no exit",
-    agencies: "12-month minimum",
+    eyebrow: "Run your business",
+    title: "Manage your leads without the chaos.",
+    description: "Everything organized so you can track, follow up, and close more jobs.",
+    products: [
+      { name: "Full CRM with lead pipeline", description: "Calls, texts, jobs — all tracked together. See exactly where each one stands." },
+      { name: "Full branded mobile CRM", description: "Manage everything from your phone. App and messaging branded to you." },
+      { name: "Quarterly re-activation campaigns", description: "Wake up dormant past customers with a seasonal SMS. Repeat work, no ad spend." },
+      { name: "Weekly missed-call recovery report", description: "See every missed call and how many we recovered — straight to your inbox." },
+      { name: "Monthly performance reports", description: "Reviews gained, calls captured, leads booked. One page, every month." },
+    ],
+    visual: "dashboard",
   },
 ];
 
@@ -101,450 +69,382 @@ interface FaqItem {
 
 const faqs: FaqItem[] = [
   {
-    q: "Why three tiers and not one flat price?",
-    a: "Because not every shop needs everything. Never Miss a Lead at $197 stops the bleeding for shops that just need to stop missing calls. Lead + Review Engine at $297 adds the review automation that drives map-pack ranking. Local Authority at $497 is the full system — citations, GBP posts, review responses, customer touch. Start where you bleed; move up when you outgrow it.",
+    q: "How fast does the missed-call text-back fire?",
+    a: "Under 30 seconds, every time. The customer gets an SMS from your business number with a friendly 'sorry I missed you, what's the address?' so the conversation starts before they dial the next plumber.",
+  },
+  {
+    q: "Do I get to keep my phone number?",
+    a: "Yes. Port your existing business number or pick a new one — either way it stays yours forever. Cancel us, you keep the number.",
+  },
+  {
+    q: "What's the difference between the three plans?",
+    a: "Never Miss a Lead ($197) catches every call with text-back + a free website. Lead + Review Engine ($297) adds review automation so you start out-ranking competitors. Local Authority ($497) is the full system — we own the local map for you with citations, GBP posts, and a branded mobile CRM.",
+  },
+  {
+    q: "Is the website really free with every tier?",
+    a: "Yes. Even the $197 entry tier ships with a free conversion-focused mobile-first website. No setup fee. The site is built to drive phone calls, not just traffic.",
   },
   {
     q: "How is this different from HomeAdvisor or Angi?",
     a: "Lead-gen apps rent you a lead, then re-rent it to three of your competitors. We build the channel that you own — your own ranking on Google, your own phone, your own review profile. Cancel us and you keep all of it.",
   },
   {
-    q: "Do you work with brand new businesses?",
-    a: "Yes. We've launched plumbers from a brand-new LLC with no reviews into the Pasadena map pack inside 90 days. The Local Authority tier is designed for both established shops and fresh entrants.",
+    q: "What trades do you serve?",
+    a: "Plumbing, all sub-specialties — residential, commercial, drain & sewer, emergency, tankless, re-pipe. We work with shops across the US.",
+  },
+];
+
+const stats = [
+  { value: "100+", label: "Plumbing shops served" },
+  { value: "12s", label: "Avg auto-text response" },
+  { value: "4.9★", label: "Average customer rating" },
+  { value: "$0", label: "Setup fee, every tier" },
+];
+
+const tiers = [
+  {
+    name: "Never Miss a Lead",
+    price: 197,
+    tagline: "Stop losing jobs to voicemail.",
+    features: [
+      "Free conversion-focused website",
+      "Missed-call text-back (under 30s)",
+      "Dedicated business number",
+      "Two-way SMS inbox + mobile messaging app",
+      "Weekly missed-call recovery report",
+    ],
+    badge: null,
   },
   {
-    q: "What's the onboarding timeline?",
-    a: "Day 1 we lock the demo. Days 2–10 we ship the new site and missed-call-text-back. Days 10–30 we run the citation push and stand up review automation. By day 45 the system is fully live.",
+    name: "Lead + Review Engine",
+    price: 297,
+    tagline: "Catch every lead. Stack every review.",
+    features: [
+      "Everything in Never Miss a Lead",
+      "Review request automation",
+      "Smart routing (happy → Google)",
+      "Smart cooldown per customer",
+      "Monthly review-volume report",
+    ],
+    badge: "Most popular",
   },
   {
-    q: "Is the website really free with every tier?",
-    a: "Yes. Every tier — including $197 Never Miss a Lead — ships with a free conversion-focused mobile-first website. No setup fee. The site is built for click-to-call and works as the trust signal that turns Google traffic into phone calls.",
+    name: "Local Authority",
+    price: 497,
+    tagline: "The full system. We own the local map.",
+    features: [
+      "Everything in Lead + Review Engine",
+      "Google Business Profile posts (2×/wk)",
+      "NAP citations (80+ directories)",
+      "Review responses by our team",
+      "Full CRM with lead pipeline",
+      "Full branded mobile CRM",
+      "Quarterly re-activation campaigns",
+    ],
+    badge: "Flagship",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "First week the missed-call texts went live we booked four after-hours jobs. Paid for the bundle for six months.",
+    name: "Marco D.",
+    business: "Plumbing Geeks · Pasadena, CA",
+    initials: "MD",
   },
   {
-    q: "What trades do you actually serve?",
-    a: "Plumbing, HVAC, roofing, and electrical — concentrated in Pasadena, the San Gabriel Valley, and Greater LA. We turn down trades and geographies we don't have a track record in.",
+    quote: "We were losing $40k a winter to voicemail and didn't even know it. The text-back caught all of it.",
+    name: "Karen M.",
+    business: "Mile-High Pipeworks · Denver, CO",
+    initials: "KM",
+  },
+  {
+    quote: "Texted 1,800 dormant customers. Booked 87 jobs in two weeks. Best $71k week we've ever had.",
+    name: "Diego L.",
+    business: "Saguaro Plumbing · Phoenix, AZ",
+    initials: "DL",
   },
 ];
 ---
 
-<BaseLayout title="JobsiteRank — missed the call? we just texted them back in 12 seconds." headerVariant="light">
-  <!-- Hero -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier pt-12 pb-24 md:pt-20 md:pb-32 relative">
-      <div class="flex items-center gap-4 mb-12">
-        <span class="file-tag">File 001</span>
-        <span class="meta">Marketing dossier · Edition 01</span>
-      </div>
-
-      <div class="grid lg:grid-cols-[1.35fr_1fr] gap-14 items-end">
+<BaseLayout title="JobsiteRank — marketing system for plumbers">
+  <!-- ─── Hero ─── -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-24">
+      <div class="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
         <div>
-          <span class="inline-flex items-center gap-2 mb-7 font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)] border border-[color:var(--color-amber)]/40 px-2.5 py-1">
-            <span aria-hidden="true">●</span> Hero offer · Missed-call-text-back
-          </span>
-          <h1 class="font-display text-[2.6rem] md:text-[4.4rem] lg:text-[5.4rem] leading-[0.96] tracking-tight">
-            You missed the call.<br />
-            <span class="text-[color:var(--color-amber)]">We just texted them back.</span>
+          <span class="eyebrow-mint">★ Built for plumbers</span>
+          <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] lg:text-[4.2rem] leading-[1.02] tracking-tight mt-6 text-[color:var(--color-ink)]">
+            Stop losing jobs to voicemail.
+            <span class="block mt-2 text-[color:var(--color-accent-dark)]">Get found, get called, get booked.</span>
           </h1>
-          <p class="mt-9 max-w-xl text-[color:var(--color-paper)]/80 text-[1.05rem] md:text-[1.18rem] leading-relaxed">
-            Every missed call to your shop fires an automatic text in under 12 seconds — <span class="serif-italic">"sorry I missed you, what's the address?"</span> — before that customer dials the next plumber on the search results.
+          <p class="mt-6 max-w-xl text-[1.1rem] md:text-[1.18rem] leading-relaxed text-[color:var(--color-slate-600)]">
+            JobsiteRank gives plumbers a conversion-focused website, missed-call text-back, review automation, and a real lead pipeline — all in one stack, starting at <strong class="text-[color:var(--color-ink)]">$197/month</strong>.
           </p>
 
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a href="/contact" class="btn-primary">
-              Book a demo
-              <span aria-hidden="true">→</span>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">
+              Book a demo →
             </a>
-            <a href="/pricing" class="btn-ghost">From $197/mo · see tiers</a>
+            <a href="/pricing" class="btn-outline text-[1rem] !py-4 !px-7">
+              See pricing
+            </a>
           </div>
 
-          <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl">
-            <div>
-              <div class="font-display text-3xl text-[color:var(--color-amber)]">12s</div>
-              <div class="meta mt-1">Auto-text response</div>
-            </div>
-            <div>
-              <div class="font-display text-3xl text-[color:var(--color-amber)]">40%</div>
-              <div class="meta mt-1">After-hours rescue rate</div>
-            </div>
-            <div>
-              <div class="font-display text-3xl text-[color:var(--color-amber)]">$387</div>
-              <div class="meta mt-1">Avg revenue lost per missed call</div>
-            </div>
+          <div class="mt-8 flex items-center gap-3 text-[color:var(--color-slate-500)] text-[0.9rem]">
+            <span class="text-[color:var(--color-warning)] text-[1rem]">★ ★ ★ ★ ★</span>
+            <span>4.9 across 100+ plumbing shops</span>
+            <span class="hidden sm:inline">·</span>
+            <span class="hidden sm:inline">Cancel anytime</span>
           </div>
         </div>
 
-        <!-- Live text-thread demo -->
-        <aside class="card-warm text-[color:var(--color-ink)] p-5 sm:p-6 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="file-tag">Live demo · 4:23 PM</span>
-            <span class="meta">Pasadena, CA</span>
-          </div>
-
-          <div class="border border-[color:var(--color-ink)]/15 bg-[color:var(--color-paper)] p-4 space-y-3">
-            <!-- Missed call -->
-            <div class="flex items-center gap-3 pb-3 border-b border-[color:var(--color-ink)]/10">
-              <span class="grid place-items-center w-8 h-8 bg-[color:var(--color-ink)]/8 rounded-full text-[0.85rem]" aria-hidden="true">✆</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[0.72rem] tracking-[0.14em] uppercase text-[color:var(--color-ink)]/60 leading-tight">Missed call · (818) ▓▓▓-0142</div>
-                <div class="meta mt-0.5">4:23 PM · No voicemail left</div>
-              </div>
-            </div>
-
-            <!-- Auto-text out (right) -->
-            <div class="flex justify-end">
-              <div class="max-w-[85%]">
-                <div class="bg-[color:var(--color-amber)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
-                  Hey, this is Marco at Plumbing Geeks — sorry I missed your call. What's the address &amp; what's going on?
+        <!-- Phone mockup with text thread -->
+        <div class="relative">
+          <div class="absolute -inset-4 md:-inset-8 bg-gradient-to-br from-[color:var(--color-accent-soft)] to-transparent rounded-[3rem] blur-2xl pointer-events-none"></div>
+          <div class="relative mx-auto max-w-sm bg-[color:var(--color-ink)] rounded-[2.5rem] p-3 shadow-xl">
+            <div class="bg-[color:var(--color-paper)] rounded-[2rem] p-5 min-h-[460px]">
+              <div class="flex items-center justify-between mb-4 pb-3 border-b border-[color:var(--color-slate-200)]">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid place-items-center w-8 h-8 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.85rem]">✆</span>
+                  <div>
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)]">JobsiteRank</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">Live · Pasadena, CA</div>
+                  </div>
                 </div>
-                <div class="meta text-right mt-1">JR auto-text · 4:23 PM</div>
+                <span class="text-[0.7rem] text-[color:var(--color-slate-400)]">4:23 PM</span>
               </div>
-            </div>
 
-            <!-- Customer reply (left) -->
-            <div class="flex justify-start">
-              <div class="max-w-[85%]">
-                <div class="bg-[color:var(--color-paper-warm)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
-                  1432 Linda Vista. Water heater leaking everywhere. Can you come now??
+              <div class="bg-[color:var(--color-slate-50)] rounded-xl p-3 mb-3 flex items-center gap-2.5">
+                <span class="text-[color:var(--color-slate-400)] text-[1rem]">✆</span>
+                <div class="flex-1">
+                  <div class="text-[0.78rem] font-medium text-[color:var(--color-ink)]">Missed call · (818) ▓▓▓-0142</div>
+                  <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">No voicemail · 4:23 PM</div>
                 </div>
-                <div class="meta mt-1">Customer · 4:25 PM</div>
               </div>
-            </div>
 
-            <!-- Reply -->
-            <div class="flex justify-end">
-              <div class="max-w-[85%]">
-                <div class="bg-[color:var(--color-amber)] text-[color:var(--color-ink)] px-3 py-2 text-[0.88rem] leading-snug border border-[color:var(--color-ink)]/15">
-                  On the way. ETA 35 min. Shut off the water at the wall valve if you can.
+              <div class="space-y-3">
+                <div class="flex justify-end">
+                  <div class="max-w-[85%]">
+                    <div class="bg-[color:var(--color-accent)] text-[color:var(--color-paper)] px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.85rem] leading-snug">
+                      Hey, this is Marco at Plumbing Geeks — sorry I missed your call. What's the address &amp; what's going on?
+                    </div>
+                    <div class="text-[0.65rem] text-[color:var(--color-slate-400)] text-right mt-1">Auto-text · 4:23 PM</div>
+                  </div>
                 </div>
-                <div class="meta text-right mt-1">Marco · 4:26 PM</div>
+
+                <div class="flex justify-start">
+                  <div class="max-w-[85%]">
+                    <div class="bg-[color:var(--color-slate-100)] text-[color:var(--color-ink)] px-3.5 py-2.5 rounded-2xl rounded-bl-md text-[0.85rem] leading-snug">
+                      1432 Linda Vista. Water heater leaking everywhere. Can you come now??
+                    </div>
+                    <div class="text-[0.65rem] text-[color:var(--color-slate-400)] mt-1">Customer · 4:25 PM</div>
+                  </div>
+                </div>
+
+                <div class="flex justify-end">
+                  <div class="max-w-[85%]">
+                    <div class="bg-[color:var(--color-accent)] text-[color:var(--color-paper)] px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.85rem] leading-snug">
+                      On the way. ETA 35 min. Shut off the water at the wall valve if you can.
+                    </div>
+                    <div class="text-[0.65rem] text-[color:var(--color-slate-400)] text-right mt-1">Marco · 4:26 PM</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-[color:var(--color-slate-200)] flex items-center justify-between">
+                <div>
+                  <div class="text-[0.85rem] font-semibold text-[color:var(--color-ink)]">Job booked in 3 min</div>
+                  <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">Zero touches from you</div>
+                </div>
+                <span class="tag-pill tag-pill-accent text-[0.68rem]">+$1,840 job</span>
               </div>
             </div>
           </div>
-
-          <div class="mt-4 pt-4 border-t rule-line flex items-center justify-between">
-            <div>
-              <div class="font-display text-[0.95rem] font-semibold">Missed call → booked job</div>
-              <div class="meta">3 minutes, zero touches from you</div>
-            </div>
-            <div class="font-mono text-[0.7rem] tracking-[0.18em] text-[color:var(--color-amber-deep)]">
-              CASE 002
-            </div>
-          </div>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust bar -->
-  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
-    <div class="container-dossier py-7 grid md:grid-cols-[auto_1fr] gap-x-10 gap-y-4 items-center">
-      <div class="eyebrow">Trusted across the trades</div>
-      <div class="flex flex-wrap items-center gap-x-10 gap-y-3 font-display text-[1.05rem] tracking-tight text-[color:var(--color-ink)]/80">
-        <span>Plumbing Geeks</span>
-        <span class="opacity-30">/</span>
-        <span>SGV HVAC Co.</span>
-        <span class="opacity-30">/</span>
-        <span>Foothill Roofing</span>
-        <span class="opacity-30">/</span>
-        <span>Arroyo Electric</span>
-        <span class="opacity-30">/</span>
-        <span>Crown City Drains</span>
-        <span class="opacity-30">/</span>
-        <span>Westside Sparks</span>
+  <!-- ─── Trust bar / stats ─── -->
+  <section class="border-y border-[color:var(--color-slate-200)] bg-[color:var(--color-paper)]">
+    <div class="container-page py-10 md:py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((s) => (
+          <div>
+            <div class="font-display text-[2.2rem] md:text-[2.8rem] leading-none text-[color:var(--color-ink)]">{s.value}</div>
+            <div class="text-[0.85rem] text-[color:var(--color-slate-600)] mt-2">{s.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Features grid -->
-  <section class="relative bg-[color:var(--color-paper)]">
-    <div class="grain-light"></div>
-    <div class="container-dossier py-24 relative">
-      <div class="grid lg:grid-cols-[1fr_2fr] gap-12 items-end mb-14">
-        <div>
-          <span class="file-tag">Section 02</span>
-          <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1] tracking-tight mt-5">
-            One bundle.<br />Six moving parts.
-          </h2>
-        </div>
-        <p class="text-[1.05rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-xl lg:justify-self-end">
-          Everything below is included in the $497 flat monthly. Nothing is a tier you have to graduate into. Nothing is sold as a setup fee.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <article class="card-paper p-7 flex flex-col h-full relative">
-            {feature.badge && (
-              <span class="absolute -top-3 left-6 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.65rem] tracking-[0.18em] uppercase px-2.5 py-1 border border-[color:var(--color-ink)]">
-                {feature.badge}
-              </span>
-            )}
-            <div class="flex items-baseline justify-between mb-5">
-              <span class="font-mono text-[0.72rem] tracking-[0.18em] text-[color:var(--color-amber-deep)]">F/{feature.num}</span>
-              <span class="meta">Included</span>
-            </div>
-            <h3 class="font-display text-[1.45rem] leading-tight">{feature.title}</h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-[color:var(--color-ink)]/75">
-              {feature.description}
+  <!-- ─── Product categories (4) ─── -->
+  {productCategories.map((cat, i) => (
+    <section class={i % 2 === 0 ? "bg-[color:var(--color-paper)]" : "bg-[color:var(--color-cream)]"}>
+      <div class="container-page section-padding">
+        <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+          <div class="lg:sticky lg:top-24">
+            <span class="eyebrow">{cat.eyebrow}</span>
+            <h2 class="font-display text-[2rem] md:text-[2.6rem] lg:text-[2.9rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+              {cat.title}
+            </h2>
+            <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)]">
+              {cat.description}
             </p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison table -->
-  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
-    <div class="container-dossier py-24">
-      <div class="flex items-end justify-between flex-wrap gap-6 mb-10">
-        <div>
-          <span class="file-tag">Section 03</span>
-          <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1] tracking-tight mt-5 max-w-2xl">
-            How JobsiteRank<br />stacks against the alternatives.
-          </h2>
-        </div>
-        <p class="text-[0.95rem] text-[color:var(--color-ink)]/65 max-w-sm">
-          Quick comparison so you know what you're actually buying — and what you're walking away from.
-        </p>
-      </div>
-
-      <!-- Desktop table -->
-      <div class="hidden md:block overflow-x-auto border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
-        <table class="w-full text-left border-collapse min-w-[720px]">
-          <thead>
-            <tr class="border-b border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-              <th class="px-5 py-4 font-mono text-[0.72rem] tracking-[0.16em] uppercase font-normal">Capability</th>
-              <th class="px-5 py-4 font-mono text-[0.72rem] tracking-[0.16em] uppercase font-normal text-[color:var(--color-amber)]">JobsiteRank</th>
-              <th class="px-5 py-4 font-mono text-[0.72rem] tracking-[0.16em] uppercase font-normal">Lead-gen apps</th>
-              <th class="px-5 py-4 font-mono text-[0.72rem] tracking-[0.16em] uppercase font-normal">Most agencies</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comparisonRows.map((row, idx) => (
-              <tr class:list={["border-b border-[color:var(--color-rule)]", idx % 2 === 1 ? "bg-[color:var(--color-paper-warm)]/40" : ""]}>
-                <td class="px-5 py-4 font-display text-[1rem] font-semibold align-top">{row.label}</td>
-                <td class="px-5 py-4 align-top text-[0.95rem]">
-                  <span class="inline-flex gap-2 items-start">
-                    <span class="text-[color:var(--color-amber-deep)] mt-0.5">●</span>
-                    <span>{row.jobsiterank}</span>
-                  </span>
-                </td>
-                <td class="px-5 py-4 align-top text-[0.95rem] text-[color:var(--color-ink)]/65">{row.leadgen}</td>
-                <td class="px-5 py-4 align-top text-[0.95rem] text-[color:var(--color-ink)]/65">{row.agencies}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Mobile stacked cards -->
-      <div class="md:hidden space-y-4">
-        {comparisonRows.map((row, idx) => (
-          <article class="border border-[color:var(--color-ink)] bg-[color:var(--color-paper)]">
-            <header class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-3 flex items-baseline justify-between gap-3">
-              <span class="font-display text-[0.98rem] font-semibold leading-snug">{row.label}</span>
-              <span class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-paper)]/60 shrink-0">R/{String(idx + 1).padStart(2, "0")}</span>
-            </header>
-            <dl class="divide-y divide-[color:var(--color-rule)]">
-              <div class="px-4 py-3.5">
-                <dt class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-amber-deep)] mb-1.5 flex items-center gap-2">
-                  <span class="w-1 h-1 rounded-full bg-[color:var(--color-amber-deep)]"></span>
-                  JobsiteRank
-                </dt>
-                <dd class="text-[0.95rem] leading-snug">{row.jobsiterank}</dd>
-              </div>
-              <div class="px-4 py-3.5">
-                <dt class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/55 mb-1.5">Lead-gen apps</dt>
-                <dd class="text-[0.95rem] leading-snug text-[color:var(--color-ink)]/70">{row.leadgen}</dd>
-              </div>
-              <div class="px-4 py-3.5">
-                <dt class="font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/55 mb-1.5">Most agencies</dt>
-                <dd class="text-[0.95rem] leading-snug text-[color:var(--color-ink)]/70">{row.agencies}</dd>
-              </div>
-            </dl>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing tiers -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier py-24">
-      <div class="grid lg:grid-cols-[1fr_1.5fr] gap-12 items-end mb-12">
-        <div>
-          <span class="file-tag">Section 04</span>
-          <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1] tracking-tight mt-5">
-            Three tiers.<br />
-            <span class="serif-italic text-[color:var(--color-amber)]">Start where you bleed.</span>
-          </h2>
-        </div>
-        <p class="text-[color:var(--color-paper)]/75 text-[1.02rem] leading-relaxed max-w-xl lg:justify-self-end">
-          Start at $197 — never miss a lead. Move up to stack reviews. Top tier owns the local map for you. Every tier ships with the website, so even the entry beats most agencies' setup fee.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-4">
-        <!-- Tier A · Never Miss a Lead -->
-        <article class="card-warm text-[color:var(--color-ink)] p-6 flex flex-col relative">
-          <div class="absolute -top-3 left-5 bg-[color:var(--color-paper)] text-[color:var(--color-amber-deep)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
-            Hero offer
-          </div>
-          <div class="flex items-center justify-between mb-4 mt-2">
-            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber-deep)]">Plan A</span>
-            <span class="meta">Month-to-month</span>
-          </div>
-          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Never Miss a Lead</div>
-          <div class="flex items-baseline gap-1.5 mb-4">
-            <span class="font-display text-[3rem] leading-none">$197</span>
-            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ mo</span>
-          </div>
-          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Free conversion-focused website</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Missed-call text-back (under 30s)</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Dedicated business number</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Two-way SMS inbox on your phone</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Weekly missed-call recovery report</li>
-          </ul>
-          <a href="/contact" class="btn-ghost text-[color:var(--color-ink)] justify-center">Book a demo →</a>
-        </article>
-
-        <!-- Tier B · Lead + Review Engine -->
-        <article class="card-warm text-[color:var(--color-ink)] p-6 flex flex-col relative border-[color:var(--color-amber)] shadow-[6px_6px_0_0_var(--color-amber)]">
-          <div class="absolute -top-3 left-5 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
-            Most popular
-          </div>
-          <div class="flex items-center justify-between mb-4 mt-2">
-            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber-deep)]">Plan B</span>
-            <span class="meta">Month-to-month</span>
-          </div>
-          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Lead + Review Engine</div>
-          <div class="flex items-baseline gap-1.5 mb-4">
-            <span class="font-display text-[3rem] leading-none">$297</span>
-            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-ink)]/60">/ mo</span>
-          </div>
-          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Everything in Plan A</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Review request automation</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Smart routing (happy → Google)</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Smart cooldown per customer</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber-deep)]">→</span> Monthly review report</li>
-          </ul>
-          <a href="/contact" class="btn-primary justify-center">Book a demo →</a>
-        </article>
-
-        <!-- Tier C · Local Authority -->
-        <article class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] border border-[color:var(--color-amber)] p-6 flex flex-col relative">
-          <div class="absolute -top-3 left-5 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.6rem] tracking-[0.18em] uppercase px-2 py-1 border border-[color:var(--color-ink)]">
-            Flagship
-          </div>
-          <div class="flex items-center justify-between mb-4 mt-2">
-            <span class="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-[color:var(--color-amber)]">Plan C</span>
-            <span class="meta">Month-to-month</span>
-          </div>
-          <div class="font-display text-[1.4rem] leading-tight tracking-tight mb-2">Local Authority</div>
-          <div class="flex items-baseline gap-1.5 mb-4">
-            <span class="font-display text-[3rem] leading-none text-[color:var(--color-amber)]">$497</span>
-            <span class="font-mono text-[0.7rem] tracking-[0.16em] uppercase text-[color:var(--color-paper)]/60">/ mo</span>
-          </div>
-          <ul class="space-y-1.5 text-[0.88rem] mb-5 flex-1 text-[color:var(--color-paper)]/90">
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Everything in Plan B</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Full CRM with lead pipeline</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Mobile app</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> NAP citations (80+)</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> GBP posts (2×/wk)</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Review responses</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Quarterly re-activation campaign</li>
-            <li class="flex gap-2"><span class="text-[color:var(--color-amber)]">→</span> Local on-page SEO</li>
-          </ul>
-          <a href="/contact" class="btn-primary justify-center">Book a demo →</a>
-        </article>
-      </div>
-
-      <div class="mt-8 flex justify-center">
-        <a href="/pricing" class="btn-ghost border-[color:var(--color-paper)]/40">See full breakdown →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case study -->
-  <section class="bg-[color:var(--color-paper)] relative">
-    <div class="grain-light"></div>
-    <div class="container-dossier py-24 relative">
-      <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12">
-        <div>
-          <span class="file-tag">Case file 002</span>
-          <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1] tracking-tight mt-5">
-            Plumbing Geeks,<br />Pasadena.
-          </h2>
-          <p class="mt-6 text-[1rem] leading-relaxed text-[color:var(--color-ink)]/75 max-w-md">
-            Residential and commercial plumbing shop fighting for map-pack visibility against four older incumbents. We rebuilt the site, wired up missed-call-text-back, and ran the citation push.
-          </p>
-          <a href="/case-studies" class="mt-7 inline-flex btn-ghost text-[color:var(--color-ink)]">
-            Read the full file
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="card-paper p-8 lg:p-10">
-          <div class="flex items-center justify-between mb-6">
-            <span class="file-tag">Engagement · 6 months</span>
-            <span class="meta">Pasadena, CA</span>
+            <a href="/contact" class="btn-link mt-6">See it on a demo</a>
           </div>
 
-          <div class="grid sm:grid-cols-3 gap-6 mb-8">
-            <div>
-              <div class="font-display text-[2.4rem] text-[color:var(--color-amber-deep)] leading-none">3.4×</div>
-              <div class="meta mt-2">Inbound calls / mo</div>
-            </div>
-            <div>
-              <div class="font-display text-[2.4rem] text-[color:var(--color-amber-deep)] leading-none">#1</div>
-              <div class="meta mt-2">Map pack, "plumber pasadena"</div>
-            </div>
-            <div>
-              <div class="font-display text-[2.4rem] text-[color:var(--color-amber-deep)] leading-none">$0</div>
-              <div class="meta mt-2">Spent on lead-gen apps</div>
-            </div>
-          </div>
-
-          <p class="serif-italic text-[1.25rem] leading-snug border-l-2 border-[color:var(--color-amber)] pl-5">
-            "Before JobsiteRank we were spending $2,400 a month renting calls. Now the calls come in on our number, our reviews are stacking up, and the techs love the app."
-          </p>
-          <div class="mt-5 meta">— Marco D., owner · Plumbing Geeks</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="bg-[color:var(--color-paper-warm)] border-y border-[color:var(--color-rule)]">
-    <div class="container-dossier py-24">
-      <div class="grid lg:grid-cols-[1fr_2fr] gap-12">
-        <div>
-          <span class="file-tag">Section 06</span>
-          <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1] tracking-tight mt-5">
-            Things shop<br />owners ask first.
-          </h2>
-          <p class="mt-5 text-[0.95rem] text-[color:var(--color-ink)]/70 max-w-sm">
-            If your question isn't here, the demo is the right place — we'll answer it on the spot.
-          </p>
-        </div>
-
-        <div class="border-t border-[color:var(--color-ink)]">
-          {faqs.map((faq, idx) => (
-            <details class="group border-b border-[color:var(--color-ink)]">
-              <summary class="flex items-center justify-between gap-6 py-5 hover:bg-[color:var(--color-paper)]/50 px-1">
-                <div class="flex items-center gap-5 min-w-0">
-                  <span class="font-mono text-[0.72rem] tracking-[0.16em] text-[color:var(--color-amber-deep)] shrink-0">Q/{String(idx + 1).padStart(2, "0")}</span>
-                  <span class="font-display text-[1.1rem] md:text-[1.2rem] font-semibold leading-snug">{faq.q}</span>
+          <div class="grid gap-3 sm:gap-4">
+            {cat.products.map((p) => (
+              <article class="card-flat hover:shadow-md hover:border-[color:var(--color-slate-300)] transition-all">
+                <div class="flex items-start gap-4">
+                  <div class="grid place-items-center w-10 h-10 rounded-xl bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] flex-shrink-0 mt-0.5">
+                    <span class="text-[1rem] font-bold">✓</span>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-display text-[1.15rem] font-semibold text-[color:var(--color-ink)] leading-snug">{p.name}</h3>
+                    <p class="mt-1.5 text-[0.95rem] leading-relaxed text-[color:var(--color-slate-600)]">{p.description}</p>
+                  </div>
                 </div>
-                <span class="faq-plus shrink-0 text-[color:var(--color-amber-deep)]"></span>
-              </summary>
-              <div class="pb-6 px-1 pl-[calc(0.72rem+5rem)] text-[0.97rem] leading-relaxed text-[color:var(--color-ink)]/80">
-                {faq.a}
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ─── Pricing tiers ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+          Three plans. Free website with every one.
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)]">
+          Start where you bleed. Move up only when you outgrow it.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+        {tiers.map((tier) => {
+          const isPopular = tier.badge === "Most popular";
+          const isFlagship = tier.badge === "Flagship";
+          return (
+            <article class:list={[
+              "rounded-2xl p-7 flex flex-col relative",
+              isFlagship ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]" : "bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]",
+              isPopular && "ring-2 ring-[color:var(--color-accent)] shadow-[0_20px_40px_-20px_rgb(16_185_129_/_0.35)]",
+            ]}>
+              {tier.badge && (
+                <div class:list={[
+                  "absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide",
+                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)]" : "bg-[color:var(--color-accent)] text-[color:var(--color-paper)]",
+                ]}>
+                  {tier.badge}
+                </div>
+              )}
+
+              <h3 class={`font-display text-[1.35rem] font-semibold ${isFlagship ? "text-[color:var(--color-paper)]" : "text-[color:var(--color-ink)]"}`}>{tier.name}</h3>
+              <p class={`mt-1.5 text-[0.93rem] ${isFlagship ? "text-[color:var(--color-paper)]/70" : "text-[color:var(--color-slate-600)]"}`}>{tier.tagline}</p>
+
+              <div class="mt-6 flex items-baseline gap-1.5">
+                <span class={`font-display text-[3rem] leading-none ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-ink)]"}`}>${tier.price}</span>
+                <span class={`text-[0.93rem] ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-slate-500)]"}`}>/ month</span>
               </div>
+
+              <ul class={`mt-6 space-y-3 text-[0.93rem] flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : "text-[color:var(--color-slate-700)]"}`}>
+                {tier.features.map((f) => (
+                  <li class="flex items-start gap-2.5">
+                    <span class={`mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold ${isFlagship ? "bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)]" : "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]"}`}>✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/contact"
+                class:list={[
+                  "mt-7 inline-flex items-center justify-center gap-2 font-semibold text-[0.95rem] py-3 px-5 rounded-full transition-all",
+                  isPopular ? "bg-[color:var(--color-accent)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-accent-dark)]" :
+                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-accent-dark)] hover:text-[color:var(--color-paper)]" :
+                  "bg-[color:var(--color-ink)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-ink-soft)]",
+                ]}
+              >
+                Book a demo →
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/pricing" class="btn-link">Compare all features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonials ─── -->
+  <section class="bg-[color:var(--color-cream)]">
+    <div class="container-page section-padding">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="eyebrow">What plumbers say</span>
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+          Real shops. Real numbers.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        {testimonials.map((t) => (
+          <figure class="card-flat">
+            <div class="text-[color:var(--color-warning)] text-[0.95rem] mb-4">★ ★ ★ ★ ★</div>
+            <blockquote class="text-[color:var(--color-ink)] text-[1rem] leading-relaxed">
+              "{t.quote}"
+            </blockquote>
+            <figcaption class="mt-5 pt-5 border-t border-[color:var(--color-slate-200)] flex items-center gap-3">
+              <div class="grid place-items-center w-10 h-10 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-accent)] font-display font-semibold text-[0.85rem]">
+                {t.initials}
+              </div>
+              <div>
+                <div class="font-semibold text-[color:var(--color-ink)] text-[0.9rem]">{t.name}</div>
+                <div class="text-[0.82rem] text-[color:var(--color-slate-500)]">{t.business}</div>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/case-studies" class="btn-link">Read all 11 case studies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
+      <div class="grid lg:grid-cols-[1fr_1.5fr] gap-12">
+        <div>
+          <span class="eyebrow">FAQ</span>
+          <h2 class="font-display text-[2.2rem] md:text-[2.8rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+            Things shop owners ask first.
+          </h2>
+          <p class="mt-5 text-[1.02rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-sm">
+            If your question isn't here, the demo is the right place. We'll answer on the spot.
+          </p>
+        </div>
+        <div class="space-y-3">
+          {faqs.map((faq) => (
+            <details class="group card-flat hover:border-[color:var(--color-slate-300)] transition-colors">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer">
+                <span class="font-display font-semibold text-[1.1rem] text-[color:var(--color-ink)] leading-snug">{faq.q}</span>
+                <span class="faq-icon grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-slate-100)] text-[color:var(--color-ink)] text-[1rem] font-bold flex-shrink-0">+</span>
+              </summary>
+              <p class="mt-4 text-[0.97rem] leading-relaxed text-[color:var(--color-slate-600)]">{faq.a}</p>
             </details>
           ))}
         </div>
@@ -552,35 +452,25 @@ const faqs: FaqItem[] = [
     </div>
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="dark-section">
-    <div class="grain"></div>
-    <div class="container-dossier py-24 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
-      <div>
-        <span class="file-tag">End of file 001</span>
-        <h2 class="font-display text-[2.4rem] md:text-[3.6rem] leading-[1] tracking-tight mt-6">
-          Ready to stop renting<br />and start owning?
+  <!-- ─── Bottom CTA ─── -->
+  <section class="bg-[color:var(--color-ink)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-accent)]/15 via-transparent to-[color:var(--color-accent)]/5 pointer-events-none"></div>
+    <div class="container-page section-padding relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-[2.2rem] md:text-[3.2rem] leading-[1.05] tracking-tight text-[color:var(--color-paper)]">
+          Ready to stop missing jobs?
         </h2>
-        <p class="mt-6 max-w-xl text-[color:var(--color-paper)]/75 text-[1.05rem] leading-relaxed">
-          Twenty-minute call. No deck. We'll look at your current Google Business Profile, your missed-call rate, and tell you straight whether the bundle would move the needle.
+        <p class="mt-5 text-[1.1rem] leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl mx-auto">
+          Twenty-minute demo. We pull up your Google Business Profile live and tell you straight whether the system fits.
         </p>
-        <div class="mt-6 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[0.65rem] tracking-[0.16em] uppercase text-[color:var(--color-amber)]">
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Cancel anytime</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>Month-to-month</span>
-          <span class="opacity-30">·</span>
-          <span class="inline-flex items-center gap-1.5"><span aria-hidden="true">✓</span>No setup fee</span>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">
+            Book a demo →
+          </a>
+          <a href="tel:+16265550199" class="inline-flex items-center gap-2 text-[color:var(--color-paper)] text-[1rem] font-medium px-6 py-4 hover:text-[color:var(--color-accent)] transition-colors">
+            Or call (626) 555-0199
+          </a>
         </div>
-      </div>
-      <div class="flex flex-col gap-4 lg:items-end">
-        <a href="/contact" class="btn-primary">
-          Book a demo
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="tel:+16265550199" class="btn-ghost border-[color:var(--color-paper)]/40">
-          Or call (626) 555-0199
-        </a>
-        <div class="meta mt-2">Mon–Fri · 8a–6p PT</div>
       </div>
     </div>
   </section>

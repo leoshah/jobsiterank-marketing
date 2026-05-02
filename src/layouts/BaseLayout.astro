@@ -2,18 +2,15 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Marquee from "../components/Marquee.astro";
 
 interface Props {
   title: string;
   description?: string;
-  headerVariant?: "light" | "dark";
 }
 
 const {
   title,
-  description = "JobsiteRank — trades-focused digital marketing for plumbers, HVAC, roofers, and electricians in LA and the San Gabriel Valley. One flat price.",
-  headerVariant = "light",
+  description = "JobsiteRank — marketing system for plumbers. Get found online, capture more leads, stack reviews, and run your business.",
 }: Props = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -32,21 +29,12 @@ const showFloatingCta = path !== "/contact";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap"
     />
     <title>{title}</title>
   </head>
   <body class="bg-[color:var(--color-paper)] text-[color:var(--color-ink)]">
-    <a
-      href="tel:+16265550199"
-      class="md:hidden flex items-center justify-center gap-2 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] border-b border-[color:var(--color-ink)] py-3 px-4 font-mono text-[0.78rem] tracking-[0.14em] uppercase active:bg-[color:var(--color-amber-deep)] active:text-[color:var(--color-paper)] transition-colors"
-      aria-label="Tap to call (626) 555-0199"
-    >
-      <span aria-hidden="true" class="text-[1rem] leading-none">✆</span>
-      <span class="font-semibold">Tap to call · (626) 555-0199</span>
-    </a>
-    <Marquee />
-    <Header variant={headerVariant} />
+    <Header />
     <main>
       <slot />
     </main>
@@ -56,13 +44,11 @@ const showFloatingCta = path !== "/contact";
       <a
         href="/contact"
         id="floating-cta"
-        class="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 bg-[color:var(--color-amber)] text-[color:var(--color-ink)] font-mono text-[0.75rem] tracking-[0.14em] uppercase px-4 py-3 border border-[color:var(--color-ink)] shadow-[4px_4px_0_0_var(--color-ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[0_0_0_0_var(--color-ink)] transition-transform"
+        class="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 bg-[color:var(--color-accent)] text-[color:var(--color-paper)] font-semibold text-[0.93rem] px-5 py-3 rounded-full shadow-[0_8px_24px_rgb(16_185_129_/_0.4)]"
         style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));"
         aria-label="Book a demo"
       >
-        <span aria-hidden="true" class="text-[0.95rem] leading-none">✆</span>
-        <span>Book a demo</span>
-        <span aria-hidden="true" class="opacity-70">→</span>
+        Book a demo →
       </a>
 
       <script is:inline>
@@ -71,11 +57,8 @@ const showFloatingCta = path !== "/contact";
           const panel = document.getElementById("mobile-nav-panel");
           if (!cta || !panel) return;
           const sync = function () {
-            if (!panel.classList.contains("hidden")) {
-              cta.style.display = "none";
-            } else {
-              cta.style.display = "";
-            }
+            if (!panel.classList.contains("hidden")) cta.style.display = "none";
+            else cta.style.display = "";
           };
           new MutationObserver(sync).observe(panel, { attributes: true, attributeFilter: ["class"] });
         })();
