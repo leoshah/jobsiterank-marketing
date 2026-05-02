@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface UpcomingPost {
+  category: string;
+  title: string;
+  description: string;
+  readTime: string;
+}
+
+const upcomingPosts: UpcomingPost[] = [
+  {
+    category: "Playbook",
+    title: "How to set up missed-call text-back in under 30 minutes",
+    description: "Step-by-step walkthrough of wiring Twilio to your business line and writing the auto-text that books the most jobs.",
+    readTime: "8 min read",
+  },
+  {
+    category: "Case study",
+    title: "How Plumbing Geeks killed $2,400/mo of HomeAdvisor spend",
+    description: "Inside the 6-month engagement: the audit findings, the rebuild sequence, and the math behind dropping lead-gen entirely.",
+    readTime: "12 min read",
+  },
+  {
+    category: "Field notes",
+    title: "Re-activation campaign teardown: 1,800 customers → 87 booked jobs",
+    description: "The exact SMS copy, segmentation logic, and timing that drove $71k in revenue from a single text wave.",
+    readTime: "10 min read",
+  },
+  {
+    category: "Playbook",
+    title: "The plumber's guide to ranking #1 in Google's map pack",
+    description: "What actually moves the needle on local SEO for trades — from NAP citations to GBP posts to review velocity.",
+    readTime: "15 min read",
+  },
+];
+---
+
+<BaseLayout
+  title="Blog — JobsiteRank"
+  description="Playbooks, case studies, and field notes for plumbing shops. Coming soon."
+>
+  <!-- Hero -->
+  <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Playbooks, case files, and field notes — for plumbers.
+        </h1>
+        <p class="mt-6 text-[1.1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          The exact systems, scripts, and tactics we use to grow plumbing shops. Practical writing — no fluff, no SEO bait. First posts dropping soon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming posts preview -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
+      <div class="text-center mb-12">
+        <span class="eyebrow">In the queue</span>
+        <h2 class="font-display text-[2rem] md:text-[2.6rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
+          What's coming first.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+        {upcomingPosts.map((post) => (
+          <article class="card-flat opacity-90">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="tag-pill tag-pill-accent">{post.category}</span>
+              <span class="text-[0.78rem] font-medium text-[color:var(--color-slate-500)]">{post.readTime}</span>
+            </div>
+            <h3 class="font-display text-[1.3rem] font-semibold leading-tight text-[color:var(--color-ink)]">{post.title}</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-[color:var(--color-slate-600)]">
+              {post.description}
+            </p>
+            <div class="mt-5 pt-5 border-t border-[color:var(--color-slate-200)]">
+              <span class="text-[0.85rem] font-semibold text-[color:var(--color-slate-500)]">Coming soon</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Email subscribe CTA -->
+  <section class="bg-[color:var(--color-cream)]">
+    <div class="container-page section-padding-tight md:!py-20">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-display text-[1.9rem] md:text-[2.4rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Want the first post in your inbox?
+        </h2>
+        <p class="mt-5 text-[1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-xl mx-auto">
+          One email when the blog goes live. No drip, no spam — just the link.
+        </p>
+        <form class="mt-7 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" method="POST" action="#">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="marco@yourshop.com"
+            class="input-soft flex-1"
+          />
+          <button type="submit" class="btn-accent whitespace-nowrap">
+            Notify me →
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-[color:var(--color-ink)] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-accent)]/15 via-transparent to-[color:var(--color-accent)]/5 pointer-events-none"></div>
+    <div class="container-page section-padding relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-[2rem] md:text-[2.8rem] leading-[1.05] tracking-tight text-[color:var(--color-paper)]">
+          Don't want to wait?
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl mx-auto">
+          Book a demo and we'll walk you through the systems live — same content, just faster.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">Book a demo →</a>
+          <a href="/case-studies" class="inline-flex items-center gap-2 text-[color:var(--color-paper)] text-[1rem] font-medium px-6 py-4 hover:text-[color:var(--color-accent)] transition-colors">
+            Read the case files →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

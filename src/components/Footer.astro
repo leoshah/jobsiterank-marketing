@@ -2,56 +2,47 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
+<footer class="bg-[color:var(--color-paper)] text-[color:var(--color-ink)] border-t border-[color:var(--color-slate-200)]">
   <div class="container-page py-16 md:py-20">
-    <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+    <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
       <div>
         <a href="/" class="flex items-center gap-2.5 mb-5">
-          <span class="grid place-items-center w-10 h-10 rounded-xl bg-[color:var(--color-paper)] text-[color:var(--color-ink)] font-display text-[1rem] font-bold">JR</span>
+          <span class="grid place-items-center w-10 h-10 rounded-xl bg-[color:var(--color-ink)] text-[color:var(--color-accent)] font-display text-[1rem] font-bold">JR</span>
           <span class="font-display text-[1.2rem] font-semibold tracking-tight">JobsiteRank</span>
         </a>
-        <p class="text-[color:var(--color-paper)]/70 max-w-sm leading-relaxed">
+        <p class="text-[color:var(--color-slate-600)] max-w-sm leading-relaxed">
           Marketing system for plumbers. Get found, capture more leads, stack reviews, and run your business — all from one stack.
         </p>
-        <div class="mt-6 flex items-center gap-1.5 text-[color:var(--color-paper)]/60 text-[0.85rem]">
+        <div class="mt-6 flex items-center gap-1.5 text-[color:var(--color-slate-500)] text-[0.85rem]">
           <span class="text-[color:var(--color-warning)]">★ ★ ★ ★ ★</span>
           <span>4.9 avg rating · 100+ shops served</span>
         </div>
       </div>
 
       <div>
-        <div class="text-[color:var(--color-paper)] font-semibold mb-4 text-[0.95rem]">Product</div>
-        <ul class="space-y-2.5 text-[0.93rem] text-[color:var(--color-paper)]/70">
-          <li><a href="/" class="hover:text-[color:var(--color-accent)] transition-colors">Home</a></li>
-          <li><a href="/pricing" class="hover:text-[color:var(--color-accent)] transition-colors">Pricing</a></li>
-          <li><a href="/case-studies" class="hover:text-[color:var(--color-accent)] transition-colors">Case studies</a></li>
-          <li><a href="/contact" class="hover:text-[color:var(--color-accent)] transition-colors">Contact</a></li>
+        <div class="text-[color:var(--color-ink)] font-semibold mb-4 text-[0.95rem]">Product</div>
+        <ul class="space-y-2.5 text-[0.93rem] text-[color:var(--color-slate-600)]">
+          <li><a href="/" class="hover:text-[color:var(--color-accent-dark)] transition-colors">Home</a></li>
+          <li><a href="/pricing" class="hover:text-[color:var(--color-accent-dark)] transition-colors">Pricing</a></li>
+          <li><a href="/case-studies" class="hover:text-[color:var(--color-accent-dark)] transition-colors">Case studies</a></li>
+          <li><a href="/blog" class="hover:text-[color:var(--color-accent-dark)] transition-colors">Blog</a></li>
+          <li><a href="/contact" class="hover:text-[color:var(--color-accent-dark)] transition-colors">Contact</a></li>
         </ul>
       </div>
 
       <div>
-        <div class="text-[color:var(--color-paper)] font-semibold mb-4 text-[0.95rem]">Service area</div>
-        <ul class="space-y-2.5 text-[0.93rem] text-[color:var(--color-paper)]/70">
-          <li>Pasadena</li>
-          <li>San Gabriel Valley</li>
-          <li>Greater Los Angeles</li>
-          <li>Plus 13 more states</li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="text-[color:var(--color-paper)] font-semibold mb-4 text-[0.95rem]">Get in touch</div>
-        <ul class="space-y-2.5 text-[0.93rem] text-[color:var(--color-paper)]/70">
-          <li><a href="mailto:hello@jobsiterank.com" class="hover:text-[color:var(--color-accent)] transition-colors">hello@jobsiterank.com</a></li>
-          <li><a href="tel:+16265550199" class="hover:text-[color:var(--color-accent)] transition-colors">(626) 555-0199</a></li>
-          <li class="text-[color:var(--color-paper)]/50 text-[0.85rem]">Mon–Fri · 8a–6p PT</li>
+        <div class="text-[color:var(--color-ink)] font-semibold mb-4 text-[0.95rem]">Get in touch</div>
+        <ul class="space-y-2.5 text-[0.93rem] text-[color:var(--color-slate-600)]">
+          <li><a href="mailto:hello@jobsiterank.com" class="hover:text-[color:var(--color-accent-dark)] transition-colors">hello@jobsiterank.com</a></li>
+          <li><a href="/contact" class="hover:text-[color:var(--color-accent-dark)] transition-colors font-semibold text-[color:var(--color-accent-dark)]">Book a demo →</a></li>
+          <li class="text-[color:var(--color-slate-400)] text-[0.85rem]">Replies within 1 business hour</li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-14 pt-8 border-t border-[color:var(--color-paper)]/10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.85rem] text-[color:var(--color-paper)]/55">
+    <div class="mt-14 pt-8 border-t border-[color:var(--color-slate-200)] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.85rem] text-[color:var(--color-slate-500)]">
       <div>© {year} JobsiteRank · All rights reserved</div>
-      <div>Built for plumbers in Pasadena, CA</div>
+      <div>Built for plumbing shops nationwide</div>
     </div>
   </div>
 </footer>

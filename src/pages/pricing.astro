@@ -13,8 +13,8 @@ interface Tier {
 const tiers: Tier[] = [
   {
     name: "Never Miss a Lead",
-    price: 197,
-    tagline: "Stop losing jobs to voicemail. Every missed call becomes a text — and you get a free website on top.",
+    price: 297,
+    tagline: "Catch every missed call. Stack every review. Free website included.",
     subline: ["Cancel anytime", "No setup fee", "Free website included"],
     features: [
       "Free conversion-focused website (mobile-first, click-to-call)",
@@ -23,22 +23,12 @@ const tiers: Tier[] = [
       "Two-way SMS inbox on your phone — works like regular texting",
       "Mobile messaging app",
       "Weekly missed-call recovery report",
-    ],
-    badge: "Hero offer",
-  },
-  {
-    name: "Lead + Review Engine",
-    price: 297,
-    tagline: "Catch every lead. Stack every review. Outrank the plumber down the street.",
-    subline: ["Cancel anytime", "No setup fee", "Free website included"],
-    features: [
-      "Everything in Never Miss a Lead",
       "Review request automation (SMS sent automatically after every job)",
       "Smart routing — happy customers go to Google, unhappy go to a private form",
       "Smart cooldown so repeat customers don't get spammed",
       "Monthly review-volume report",
     ],
-    badge: "Most popular",
+    badge: null,
   },
   {
     name: "Local Authority",
@@ -46,7 +36,7 @@ const tiers: Tier[] = [
     tagline: "The full system. We own the local map for you.",
     subline: ["No setup fee", "90-day minimum", "Free website included"],
     features: [
-      "Everything in Lead + Review Engine",
+      "Everything in Never Miss a Lead",
       "Google Business Profile posts (2× per week)",
       "NAP citation engine (80+ directories)",
       "Review response management — our team replies to every review",
@@ -59,47 +49,22 @@ const tiers: Tier[] = [
   },
 ];
 
-interface MatrixRow {
-  label: string;
-  in: [boolean, boolean, boolean];
-}
-
-const matrixRows: MatrixRow[] = [
-  { label: "Free conversion-focused website", in: [true, true, true] },
-  { label: "Missed-call text-back (under 30 sec)", in: [true, true, true] },
-  { label: "Dedicated business number", in: [true, true, true] },
-  { label: "Two-way SMS inbox on your phone", in: [true, true, true] },
-  { label: "Mobile messaging app", in: [true, true, true] },
-  { label: "Weekly missed-call recovery report", in: [true, true, true] },
-  { label: "Review request automation", in: [false, true, true] },
-  { label: "Smart routing (happy → Google, unhappy → private)", in: [false, true, true] },
-  { label: "Smart cooldown per customer", in: [false, true, true] },
-  { label: "Monthly review-volume report", in: [false, true, true] },
-  { label: "Google Business Profile posts (2×/wk)", in: [false, false, true] },
-  { label: "NAP citation engine (80+ directories)", in: [false, false, true] },
-  { label: "Review response management", in: [false, false, true] },
-  { label: "Full CRM with lead pipeline", in: [false, false, true] },
-  { label: "Full branded mobile CRM", in: [false, false, true] },
-  { label: "Local on-page SEO + service-area pages", in: [false, false, true] },
-  { label: "Quarterly re-activation campaigns", in: [false, false, true] },
-];
 ---
 
 <BaseLayout
   title="Pricing — JobsiteRank"
-  description="Three plans. Never Miss a Lead at $197/mo. Lead + Review Engine at $297/mo. Local Authority at $497/mo. Free website with every plan."
+  description="Two plans. Never Miss a Lead at $297/mo. Local Authority at $497/mo. Free conversion-focused website with every plan."
 >
   <!-- ─── Header ─── -->
   <section class="bg-[color:var(--color-cream)] relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
     <div class="container-page relative section-padding-tight md:!pt-20 md:!pb-16">
       <div class="text-center max-w-3xl mx-auto">
-        <span class="eyebrow-mint">Pricing · Three plans</span>
-        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight mt-6 text-[color:var(--color-ink)]">
-          Pick the plan that fits where you bleed.
+        <h1 class="font-display text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Two plans. Free website with both.
         </h1>
         <p class="mt-6 text-[1.1rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
-          Every plan includes a free conversion-focused website. Move up only when you outgrow what you're on.
+          Start with Never Miss a Lead. Move up to Local Authority when you want us owning the local map for you.
         </p>
       </div>
     </div>
@@ -108,130 +73,44 @@ const matrixRows: MatrixRow[] = [
   <!-- ─── Tier cards ─── -->
   <section class="bg-[color:var(--color-paper)] -mt-8 relative z-10">
     <div class="container-page">
-      <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
-        {tiers.map((tier) => {
-          const isPopular = tier.badge === "Most popular";
-          const isFlagship = tier.badge === "Flagship";
-          const isHero = tier.badge === "Hero offer";
-          return (
-            <article class:list={[
-              "rounded-2xl p-7 md:p-8 flex flex-col relative",
-              isFlagship
-                ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
-                : "bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]",
-              isPopular && "ring-2 ring-[color:var(--color-accent)] shadow-[0_20px_40px_-20px_rgb(16_185_129_/_0.35)]",
-            ]}>
-              {tier.badge && (
-                <div class:list={[
-                  "absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide whitespace-nowrap",
-                  isHero ? "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] border border-[color:var(--color-accent)]/30" :
-                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)]" :
-                  "bg-[color:var(--color-accent)] text-[color:var(--color-paper)]",
-                ]}>
-                  {tier.badge}
-                </div>
-              )}
-
-              <h3 class={`font-display text-[1.4rem] font-semibold ${isFlagship ? "text-[color:var(--color-paper)]" : "text-[color:var(--color-ink)]"}`}>{tier.name}</h3>
-              <p class={`mt-2 text-[0.95rem] leading-snug ${isFlagship ? "text-[color:var(--color-paper)]/75" : "text-[color:var(--color-slate-600)]"}`}>{tier.tagline}</p>
-
-              <div class="mt-7 flex items-baseline gap-1.5">
-                <span class={`font-display text-[3.4rem] leading-none ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-ink)]"}`}>${tier.price}</span>
-                <span class={`text-[0.95rem] ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-slate-500)]"}`}>/ month</span>
-              </div>
-
-              <div class={`mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.78rem] font-medium ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-accent-dark)]"}`}>
-                {tier.subline.map((item, i) => (
-                  <>
-                    {i > 0 && <span class={isFlagship ? "text-[color:var(--color-paper)]/30" : "text-[color:var(--color-slate-300)]"}>·</span>}
-                    <span>✓ {item}</span>
-                  </>
-                ))}
-              </div>
-
-              <ul class={`mt-7 space-y-3 text-[0.93rem] flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : "text-[color:var(--color-slate-700)]"}`}>
-                {tier.features.map((f) => (
-                  <li class="flex items-start gap-2.5">
-                    <span class={`mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold ${isFlagship ? "bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)]" : "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]"}`}>✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/contact"
-                class:list={[
-                  "mt-8 inline-flex items-center justify-center gap-2 font-semibold text-[0.95rem] py-3.5 px-6 rounded-full transition-all",
-                  isPopular ? "bg-[color:var(--color-accent)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-accent-dark)]" :
-                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-accent-dark)] hover:text-[color:var(--color-paper)]" :
-                  "bg-[color:var(--color-ink)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-ink-soft)]",
-                ]}
-              >
-                Book a demo →
-              </a>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Comparison matrix ─── -->
-  <section class="bg-[color:var(--color-paper)]">
-    <div class="container-page section-padding">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="eyebrow">Compare plans</span>
-        <h2 class="font-display text-[2rem] md:text-[2.6rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
-          What's in each plan.
-        </h2>
-        <p class="mt-5 text-[1rem] leading-relaxed text-[color:var(--color-slate-600)]">
-          Every plan includes the website. Each step up adds compounding leverage.
-        </p>
-      </div>
-
-      <!-- Desktop matrix -->
-      <div class="hidden md:block max-w-5xl mx-auto rounded-2xl border border-[color:var(--color-slate-200)] overflow-hidden bg-[color:var(--color-paper)]">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-[color:var(--color-cream)] border-b border-[color:var(--color-slate-200)]">
-              <th class="px-6 py-4 text-[0.85rem] font-semibold text-[color:var(--color-slate-600)]">Feature</th>
-              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-ink)]">$197<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Never Miss a Lead</span></th>
-              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-ink)]">$297<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Lead + Review Engine</span></th>
-              <th class="px-6 py-4 text-center text-[0.85rem] font-semibold text-[color:var(--color-accent-dark)] bg-[color:var(--color-mint)]/40">$497<br /><span class="text-[0.72rem] font-medium text-[color:var(--color-slate-500)]">Local Authority</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            {matrixRows.map((row, idx) => (
-              <tr class={idx === matrixRows.length - 1 ? "" : "border-b border-[color:var(--color-slate-100)]"}>
-                <td class="px-6 py-4 text-[0.93rem] font-medium text-[color:var(--color-ink)]">{row.label}</td>
-                {row.in.map((included, ci) => (
-                  <td class:list={["px-6 py-4 text-center", ci === 2 ? "bg-[color:var(--color-mint)]/30" : ""]}>
-                    {included ? (
-                      <span class="inline-grid place-items-center w-6 h-6 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.72rem] font-bold">✓</span>
-                    ) : (
-                      <span class="text-[color:var(--color-slate-300)] text-[1rem]">—</span>
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Mobile stacked -->
-      <div class="md:hidden space-y-5">
+      <div class="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
         {tiers.map((tier) => (
-          <article class="card-flat">
-            <div class="flex items-baseline justify-between mb-1">
-              <h3 class="font-display text-[1.15rem] font-semibold text-[color:var(--color-ink)]">{tier.name}</h3>
-              <div class="font-display text-[1.4rem] font-semibold text-[color:var(--color-ink)]">${tier.price}<span class="text-[0.78rem] font-normal text-[color:var(--color-slate-500)]">/mo</span></div>
+          <article class="rounded-2xl p-7 md:p-8 flex flex-col relative bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]">
+            {tier.badge && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide whitespace-nowrap bg-[color:var(--color-accent)] text-[color:var(--color-paper)]">
+                {tier.badge}
+              </div>
+            )}
+
+            <h3 class="font-display text-[1.4rem] font-semibold text-[color:var(--color-ink)]">{tier.name}</h3>
+            <p class="mt-2 text-[0.95rem] leading-snug text-[color:var(--color-slate-600)]">{tier.tagline}</p>
+
+            <div class="mt-7 flex items-baseline gap-1.5">
+              <span class="font-display text-[3.4rem] leading-none text-[color:var(--color-ink)]">${tier.price}</span>
+              <span class="text-[0.95rem] text-[color:var(--color-slate-500)]">/ month</span>
             </div>
-            <ul class="mt-4 space-y-2 text-[0.92rem] text-[color:var(--color-slate-700)]">
+
+            <div class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.78rem] font-medium text-[color:var(--color-accent-dark)]">
+              {tier.subline.map((item, i) => (
+                <>
+                  {i > 0 && <span class="text-[color:var(--color-slate-300)]">·</span>}
+                  <span>✓ {item}</span>
+                </>
+              ))}
+            </div>
+
+            <ul class="mt-7 space-y-3 text-[0.93rem] flex-1 text-[color:var(--color-slate-700)]">
               {tier.features.map((f) => (
-                <li class="check-bullet"><span>{f}</span></li>
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]">✓</span>
+                  <span>{f}</span>
+                </li>
               ))}
             </ul>
+
+            <a href="/contact" class="mt-8 btn-accent justify-center">
+              Book a demo →
+            </a>
           </article>
         ))}
       </div>

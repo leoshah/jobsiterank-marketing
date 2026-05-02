@@ -1,67 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-interface ProductCategory {
-  eyebrow: string;
-  title: string;
-  description: string;
-  products: Array<{ name: string; description: string }>;
-  visual?: "phone" | "list" | "stars" | "dashboard";
-}
-
-const productCategories: ProductCategory[] = [
-  {
-    eyebrow: "Get found online",
-    title: "If people can't find you on Google, they won't call you.",
-    description: "We fix that with a website built to rank, get clicks, and turn them into customers.",
-    products: [
-      { name: "Free conversion website", description: "Mobile-first, click-to-call. Built so Google can read it and customers want to dial." },
-      { name: "On-site SEO", description: "Pages structured so Google understands what you do and where you serve." },
-      { name: "Service area pages", description: "Show up in 'near me' searches across every zip code you cover." },
-      { name: "Google Business Profile posts", description: "Two posts a week to keep your profile fresh and ranking." },
-      { name: "Directory listings", description: "Get listed in 80+ trusted directories — consistent name, address, phone." },
-    ],
-    visual: "list",
-  },
-  {
-    eyebrow: "Capture more leads",
-    title: "Turn missed calls into new jobs.",
-    description: "Automatically follow up with every missed call so you never lose a lead.",
-    products: [
-      { name: "Missed-call text-back", description: "A text is sent within 30 seconds when you can't answer." },
-      { name: "Two-way SMS inbox", description: "Send and receive texts from your business number — works like regular texting." },
-      { name: "Dedicated business number", description: "Port your existing number or get a new one. Yours forever." },
-      { name: "Mobile messaging app", description: "All texts saved and organized in one place. Reply faster, win more jobs." },
-    ],
-    visual: "phone",
-  },
-  {
-    eyebrow: "Get more reviews",
-    title: "Get more 5-star reviews — without the risk.",
-    description: "We route happy customers to Google and send unhappy ones to a private form.",
-    products: [
-      { name: "Review request automation", description: "Every completed job gets a follow-up text asking for a review." },
-      { name: "Smart routing", description: "Happy customers go to Google. Unhappy ones go to a private form for you." },
-      { name: "Smart cooldown", description: "Repeat customers don't get spammed. We pace requests intelligently." },
-      { name: "Review replies", description: "Our team writes a thoughtful response to every review within 24 hours." },
-    ],
-    visual: "stars",
-  },
-  {
-    eyebrow: "Run your business",
-    title: "Manage your leads without the chaos.",
-    description: "Everything organized so you can track, follow up, and close more jobs.",
-    products: [
-      { name: "Full CRM with lead pipeline", description: "Calls, texts, jobs — all tracked together. See exactly where each one stands." },
-      { name: "Full branded mobile CRM", description: "Manage everything from your phone. App and messaging branded to you." },
-      { name: "Quarterly re-activation campaigns", description: "Wake up dormant past customers with a seasonal SMS. Repeat work, no ad spend." },
-      { name: "Weekly missed-call recovery report", description: "See every missed call and how many we recovered — straight to your inbox." },
-      { name: "Monthly performance reports", description: "Reviews gained, calls captured, leads booked. One page, every month." },
-    ],
-    visual: "dashboard",
-  },
-];
-
 interface FaqItem {
   q: string;
   a: string;
@@ -77,12 +16,12 @@ const faqs: FaqItem[] = [
     a: "Yes. Port your existing business number or pick a new one — either way it stays yours forever. Cancel us, you keep the number.",
   },
   {
-    q: "What's the difference between the three plans?",
-    a: "Never Miss a Lead ($197) catches every call with text-back + a free website. Lead + Review Engine ($297) adds review automation so you start out-ranking competitors. Local Authority ($497) is the full system — we own the local map for you with citations, GBP posts, and a branded mobile CRM.",
+    q: "What's the difference between the two plans?",
+    a: "Never Miss a Lead ($297) is the entry plan — free website, missed-call text-back, dedicated business number, mobile messaging, plus full review automation and smart routing. Local Authority ($497) is the full system — adds Google Business Profile posts, 80+ NAP citations, review responses by our team, full branded CRM with lead pipeline, local SEO, and quarterly re-activation campaigns. Start with $297; upgrade when you outgrow it.",
   },
   {
     q: "Is the website really free with every tier?",
-    a: "Yes. Even the $197 entry tier ships with a free conversion-focused mobile-first website. No setup fee. The site is built to drive phone calls, not just traffic.",
+    a: "Yes. Both plans ship with a free conversion-focused mobile-first website. No setup fee. The site is built to drive phone calls, not just traffic.",
   },
   {
     q: "How is this different from HomeAdvisor or Angi?",
@@ -104,36 +43,27 @@ const stats = [
 const tiers = [
   {
     name: "Never Miss a Lead",
-    price: 197,
-    tagline: "Stop losing jobs to voicemail.",
+    price: 297,
+    tagline: "Catch every missed call. Stack every review.",
     features: [
       "Free conversion-focused website",
       "Missed-call text-back (under 30s)",
       "Dedicated business number",
       "Two-way SMS inbox + mobile messaging app",
       "Weekly missed-call recovery report",
-    ],
-    badge: null,
-  },
-  {
-    name: "Lead + Review Engine",
-    price: 297,
-    tagline: "Catch every lead. Stack every review.",
-    features: [
-      "Everything in Never Miss a Lead",
       "Review request automation",
       "Smart routing (happy → Google)",
       "Smart cooldown per customer",
       "Monthly review-volume report",
     ],
-    badge: "Most popular",
+    badge: null,
   },
   {
     name: "Local Authority",
     price: 497,
     tagline: "The full system. We own the local map.",
     features: [
-      "Everything in Lead + Review Engine",
+      "Everything in Never Miss a Lead",
       "Google Business Profile posts (2×/wk)",
       "NAP citations (80+ directories)",
       "Review responses by our team",
@@ -180,7 +110,7 @@ const testimonials = [
             <span class="block mt-2 text-[color:var(--color-accent-dark)]">Get found, get called, get booked.</span>
           </h1>
           <p class="mt-6 max-w-xl text-[1.1rem] md:text-[1.18rem] leading-relaxed text-[color:var(--color-slate-600)]">
-            JobsiteRank gives plumbers a conversion-focused website, missed-call text-back, review automation, and a real lead pipeline — all in one stack, starting at <strong class="text-[color:var(--color-ink)]">$197/month</strong>.
+            JobsiteRank gives plumbers a conversion-focused website, missed-call text-back, review automation, and a real lead pipeline — all in one stack, starting at <strong class="text-[color:var(--color-ink)]">$297/month</strong>.
           </p>
 
           <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -216,7 +146,7 @@ const testimonials = [
                 <span class="text-[0.7rem] text-[color:var(--color-slate-400)]">4:23 PM</span>
               </div>
 
-              <div class="bg-[color:var(--color-slate-50)] rounded-xl p-3 mb-3 flex items-center gap-2.5">
+              <div class="hero-anim-1 bg-[color:var(--color-slate-50)] rounded-xl p-3 mb-3 flex items-center gap-2.5">
                 <span class="text-[color:var(--color-slate-400)] text-[1rem]">✆</span>
                 <div class="flex-1">
                   <div class="text-[0.78rem] font-medium text-[color:var(--color-ink)]">Missed call · (818) ▓▓▓-0142</div>
@@ -225,7 +155,7 @@ const testimonials = [
               </div>
 
               <div class="space-y-3">
-                <div class="flex justify-end">
+                <div class="hero-anim-2 flex justify-end">
                   <div class="max-w-[85%]">
                     <div class="bg-[color:var(--color-accent)] text-[color:var(--color-paper)] px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.85rem] leading-snug">
                       Hey, this is Marco at Plumbing Geeks — sorry I missed your call. What's the address &amp; what's going on?
@@ -234,7 +164,7 @@ const testimonials = [
                   </div>
                 </div>
 
-                <div class="flex justify-start">
+                <div class="hero-anim-3 flex justify-start">
                   <div class="max-w-[85%]">
                     <div class="bg-[color:var(--color-slate-100)] text-[color:var(--color-ink)] px-3.5 py-2.5 rounded-2xl rounded-bl-md text-[0.85rem] leading-snug">
                       1432 Linda Vista. Water heater leaking everywhere. Can you come now??
@@ -243,7 +173,7 @@ const testimonials = [
                   </div>
                 </div>
 
-                <div class="flex justify-end">
+                <div class="hero-anim-4 flex justify-end">
                   <div class="max-w-[85%]">
                     <div class="bg-[color:var(--color-accent)] text-[color:var(--color-paper)] px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.85rem] leading-snug">
                       On the way. ETA 35 min. Shut off the water at the wall valve if you can.
@@ -253,7 +183,7 @@ const testimonials = [
                 </div>
               </div>
 
-              <div class="mt-5 pt-4 border-t border-[color:var(--color-slate-200)] flex items-center justify-between">
+              <div class="hero-anim-5 mt-5 pt-4 border-t border-[color:var(--color-slate-200)] flex items-center justify-between">
                 <div>
                   <div class="text-[0.85rem] font-semibold text-[color:var(--color-ink)]">Job booked in 3 min</div>
                   <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">Zero touches from you</div>
@@ -281,41 +211,257 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ─── Product categories (4) ─── -->
-  {productCategories.map((cat, i) => (
-    <section class={i % 2 === 0 ? "bg-[color:var(--color-paper)]" : "bg-[color:var(--color-cream)]"}>
-      <div class="container-page section-padding">
-        <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
-          <div class="lg:sticky lg:top-24">
-            <span class="eyebrow">{cat.eyebrow}</span>
-            <h2 class="font-display text-[2rem] md:text-[2.6rem] lg:text-[2.9rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
-              {cat.title}
-            </h2>
-            <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)]">
-              {cat.description}
-            </p>
-            <a href="/contact" class="btn-link mt-6">See it on a demo</a>
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══ CANDIDATE SECTION 2 · CRM DASHBOARD MOCKUP ═══════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-[color:var(--color-paper)]">
+    <div class="container-page section-padding">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] lg:text-[3.4rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Every lead, every text, every job — in one place.
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          The Local Authority CRM consolidates calls, texts, and jobs into a real pipeline. Branded to your shop, accessible from your phone.
+        </p>
+      </div>
+
+      <!-- CRM mockup card -->
+      <div class="max-w-6xl mx-auto relative">
+        <div class="absolute -inset-4 md:-inset-12 bg-gradient-to-br from-[color:var(--color-accent-soft)] via-transparent to-transparent rounded-[3rem] blur-3xl pointer-events-none"></div>
+        <div class="relative rounded-2xl border border-[color:var(--color-slate-200)] bg-[color:var(--color-paper)] shadow-2xl overflow-hidden">
+          <!-- Top bar -->
+          <div class="flex items-center justify-between px-5 py-3 border-b border-[color:var(--color-slate-200)] bg-[color:var(--color-cream)]">
+            <div class="flex items-center gap-3">
+              <span class="grid place-items-center w-7 h-7 rounded-lg bg-[color:var(--color-ink)] text-[color:var(--color-accent)] font-display text-[0.78rem] font-bold">PG</span>
+              <div>
+                <div class="text-[0.85rem] font-semibold text-[color:var(--color-ink)]">Plumbing Geeks · Pipeline</div>
+                <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">Tuesday · April 14</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.78rem]">●</span>
+              <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-slate-100)] text-[color:var(--color-slate-500)] text-[0.78rem]">⌕</span>
+              <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-paper)] text-[0.7rem] font-semibold">MD</span>
+            </div>
           </div>
 
-          <div class="grid gap-3 sm:gap-4">
-            {cat.products.map((p) => (
-              <article class="card-flat hover:shadow-md hover:border-[color:var(--color-slate-300)] transition-all">
-                <div class="flex items-start gap-4">
-                  <div class="grid place-items-center w-10 h-10 rounded-xl bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] flex-shrink-0 mt-0.5">
-                    <span class="text-[1rem] font-bold">✓</span>
+          <!-- KPI strip -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[color:var(--color-slate-200)] border-b border-[color:var(--color-slate-200)]">
+            <div class="bg-[color:var(--color-paper)] p-4">
+              <div class="text-[0.7rem] uppercase tracking-wide text-[color:var(--color-slate-500)] font-semibold">Jobs today</div>
+              <div class="font-display text-[1.5rem] font-semibold text-[color:var(--color-ink)] mt-1">14</div>
+              <div class="text-[0.72rem] text-[color:var(--color-accent-dark)] font-medium mt-0.5">↑ 3 vs avg</div>
+            </div>
+            <div class="bg-[color:var(--color-paper)] p-4">
+              <div class="text-[0.7rem] uppercase tracking-wide text-[color:var(--color-slate-500)] font-semibold">Calls captured</div>
+              <div class="font-display text-[1.5rem] font-semibold text-[color:var(--color-ink)] mt-1">28</div>
+              <div class="text-[0.72rem] text-[color:var(--color-accent-dark)] font-medium mt-0.5">21 via text-back</div>
+            </div>
+            <div class="bg-[color:var(--color-paper)] p-4">
+              <div class="text-[0.7rem] uppercase tracking-wide text-[color:var(--color-slate-500)] font-semibold">New reviews</div>
+              <div class="font-display text-[1.5rem] font-semibold text-[color:var(--color-ink)] mt-1">+5</div>
+              <div class="text-[0.72rem] text-[color:var(--color-warning)] font-medium mt-0.5">★ all 5-star</div>
+            </div>
+            <div class="bg-[color:var(--color-paper)] p-4">
+              <div class="text-[0.7rem] uppercase tracking-wide text-[color:var(--color-slate-500)] font-semibold">Booked revenue</div>
+              <div class="font-display text-[1.5rem] font-semibold text-[color:var(--color-ink)] mt-1">$8.2k</div>
+              <div class="text-[0.72rem] text-[color:var(--color-accent-dark)] font-medium mt-0.5">today</div>
+            </div>
+          </div>
+
+          <!-- Pipeline + activity -->
+          <div class="grid lg:grid-cols-[2fr_1fr]">
+            <!-- Pipeline columns -->
+            <div class="p-5 grid grid-cols-2 md:grid-cols-4 gap-3 bg-[color:var(--color-cream)]/40">
+              <!-- New leads -->
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.72rem] font-bold uppercase tracking-wide text-[color:var(--color-slate-600)]">New</span>
+                  <span class="text-[0.7rem] font-semibold text-[color:var(--color-slate-500)] bg-[color:var(--color-paper)] px-2 py-0.5 rounded-full">7</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-[color:var(--color-paper)] rounded-lg p-2.5 border border-[color:var(--color-slate-200)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">A. Patel</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-500)] mt-0.5 truncate">Water heater leak</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-accent-dark)] mt-1 font-medium">Auto-text sent</div>
                   </div>
-                  <div class="flex-1">
-                    <h3 class="font-display text-[1.15rem] font-semibold text-[color:var(--color-ink)] leading-snug">{p.name}</h3>
-                    <p class="mt-1.5 text-[0.95rem] leading-relaxed text-[color:var(--color-slate-600)]">{p.description}</p>
+                  <div class="bg-[color:var(--color-paper)] rounded-lg p-2.5 border border-[color:var(--color-slate-200)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">M. Soriano</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-500)] mt-0.5 truncate">Drain backup</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-accent-dark)] mt-1 font-medium">Replied · 2m ago</div>
                   </div>
                 </div>
-              </article>
-            ))}
+              </div>
+              <!-- Quoted -->
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.72rem] font-bold uppercase tracking-wide text-[color:var(--color-slate-600)]">Quoted</span>
+                  <span class="text-[0.7rem] font-semibold text-[color:var(--color-slate-500)] bg-[color:var(--color-paper)] px-2 py-0.5 rounded-full">4</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-[color:var(--color-paper)] rounded-lg p-2.5 border border-[color:var(--color-slate-200)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">L. Hernández</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-500)] mt-0.5 truncate">Re-pipe estimate</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-ink)] mt-1 font-medium">$7,400</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Scheduled -->
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.72rem] font-bold uppercase tracking-wide text-[color:var(--color-slate-600)]">Scheduled</span>
+                  <span class="text-[0.7rem] font-semibold text-[color:var(--color-slate-500)] bg-[color:var(--color-paper)] px-2 py-0.5 rounded-full">9</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-[color:var(--color-paper)] rounded-lg p-2.5 border border-[color:var(--color-slate-200)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">D. Wong</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-500)] mt-0.5 truncate">Today · 2:00 PM</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-ink)] mt-1 font-medium">Tankless install</div>
+                  </div>
+                  <div class="bg-[color:var(--color-paper)] rounded-lg p-2.5 border border-[color:var(--color-slate-200)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">R. Foster</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-500)] mt-0.5 truncate">Today · 4:30 PM</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-ink)] mt-1 font-medium">Sewer camera</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Done -->
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.72rem] font-bold uppercase tracking-wide text-[color:var(--color-slate-600)]">Done</span>
+                  <span class="text-[0.7rem] font-semibold text-[color:var(--color-paper)] bg-[color:var(--color-accent)] px-2 py-0.5 rounded-full">14</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-[color:var(--color-mint)] rounded-lg p-2.5 border border-[color:var(--color-accent-soft)]">
+                    <div class="text-[0.78rem] font-semibold text-[color:var(--color-ink)] truncate">J. Lopez</div>
+                    <div class="text-[0.68rem] text-[color:var(--color-slate-600)] mt-0.5 truncate">$1,840 · paid</div>
+                    <div class="text-[0.62rem] text-[color:var(--color-warning)] mt-1 font-medium">★ 5-star · auto-asked</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity feed -->
+            <div class="p-5 border-t lg:border-t-0 lg:border-l border-[color:var(--color-slate-200)]">
+              <div class="text-[0.72rem] font-bold uppercase tracking-wide text-[color:var(--color-slate-600)] mb-3">Live activity</div>
+              <ul class="space-y-3 text-[0.85rem]">
+                <li class="flex gap-2.5">
+                  <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.7rem] flex-shrink-0">SMS</span>
+                  <div class="min-w-0">
+                    <div class="text-[color:var(--color-ink)] truncate">Auto-text sent to A. Patel</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">Just now</div>
+                  </div>
+                </li>
+                <li class="flex gap-2.5">
+                  <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-warning)]/15 text-[color:var(--color-warning)] text-[0.7rem] flex-shrink-0">★</span>
+                  <div class="min-w-0">
+                    <div class="text-[color:var(--color-ink)] truncate">New 5-star review · J. Lopez</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">8 min ago</div>
+                  </div>
+                </li>
+                <li class="flex gap-2.5">
+                  <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-accent)]/15 text-[color:var(--color-accent-dark)] text-[0.7rem] flex-shrink-0">$</span>
+                  <div class="min-w-0">
+                    <div class="text-[color:var(--color-ink)] truncate">Job booked · D. Wong</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">22 min ago</div>
+                  </div>
+                </li>
+                <li class="flex gap-2.5">
+                  <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-slate-100)] text-[color:var(--color-slate-500)] text-[0.7rem] flex-shrink-0">✆</span>
+                  <div class="min-w-0">
+                    <div class="text-[color:var(--color-ink)] truncate">Call from M. Soriano</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">35 min ago</div>
+                  </div>
+                </li>
+                <li class="flex gap-2.5">
+                  <span class="grid place-items-center w-7 h-7 rounded-full bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)] text-[0.7rem] flex-shrink-0">SMS</span>
+                  <div class="min-w-0">
+                    <div class="text-[color:var(--color-ink)] truncate">Reply received · R. Foster</div>
+                    <div class="text-[0.7rem] text-[color:var(--color-slate-500)]">1 hr ago</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  ))}
+
+      <div class="text-center mt-10">
+        <a href="/contact" class="btn-accent">Book a demo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══ CANDIDATE SECTION 3 · VIDEO/GIF WALKTHROUGH PLACEHOLDER ══════════ -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-[color:var(--color-cream)]">
+    <div class="container-page section-padding">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-display text-[2.2rem] md:text-[3rem] lg:text-[3.4rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
+          Watch the system catch a missed call live.
+        </h2>
+        <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)] max-w-2xl mx-auto">
+          A 90-second walkthrough — from the missed call to the booked job. No narration, just the system doing its thing.
+        </p>
+      </div>
+
+      <!-- Video placeholder -->
+      <div class="max-w-5xl mx-auto">
+        <button
+          type="button"
+          class="group relative block w-full aspect-video rounded-3xl overflow-hidden bg-[color:var(--color-ink)] border border-[color:var(--color-slate-200)] shadow-2xl hover:shadow-[0_30px_60px_-15px_rgb(16_185_129_/_0.4)] transition-shadow"
+          aria-label="Play product walkthrough"
+        >
+          <!-- Background gradient -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-ink)] via-[color:var(--color-ink)] to-[color:var(--color-accent-dark)]/40"></div>
+
+          <!-- Subtle UI hint behind play button -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-15">
+            <div class="grid grid-cols-3 gap-3 w-3/4 max-w-md">
+              <div class="h-12 rounded-lg bg-[color:var(--color-paper)]"></div>
+              <div class="h-12 rounded-lg bg-[color:var(--color-paper)]"></div>
+              <div class="h-12 rounded-lg bg-[color:var(--color-paper)]"></div>
+              <div class="col-span-3 h-24 rounded-lg bg-[color:var(--color-paper)]"></div>
+            </div>
+          </div>
+
+          <!-- Play button -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-5">
+            <div class="grid place-items-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-[color:var(--color-accent)] text-[color:var(--color-paper)] shadow-[0_20px_40px_-10px_rgb(16_185_129_/_0.6)] group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-8 h-8 md:w-10 md:h-10 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <div class="text-center">
+              <div class="font-display text-[1.4rem] md:text-[1.7rem] font-semibold text-[color:var(--color-paper)]">Product walkthrough</div>
+              <div class="text-[0.95rem] text-[color:var(--color-paper)]/70 mt-1">90 seconds · No signup required</div>
+            </div>
+          </div>
+
+          <!-- Corner badge -->
+          <div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[color:var(--color-paper)]/15 backdrop-blur text-[color:var(--color-paper)] text-[0.78rem] font-medium">
+            <span class="w-2 h-2 rounded-full bg-[color:var(--color-accent)] animate-pulse"></span>
+            Live demo
+          </div>
+        </button>
+
+        <!-- "What you'll see" chips -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+          <span class="text-[0.85rem] font-semibold text-[color:var(--color-slate-600)] mr-1">In the video:</span>
+          <span class="tag-pill">Real missed call</span>
+          <span class="tag-pill">Auto-text in 28 sec</span>
+          <span class="tag-pill">Customer reply</span>
+          <span class="tag-pill">Job booked</span>
+          <span class="tag-pill">$1,840 ticket</span>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/contact" class="btn-outline">Book a live demo instead →</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ─── Pricing tiers ─── -->
   <section class="bg-[color:var(--color-paper)]">
@@ -323,67 +469,48 @@ const testimonials = [
       <div class="text-center max-w-2xl mx-auto mb-14">
         <span class="eyebrow">Pricing</span>
         <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight mt-4 text-[color:var(--color-ink)]">
-          Three plans. Free website with every one.
+          Two plans. Free website with both.
         </h2>
         <p class="mt-5 text-[1.05rem] leading-relaxed text-[color:var(--color-slate-600)]">
-          Start where you bleed. Move up only when you outgrow it.
+          Start with Never Miss a Lead. Move up to Local Authority when you want us owning the local map for you.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
-        {tiers.map((tier) => {
-          const isPopular = tier.badge === "Most popular";
-          const isFlagship = tier.badge === "Flagship";
-          return (
-            <article class:list={[
-              "rounded-2xl p-7 flex flex-col relative",
-              isFlagship ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]" : "bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]",
-              isPopular && "ring-2 ring-[color:var(--color-accent)] shadow-[0_20px_40px_-20px_rgb(16_185_129_/_0.35)]",
-            ]}>
-              {tier.badge && (
-                <div class:list={[
-                  "absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide",
-                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)]" : "bg-[color:var(--color-accent)] text-[color:var(--color-paper)]",
-                ]}>
-                  {tier.badge}
-                </div>
-              )}
-
-              <h3 class={`font-display text-[1.35rem] font-semibold ${isFlagship ? "text-[color:var(--color-paper)]" : "text-[color:var(--color-ink)]"}`}>{tier.name}</h3>
-              <p class={`mt-1.5 text-[0.93rem] ${isFlagship ? "text-[color:var(--color-paper)]/70" : "text-[color:var(--color-slate-600)]"}`}>{tier.tagline}</p>
-
-              <div class="mt-6 flex items-baseline gap-1.5">
-                <span class={`font-display text-[3rem] leading-none ${isFlagship ? "text-[color:var(--color-accent)]" : "text-[color:var(--color-ink)]"}`}>${tier.price}</span>
-                <span class={`text-[0.93rem] ${isFlagship ? "text-[color:var(--color-paper)]/60" : "text-[color:var(--color-slate-500)]"}`}>/ month</span>
+      <div class="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        {tiers.map((tier) => (
+          <article class="rounded-2xl p-7 flex flex-col relative bg-[color:var(--color-paper)] border border-[color:var(--color-slate-200)]">
+            {tier.badge && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[0.72rem] font-semibold tracking-wide bg-[color:var(--color-accent)] text-[color:var(--color-paper)]">
+                {tier.badge}
               </div>
+            )}
 
-              <ul class={`mt-6 space-y-3 text-[0.93rem] flex-1 ${isFlagship ? "text-[color:var(--color-paper)]/90" : "text-[color:var(--color-slate-700)]"}`}>
-                {tier.features.map((f) => (
-                  <li class="flex items-start gap-2.5">
-                    <span class={`mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold ${isFlagship ? "bg-[color:var(--color-accent)]/20 text-[color:var(--color-accent)]" : "bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]"}`}>✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+            <h3 class="font-display text-[1.35rem] font-semibold text-[color:var(--color-ink)]">{tier.name}</h3>
+            <p class="mt-1.5 text-[0.93rem] text-[color:var(--color-slate-600)]">{tier.tagline}</p>
 
-              <a
-                href="/contact"
-                class:list={[
-                  "mt-7 inline-flex items-center justify-center gap-2 font-semibold text-[0.95rem] py-3 px-5 rounded-full transition-all",
-                  isPopular ? "bg-[color:var(--color-accent)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-accent-dark)]" :
-                  isFlagship ? "bg-[color:var(--color-accent)] text-[color:var(--color-ink)] hover:bg-[color:var(--color-accent-dark)] hover:text-[color:var(--color-paper)]" :
-                  "bg-[color:var(--color-ink)] text-[color:var(--color-paper)] hover:bg-[color:var(--color-ink-soft)]",
-                ]}
-              >
-                Book a demo →
-              </a>
-            </article>
-          );
-        })}
+            <div class="mt-6 flex items-baseline gap-1.5">
+              <span class="font-display text-[3rem] leading-none text-[color:var(--color-ink)]">${tier.price}</span>
+              <span class="text-[0.93rem] text-[color:var(--color-slate-500)]">/ month</span>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-[0.93rem] flex-1 text-[color:var(--color-slate-700)]">
+              {tier.features.map((f) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full flex-shrink-0 text-[0.65rem] font-bold bg-[color:var(--color-mint)] text-[color:var(--color-accent-dark)]">✓</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href="/contact" class="mt-7 btn-accent justify-center">
+              Book a demo →
+            </a>
+          </article>
+        ))}
       </div>
 
       <div class="text-center mt-10">
-        <a href="/pricing" class="btn-link">Compare all features</a>
+        <a href="/pricing" class="btn-link">See full pricing details</a>
       </div>
     </div>
   </section>
@@ -467,11 +594,201 @@ const testimonials = [
           <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">
             Book a demo →
           </a>
-          <a href="tel:+16265550199" class="inline-flex items-center gap-2 text-[color:var(--color-paper)] text-[1rem] font-medium px-6 py-4 hover:text-[color:var(--color-accent)] transition-colors">
-            Or call (626) 555-0199
-          </a>
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* ─── Hero SMS thread loop (12s) ─── */
+  .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5 {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .hero-anim-1 { animation: hero-step 12s ease-out 0s infinite; }
+  .hero-anim-2 { animation: hero-step 12s ease-out 1.4s infinite; }
+  .hero-anim-3 { animation: hero-step 12s ease-out 3.0s infinite; }
+  .hero-anim-4 { animation: hero-step 12s ease-out 4.4s infinite; }
+  .hero-anim-5 { animation: hero-step 12s ease-out 5.8s infinite; }
+
+  @keyframes hero-step {
+    0%   { opacity: 0; transform: translateY(8px); }
+    4%   { opacity: 1; transform: translateY(0); }
+    /* hold most of the cycle */
+    92%  { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* ─── Showcase panel · text-back loop (10s) ─── */
+  .t-anim-1, .t-anim-2, .t-anim-3, .t-anim-4, .t-anim-5 {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .t-anim-1 { animation: panel-step 10s ease-out 0.3s infinite; }
+  .t-anim-2 { animation: panel-step 10s ease-out 1.6s infinite; }
+  .t-anim-3 { animation: panel-step 10s ease-out 3.2s infinite; }
+  .t-anim-4 { animation: panel-step 10s ease-out 4.8s infinite; }
+  .t-anim-5 { animation: panel-step 10s ease-out 6.2s infinite; }
+
+  @keyframes panel-step {
+    0%   { opacity: 0; transform: translateY(8px); }
+    5%   { opacity: 1; transform: translateY(0); }
+    90%  { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* ─── Reviews panel loop (10s) ─── */
+  .r-anim-1, .r-anim-2, .r-anim-3, .r-anim-4 {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  .r-anim-1 { animation: review-step 10s ease-out 0.3s infinite; }
+  .r-anim-2 { animation: review-step 10s ease-out 1.8s infinite; }
+  .r-anim-3 { animation: review-step 10s ease-out 3.4s infinite; }
+  .r-anim-4 { animation: review-step 10s ease-out 5.2s infinite; }
+
+  @keyframes review-step {
+    0%   { opacity: 0; transform: translateX(-8px); }
+    5%   { opacity: 1; transform: translateX(0); }
+    90%  { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-8px); }
+  }
+
+  /* Star fill effect — sequential pop in for the green-routed reviews */
+  .panel-reviews .r-anim-1 .r-star,
+  .panel-reviews .r-anim-2 .r-star {
+    display: inline-block;
+    transform: scale(0.4);
+    opacity: 0.4;
+    animation: star-pop 10s ease-out infinite;
+  }
+  .panel-reviews .r-anim-1 .r-star:nth-child(1) { animation-delay: 0.6s; }
+  .panel-reviews .r-anim-1 .r-star:nth-child(2) { animation-delay: 0.75s; }
+  .panel-reviews .r-anim-1 .r-star:nth-child(3) { animation-delay: 0.9s; }
+  .panel-reviews .r-anim-1 .r-star:nth-child(4) { animation-delay: 1.05s; }
+  .panel-reviews .r-anim-1 .r-star:nth-child(5) { animation-delay: 1.2s; }
+  .panel-reviews .r-anim-2 .r-star:nth-child(1) { animation-delay: 2.1s; }
+  .panel-reviews .r-anim-2 .r-star:nth-child(2) { animation-delay: 2.25s; }
+  .panel-reviews .r-anim-2 .r-star:nth-child(3) { animation-delay: 2.4s; }
+  .panel-reviews .r-anim-2 .r-star:nth-child(4) { animation-delay: 2.55s; }
+  .panel-reviews .r-anim-2 .r-star:nth-child(5) { animation-delay: 2.7s; }
+
+  @keyframes star-pop {
+    0%, 5% { transform: scale(0.4); opacity: 0.4; }
+    8%     { transform: scale(1.25); opacity: 1; }
+    11%    { transform: scale(1); opacity: 1; }
+    90%    { transform: scale(1); opacity: 1; }
+    100%   { transform: scale(0.4); opacity: 0.4; }
+  }
+
+  /* ─── Google panel loop (10s) ─── */
+  .g-anim-1, .g-anim-2, .g-anim-3, .g-anim-4, .g-anim-5 {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .g-anim-1 { animation: panel-step 10s ease-out 0.3s infinite; }
+  .g-anim-2 { animation: panel-step 10s ease-out 1.8s infinite; }
+  .g-anim-3 { animation: panel-step 10s ease-out 2.6s infinite; }
+  .g-anim-4 { animation: google-rank 10s ease-out 3.6s infinite; }
+  .g-anim-5 { animation: panel-step 10s ease-out 5.2s infinite; }
+
+  @keyframes google-rank {
+    0%, 35% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    40%     { opacity: 1; transform: translateY(0) scale(1.04); }
+    44%     { transform: translateY(0) scale(1); }
+    90%     { opacity: 1; transform: translateY(0) scale(1); }
+    100%    { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* Blinking search cursor */
+  .g-cursor {
+    animation: cursor-blink 1s steps(2) infinite;
+  }
+  @keyframes cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  /* Active tab indicator */
+  .showcase-tab[aria-selected="true"] {
+    border-color: var(--color-ink) !important;
+    color: var(--color-ink) !important;
+  }
+  .showcase-tab[aria-selected="false"] {
+    border-color: transparent !important;
+    color: var(--color-slate-400) !important;
+  }
+
+  /* Hide non-active panels (overrides Tailwind hidden when needed) */
+  .showcase-panel.hidden {
+    display: none;
+  }
+
+  /* Respect motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5,
+    .t-anim-1, .t-anim-2, .t-anim-3, .t-anim-4, .t-anim-5,
+    .r-anim-1, .r-anim-2, .r-anim-3, .r-anim-4,
+    .g-anim-1, .g-anim-2, .g-anim-3, .g-anim-4, .g-anim-5 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .panel-reviews .r-anim-1 .r-star,
+    .panel-reviews .r-anim-2 .r-star {
+      animation: none;
+      transform: none;
+      opacity: 1;
+    }
+    .g-cursor { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const tabs = Array.from(document.querySelectorAll(".showcase-tab"));
+    const panels = Array.from(document.querySelectorAll(".showcase-panel"));
+    if (!tabs.length || !panels.length) return;
+
+    let autoIndex = 0;
+    let autoTimer = null;
+    let userInteracted = false;
+
+    function activate(tabKey) {
+      tabs.forEach((t) => {
+        const active = t.getAttribute("data-tab") === tabKey;
+        t.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      panels.forEach((p) => {
+        const active = p.getAttribute("data-panel") === tabKey;
+        if (active) {
+          p.classList.remove("hidden");
+        } else {
+          p.classList.add("hidden");
+        }
+      });
+    }
+
+    function rotate() {
+      if (userInteracted) return;
+      autoIndex = (autoIndex + 1) % tabs.length;
+      const key = tabs[autoIndex].getAttribute("data-tab");
+      if (key) activate(key);
+    }
+
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", function () {
+        userInteracted = true;
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+        autoIndex = i;
+        const key = t.getAttribute("data-tab");
+        if (key) activate(key);
+      });
+    });
+
+    autoTimer = setInterval(rotate, 8000);
+  })();
+</script>

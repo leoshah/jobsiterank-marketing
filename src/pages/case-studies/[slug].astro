@@ -27,21 +27,7 @@ const categoryLabel = categoryMeta ? categoryMeta.label : cs.category;
     <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--color-mint)]/40 via-transparent to-transparent pointer-events-none"></div>
     <div class="container-page relative section-padding-tight md:!pt-16 md:!pb-12">
       <div class="max-w-4xl mx-auto">
-        <div class="flex items-center gap-3 flex-wrap">
-          <a href="/case-studies" class="text-[0.9rem] font-medium text-[color:var(--color-slate-600)] hover:text-[color:var(--color-accent-dark)] transition-colors">
-            ← All case studies
-          </a>
-          <span class="text-[color:var(--color-slate-300)]">·</span>
-          <span class="tag-pill tag-pill-accent">{categoryLabel}</span>
-          {cs.representative && (
-            <>
-              <span class="text-[color:var(--color-slate-300)]">·</span>
-              <span class="text-[0.78rem] text-[color:var(--color-slate-500)] font-medium">Representative engagement</span>
-            </>
-          )}
-        </div>
-
-        <div class="mt-6 flex items-baseline gap-4 flex-wrap">
+        <div class="flex items-baseline gap-4 flex-wrap">
           <span class="font-display text-[1.05rem] text-[color:var(--color-accent-dark)] font-semibold">{cs.business}</span>
           <span class="text-[0.9rem] text-[color:var(--color-slate-500)]">{cs.city}, {cs.state}</span>
         </div>
