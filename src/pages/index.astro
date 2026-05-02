@@ -33,8 +33,14 @@ const faqs: FaqItem[] = [
   },
 ];
 
-const stats = [
-  { value: "247", label: "Plumbing shops we're serving" },
+interface Stat {
+  value: string;
+  label: string;
+  subtext?: string;
+}
+
+const stats: Stat[] = [
+  { value: "247", subtext: "and growing", label: "Plumbing shops currently serving" },
   { value: "12s", label: "Avg auto-text response" },
   { value: "4.9★", label: "Average customer rating" },
   { value: "$0", label: "Setup fee, every tier" },
@@ -124,7 +130,7 @@ const testimonials = [
 
           <div class="mt-8 flex items-center gap-3 text-[color:var(--color-slate-500)] text-[0.9rem]">
             <span class="text-[color:var(--color-warning)] text-[1rem]">★ ★ ★ ★ ★</span>
-            <span>4.9 across 247 plumbing shops we're serving</span>
+            <span>4.9 across 247 plumbing shops we're currently serving</span>
             <span class="hidden sm:inline">·</span>
             <span class="hidden sm:inline">Cancel anytime</span>
           </div>
@@ -203,7 +209,12 @@ const testimonials = [
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s) => (
           <div>
-            <div class="font-display text-[2.2rem] md:text-[2.8rem] leading-none text-[color:var(--color-ink)]">{s.value}</div>
+            <div class="flex items-baseline gap-2">
+              <div class="font-display text-[2.2rem] md:text-[2.8rem] leading-none text-[color:var(--color-ink)]">{s.value}</div>
+              {s.subtext && (
+                <div class="text-[0.78rem] font-medium text-[color:var(--color-accent-dark)]">{s.subtext}</div>
+              )}
+            </div>
             <div class="text-[0.85rem] text-[color:var(--color-slate-600)] mt-2">{s.label}</div>
           </div>
         ))}
