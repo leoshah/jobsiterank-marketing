@@ -66,57 +66,11 @@ export interface CaseStudy {
 }
 
 export const CASE_STUDIES: CaseStudy[] = [
-  // ───────── Text-back (4) ─────────
-  {
-    slug: "plumbing-geeks-pasadena",
-    category: "text-back",
-    fileNum: "002",
-    business: "Plumbing Geeks",
-    trade: "Plumbing · res & commercial",
-    city: "Pasadena",
-    state: "CA",
-    engagement: "Local Authority · 6 months",
-    cardHook: "Cut $1,800/mo HomeAdvisor spend by month two. Inbound calls roughly doubled.",
-    cardMetricValue: "2.1×",
-    cardMetricLabel: "Inbound calls / month",
-    titleStart: "Plumbing Geeks",
-    titleAccent: "stops paying for leads.",
-    intro: "Six-person plumbing shop fighting for visibility against four older Pasadena competitors. Marco was spending around $1,800/mo on HomeAdvisor and watching the same leads get sold to two other plumbers within minutes. We rebuilt the site, wired text-back to the main line, and ran the citation push. Took about six weeks before he felt comfortable killing HomeAdvisor.",
-    intakeFacts: [
-      { label: "Trade", value: "Plumbing · residential + light commercial" },
-      { label: "Service area", value: "Pasadena + 9 SGV cities" },
-      { label: "Plan", value: "Local Authority" },
-      { label: "Length", value: "6 months & ongoing" },
-    ],
-    beforeAfter: [
-      { label: "Lead-gen spend", delta: "−$1,800/mo", detail: "HomeAdvisor cancelled in month 2 once organic calls picked up" },
-      { label: "Inbound calls", delta: "+108%", detail: "47/mo baseline → ~98/mo by month 6" },
-      { label: "Map pack rank", delta: "Page 2 → top 3", detail: "Top 3 for \"plumber pasadena\" by month 5; not yet #1" },
-    ],
-    metrics: [
-      { value: "2.1×", label: "Inbound calls / month" },
-      { value: "Top 3", label: "Map pack, primary keyword" },
-      { value: "76", label: "Directories synced" },
-      { value: "$1,800", label: "Monthly lead-gen spend killed" },
-      { value: "84", label: "New Google reviews, 6 mo" },
-      { value: "14", label: "Repeat-customer jobs in Q1 touch" },
-    ],
-    timeline: [
-      { week: "Week 0", label: "Audit", detail: "Pulled call logs and GBP. Found ~28% of incoming calls going unanswered after 5pm. NAP inconsistent across 38 directories." },
-      { week: "Week 1–2", label: "Site rebuild + text-back", detail: "Shipped the new site. Twilio wiring took an extra two days because the existing carrier didn't allow A2P registration we expected — had to switch to a 10DLC-compliant number." },
-      { week: "Week 3–5", label: "Citations + reviews", detail: "Synced NAP across 76 directories (we couldn't get 4 of the 80 to verify). Stood up review automation. First two weeks: 19 new Google reviews." },
-      { week: "Month 2", label: "HomeAdvisor cancelled", detail: "Marco was nervous about cutting it. We agreed to monitor for 3 weeks. Inbound calls held steady, then climbed. He cancelled at end of month 2." },
-      { week: "Month 4–6", label: "Map pack lift", detail: "Crossed into top 3 for \"plumber pasadena\" by month 5. Not #1 — there's a 25-year-old shop with 1,200 reviews that's hard to dislodge." },
-    ],
-    quote: "I was nervous to cut HomeAdvisor. The text-back was catching everything within a few weeks though, so I pulled the trigger. First month off it was the same revenue minus $1,800 in fees. That's when I knew it was real.",
-    quoteAuthor: "Marco D.",
-    quoteAttribution: "Owner · Plumbing Geeks · Pasadena",
-    quoteInitials: "MD",
-  },
+  // ───────── Text-back (3) ─────────
   {
     slug: "mile-high-pipeworks-denver",
     category: "text-back",
-    fileNum: "003",
+    fileNum: "002",
     business: "Mile-High Pipeworks",
     trade: "Plumbing · res & emergency",
     city: "Denver",
@@ -163,7 +117,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "gulfshore-plumbing-tampa",
     category: "text-back",
-    fileNum: "004",
+    fileNum: "003",
     business: "Gulfshore Plumbing Co.",
     trade: "Plumbing · res & emergency",
     city: "Tampa",
@@ -210,7 +164,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "bluebonnet-plumbing-austin",
     category: "text-back",
-    fileNum: "005",
+    fileNum: "004",
     business: "Bluebonnet Plumbing",
     trade: "Plumbing · residential",
     city: "Austin",
@@ -259,7 +213,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "saguaro-plumbing-phoenix",
     category: "re-activation",
-    fileNum: "006",
+    fileNum: "005",
     business: "Saguaro Plumbing Co.",
     trade: "Plumbing · residential",
     city: "Phoenix",
@@ -306,7 +260,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "tarheel-plumbing-charlotte",
     category: "re-activation",
-    fileNum: "007",
+    fileNum: "006",
     business: "Tarheel Plumbing Co.",
     trade: "Plumbing · residential",
     city: "Charlotte",
@@ -353,7 +307,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "wasatch-pipeworks-salt-lake",
     category: "re-activation",
-    fileNum: "008",
+    fileNum: "007",
     business: "Wasatch Pipeworks",
     trade: "Plumbing + tankless · residential",
     city: "Salt Lake City",
@@ -402,7 +356,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "rose-city-plumbing-portland",
     category: "text-back",
-    fileNum: "009",
+    fileNum: "008",
     business: "Rose City Plumbing",
     trade: "Plumbing · residential",
     city: "Portland",
@@ -451,7 +405,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "peach-state-plumbing-atlanta",
     category: "reviews",
-    fileNum: "010",
+    fileNum: "009",
     business: "Peach State Plumbing",
     trade: "Plumbing · residential",
     city: "Atlanta",
@@ -498,7 +452,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "tideway-plumbing-long-island",
     category: "reviews",
-    fileNum: "011",
+    fileNum: "010",
     business: "Tideway Plumbing",
     trade: "Plumbing · residential",
     city: "Long Island",
@@ -547,7 +501,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "bayou-city-pipeworks-houston",
     category: "leads",
-    fileNum: "012",
+    fileNum: "011",
     business: "Bayou City Pipeworks",
     trade: "Plumbing · residential",
     city: "Houston",
