@@ -24,8 +24,8 @@
   --color-warning: #F59E0B;
   --color-success: #10B981;
 
-  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --radius-sm: 0.5rem;

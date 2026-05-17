@@ -22,3 +22,10 @@ dist/
 
 # claude code local settings (not the project-shared file)
 .claude/settings.local.json
+
+# remotion subproject
+remotion/node_modules/
+remotion/out/
+remotion/.cache/
+remotion/.env.local
+remotion/public/audio/vo/*/
