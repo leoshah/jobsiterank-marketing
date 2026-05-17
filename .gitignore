@@ -20,12 +20,17 @@ dist/
 .vscode/
 .idea/
 
-# claude code local settings (not the project-shared file)
+# claude code local settings + local state
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
 
-# remotion subproject
-remotion/node_modules/
-remotion/out/
-remotion/.cache/
-remotion/.env.local
-remotion/public/audio/vo/*/
+# remotion video subproject — not part of the deployed site
+remotion/
+
+# walkthrough media — too large for the site repo
+public/walkthrough.mp4
+public/walkthrough-poster.png
+
+# heavy media types
+*.mp4
+*.wav
