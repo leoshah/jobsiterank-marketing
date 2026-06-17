@@ -68,14 +68,15 @@ const ogImage = `${siteUrl}/og-image.svg`;
     <main>
       <slot />
     </main>
+    {showFloatingCta && <div class="md:hidden h-20" aria-hidden="true"></div>}
     <Footer />
 
     {showFloatingCta && (
       <a
         href="/contact"
         id="floating-cta"
-        class="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 bg-[color:var(--color-accent)] text-[color:var(--color-paper)] font-semibold text-[0.93rem] px-5 py-3 rounded-full shadow-[0_8px_24px_rgb(16_185_129_/_0.4)]"
-        style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));"
+        class="md:hidden fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-[color:var(--color-accent)] text-[color:var(--color-paper)] font-semibold text-[0.93rem] px-5 py-3 rounded-full shadow-[0_8px_24px_rgb(16_185_129_/_0.4)]"
+        style="bottom: max(1.25rem, env(safe-area-inset-bottom));"
         aria-label="Book a demo"
       >
         Book a demo →

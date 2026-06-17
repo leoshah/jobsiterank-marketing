@@ -64,7 +64,7 @@ const tiers = [
     tagline: "The full system. We own the local map.",
     features: [
       "Everything in Never Miss a Lead",
-      "Google My Business optimization",
+      "Google Business Profile optimization",
       "Google Business Profile posts (2×/wk)",
       "Online directory listings (Yelp, Apple Maps, Bing & more)",
       "Review responses by our team",
@@ -78,19 +78,19 @@ const tiers = [
 
 const testimonials = [
   {
-    quote: "Solo plumber, allergic to having an office. The text-back is basically a dispatcher I don't have to manage. Booked twice the work this year.",
+    quote: "Solo plumber, allergic to having an office. The text-back is basically a dispatcher I don't have to manage. Jobs up about 60% this year — no payroll added except an apprentice.",
     name: "Mike T.",
     business: "Bluebonnet Plumbing · Austin, TX",
     initials: "MT",
   },
   {
-    quote: "We were losing $40k a winter to voicemail and didn't even know it. The text-back caught all of it.",
+    quote: "Tried an answering service before — they'd take down the wrong address half the time. Text-back catches about 38% of our after-hours calls. Way less for anybody to mess up.",
     name: "Karen M.",
     business: "Crown City Plumbing · Pasadena, CA",
     initials: "KM",
   },
   {
-    quote: "Texted 1,800 dormant customers. Booked 87 jobs in two weeks. Best $71k week we've ever had.",
+    quote: "Sat on 1,600+ past customers for years. Felt rude to text them. Turns out 64 of them were just waiting for a reminder — booked $48k in three weeks.",
     name: "Diego L.",
     business: "Saguaro Plumbing · Phoenix, AZ",
     initials: "DL",
@@ -123,9 +123,11 @@ const testimonials = [
             </a>
           </div>
 
-          <div class="mt-8 flex items-center gap-3 text-[color:var(--color-slate-500)] text-[0.9rem]">
-            <span class="text-[color:var(--color-warning)] text-[1rem]">★ ★ ★ ★ ★</span>
-            <span>4.9 across 100+ plumbing shops</span>
+          <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[color:var(--color-slate-500)] text-[0.9rem]">
+            <span class="inline-flex items-center gap-2 whitespace-nowrap">
+              <span class="text-[color:var(--color-warning)] text-[1rem]">★ ★ ★ ★ ★</span>
+              <span>4.9 across 100+ plumbing shops</span>
+            </span>
             <span class="hidden sm:inline">·</span>
             <span class="hidden sm:inline">Cancel anytime</span>
           </div>
@@ -449,7 +451,7 @@ const testimonials = [
     <div class="container-page section-padding">
       <div class="text-center max-w-2xl mx-auto mb-14">
         <h2 class="font-display text-[2.2rem] md:text-[3rem] leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
-          Real shops. Real numbers.
+          Real outcomes. Honest numbers.
         </h2>
       </div>
 
@@ -515,7 +517,7 @@ const testimonials = [
           Ready to stop missing jobs?
         </h2>
         <p class="mt-5 text-[1.1rem] leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl mx-auto">
-          Twenty-minute demo. We pull up your Google Business Profile live and tell you straight whether the system fits.
+          Thirty-minute demo. We pull up your Google Business Profile live and tell you straight whether the system fits.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a href="/contact" class="btn-accent text-[1rem] !py-4 !px-7">
@@ -529,11 +531,11 @@ const testimonials = [
 
 <style>
   /* ─── Hero SMS thread loop (12s) ─── */
-  .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5 {
+  /* Missed call (hero-anim-1) stays visible always — it's the trigger; the rest animate in. */
+  .hero-anim-2, .hero-anim-3, .hero-anim-4, .hero-anim-5 {
     opacity: 0;
     transform: translateY(8px);
   }
-  .hero-anim-1 { animation: hero-step 12s ease-out 0s infinite; }
   .hero-anim-2 { animation: hero-step 12s ease-out 1.4s infinite; }
   .hero-anim-3 { animation: hero-step 12s ease-out 3.0s infinite; }
   .hero-anim-4 { animation: hero-step 12s ease-out 4.4s infinite; }

@@ -289,7 +289,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { value: "24%", label: "Conversion rate" },
       { value: "$37.2k", label: "Added recurring revenue" },
       { value: "14 days", label: "Campaign run length" },
-      { value: "$1.30", label: "Cost per reactivation" },
+      { value: "$1.30", label: "Cost per re-activation" },
     ],
     timeline: [
       { week: "Week 0", label: "Plan list pulled", detail: "Exported 519 customers whose plans had lapsed in the past 36 months. Validated phone numbers — 27 bounced or marked do-not-contact." },
@@ -318,7 +318,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     cardMetricLabel: "Re-pipe revenue from past-customer mining",
     titleStart: "Wasatch Pipeworks",
     titleAccent: "turns past service tickets into re-pipe contracts.",
-    intro: "SLC plumbing shop expanded into whole-home re-pipe last year and was buying $110-130 leads from home-services marketplaces. Their CRM had ~2,000 past customers — every one a homeowner with a known plumbing history. We segmented for galvanized-pipe candidates, ran a 4-touch campaign, and got them out of the lead-gen marketplace by month three.",
+    intro: "SLC plumbing shop expanded into whole-home re-pipe last year and was buying $120/lead from home-services marketplaces. Their CRM had ~2,000 past customers — every one a homeowner with a known plumbing history. We segmented for galvanized-pipe candidates, ran a 4-touch campaign, and got them out of the lead-gen marketplace by month three.",
     intakeFacts: [
       { label: "Trade", value: "Plumbing + tankless · residential" },
       { label: "Service area", value: "Salt Lake + Davis + Utah counties" },
@@ -416,7 +416,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     cardMetricLabel: "New Google reviews, 9 months",
     titleStart: "Peach State Plumbing",
     titleAccent: "stacks reviews. Climbs the map pack.",
-    intro: "Atlanta plumber with 41 lifetime Google reviews competing against shops with 600+. Knew reviews drove map-pack ranking but never had time to ask. We turned the asking on, and our team handled every reply. 246 new reviews in 9 months — slower than some shops but steady, and the rating climbed.",
+    intro: "Atlanta plumber with 41 lifetime Google reviews competing against shops with 600+. Knew reviews drove map pack ranking but never had time to ask. We turned the asking on, and our team handled every reply. 246 new reviews in 9 months — slower than some shops but steady, and the rating climbed.",
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "ATL metro + 3 surrounding counties" },
@@ -507,12 +507,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     city: "Houston",
     state: "TX",
     engagement: "Local Authority · 6 months",
-    cardHook: "Map-pack ranking + site rebuild = ~62 added monthly leads. Took 5 months.",
+    cardHook: "Map pack ranking + site rebuild = ~62 added monthly leads. Took 5 months.",
     cardMetricValue: "+62",
     cardMetricLabel: "New monthly leads from organic",
     titleStart: "Bayou City Pipeworks",
-    titleAccent: "owns the map pack in 6 zips.",
-    intro: "Houston plumbing shop competing in a brutal market — twelve major plumbers within 5 miles. Site looked dated, GBP was incomplete, citations were missing. Standard playbook: rebuild, fix, push. Lead volume roughly doubled in 5 months. Not as fast as some shops, but Houston is the toughest market we've worked.",
+    titleAccent: "climbs into the top 3 across 6 zip codes.",
+    intro: "Houston plumbing shop competing in a brutal market — twelve major plumbers within 5 miles. Site looked dated, GBP was incomplete, citations were missing. Standard playbook: rebuild, fix, push. Lead volume roughly doubled in 5 months. Top 3 in the map pack across 6 zips, #1 in their core zip — not as fast as some shops, but Houston is the toughest market we've worked.",
     intakeFacts: [
       { label: "Trade", value: "Plumbing · residential" },
       { label: "Service area", value: "Houston + Sugar Land + Pearland" },
@@ -521,12 +521,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     beforeAfter: [
       { label: "Monthly leads (organic)", delta: "+62", detail: "44/mo baseline → ~106/mo by month 5" },
-      { label: "Map pack ranking", delta: "→ #1 in 6 zips", detail: "Was off-map in 4 of those 6; not top 3 in 2 target zips yet" },
+      { label: "Map pack ranking", delta: "Top 3 in 6 zips", detail: "#1 in their core zip. Was off-map in 4 of those 6. Not top 3 in 2 target zips yet." },
       { label: "Cost per lead", delta: "$78 → $14", detail: "After cancelling paid lead-gen" },
     ],
     metrics: [
       { value: "+62", label: "Monthly leads from organic" },
-      { value: "6", label: "Zip codes ranking #1 map pack" },
+      { value: "6", label: "Zips in the top 3 map pack" },
       { value: "$14", label: "Effective cost per lead" },
       { value: "$0", label: "Lead-gen app spend (month 4+)" },
       { value: "71", label: "Citations added or fixed" },
